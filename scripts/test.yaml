@@ -1,0 +1,5 @@
+node:
+  loopma: 10
+  zippity: ${node.loopma}
+  do: "oompa ${node.loopma}"
+  waldo: ???
