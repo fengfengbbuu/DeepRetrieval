@@ -2,13 +2,16 @@ accelerate
 codetiming
 datasets
 dill
-flash-attn
+flash-attn==2.7.4.post1
 hydra-core
 numpy
 pandas
 pybind11
 ray
-tensordict<0.6
-transformers<4.48
-vllm<=0.6.3
+# tensordict<0.6
+tensordict
+# transformers<4.48
+transformers
+# vllm<=0.6.3
+vllm==0.8.5
 wandb

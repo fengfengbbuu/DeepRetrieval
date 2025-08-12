@@ -37,8 +37,9 @@ def extract_solution(solution_str):
     elif "<|im_start|>assistant" in solution_str:
         processed_str = solution_str.split("<|im_start|>assistant", 1)[1].strip()
     else:
-        print("[Error] Failed to locate model response header")
-        return None, processed_str
+        print(f"[Error] Failed to locate model response header. Solution str: {repr(solution_str)}")
+        # return None, processed_str
+        return None, ''
 
     # Regular expression to find the last occurrence of <answer>...</answer>
     answer_pattern = r'<answer>(.*?)</answer>'

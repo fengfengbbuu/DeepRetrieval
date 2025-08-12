@@ -44,9 +44,9 @@ setup(
     author='Bytedance - Seed - MLSys',
     author_email='zhangchi.usc1992@bytedance.com, gmsheng@connect.hku.hk',
     description='veRL: Volcano Engine Reinforcement Learning for LLM',
-    install_requires=install_requires,
-    extras_require=extras_require,
-    package_data={'': ['version/*'],
+    install_requires=install_requires,              # 核心依赖
+    extras_require=extras_require,                  # 额外依赖
+    package_data={'': ['version/*'],                # 指定随包一起安装的非 python 文件。后续可通过 pkg_resources 访问。
                   'verl': ['trainer/config/*.yaml'],},
     include_package_data=True,
     long_description=long_description,
