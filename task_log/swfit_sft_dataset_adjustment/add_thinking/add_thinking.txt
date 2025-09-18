@@ -1,0 +1,31 @@
+# Date: 2025.9.11
+# Mode: Agent
+===========================
+相关文件：
+- `outputs/llm_response/train_parquet_all.jsonl`
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/add_thinking.md`
+
+# 任务
+判断 `outputs/llm_response/train_parquet_all.jsonl` 文件中的每行数据是否符合要求，对于不符合要求的行数据，统计个数以及它们的索引下标，并保存到指定文件。
+
+要求：
+- 目标文件每行数据的 `meta_info.prompt[0].content` 字段字符串值与 `response` 字段字符串值拼接后（a_str + b_str 的拼接），应当存在 `<think>...</think>` 以及 `<answer>...</answer>` 这样的 pattern，且满足固定的个数。需满足以下要求：
+    1. 拼接后的字符串包含两组 `<think>...</think>`以及两组 `<answer>...</answer>`。
+    2. 拼接后的字符串两组 `<answer>...</answer>` 中最后一组 `<answer>content</answer>` 包裹的内容是一个数据结构，python 字典类型，其仅有一个 key，`sql`，对应的 value 就是 SQL 语句类似 "SELECT ... from ..." 的格式。
+- 你需要统计目标文件中满足所有要求（要求 1, 2 都满足）的有多个，只满足 1 的有多少个，只满足 2 的有多少个，一个都不满足的有多少个，并给出它们的下标信息。最后把统计结果保存在本地文件夹中。当然，你可以在此基础上添加你认为重要的统计信息。
+
+提示：
+- 如果你不清楚 `outputs/llm_response/train_parquet_all.jsonl` 的行数据格式，你可以另外写一个临时脚本读取数据并分析其格式、字段、字段值等信息。这样能帮助你理解数据。
+
+
+# 注意事项：
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./task_log/swfit_sft_dataset_adjustment/add_thinking` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/add_thinking/add_thinking.md`。
+===========================
+
+附录：
+- 花费：87.3w tokens，$0.30
+- 建议：
+    - 其实可以保存一些中间结果，比如数据分析的中间结果，因为这些结果后续任务可能会用到。

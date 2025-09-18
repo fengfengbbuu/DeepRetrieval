@@ -1,0 +1,28 @@
+# Date: 2025.9.12
+# Mode: Agent
+=========================
+相关文件：
+- `outputs/llm_response/train_parquet_all.final.message.jsonl`
+- `/root/data3/Qwen.Qwen2.5-0.5B-Instruct`（模型地址）
+- `task_log/swfit_sft_dataset_adjustment/parameter_adjustment/model_usage_example.py`
+- `task_log/swfit_sft_dataset_adjustment/parameter_adjustment/token_lens_statistic.md`
+
+
+# 任务
+需要你统计 `outputs/llm_response/train_parquet_all.final.jsonl` 数据集长度分布。
+
+要求：
+- 对数据集所有数据进行 tokenize，之后统计 token 长度分布，并绘制长度直方图并计算分位数（如 95%, 99% 分位数）。
+    - tokenzier 的使用，可参考 `task_log/swfit_sft_dataset_adjustment/parameter_adjustment/model_usage_example.py` 代码。
+    - 统计对象是每条数据 `messages` 字段，对其一些拼接处理，之后进行 tokenize，然后进行后续统计。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/parameter_adjustment` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/parameter_adjustment/token_lens_statistic.md`。
+
+=========================
+
+附录：
+- 花费：12.7w tokens，$0.05

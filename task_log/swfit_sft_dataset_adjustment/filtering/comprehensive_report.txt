@@ -1,0 +1,43 @@
+# 数据过滤综合统计报告
+
+**生成时间:** 2025-09-11 15:14:56
+
+## 数据量统计
+
+- **原始数据量:** 8357 条
+- **过滤后数据量:** 8349 条
+- **最终数据量:** 697 条
+
+## 过滤统计
+
+- **error_response 过滤数量:** 8 条
+- **error_response 过滤率:** 0.10%
+- **SQL 验证过滤数量:** 7652 条
+- **SQL 验证过滤率:** 91.65%
+- **总过滤数量:** 7660 条
+- **总过滤率:** 91.66%
+- **最终保留率:** 8.34%
+
+## 过滤阶段说明
+
+### 第一阶段：error_response 过滤
+- 过滤掉 8 个预定义的 error_response 类型的错误数据
+- 这些数据包含错误消息而不是有效的 SQL 查询
+- 过滤索引: [256, 2225, 2650, 2999, 3899, 5924, 6640, 7294]
+
+### 第二阶段：SQL 验证过滤
+- 对每条数据的 SQL 进行格式检查和标准化比较
+- 只保留与 ground truth SQL 完全相同的记录
+- 过滤掉 SQL 格式无效或与标准答案不同的记录
+
+## 文件说明
+
+- **train_parquet_all.jsonl:** 原始数据集
+- **train_parquet_all.filtered.jsonl:** 过滤 error_response 后的数据集
+- **train_parquet_all.final.jsonl:** 最终过滤后的数据集
+
+## 相关报告文件
+
+- **quick_filtering_report.txt:** error_response 过滤详细报告
+- **simple_validation_report.txt:** SQL 验证详细报告
+- **comprehensive_report.txt:** 本综合统计报告

@@ -1,0 +1,29 @@
+# Date: 2025.9.16
+# Mode: Agent
+========================
+相关文件：
+- TARGET_FILE: `code/data/sql/spider/train.parquet`
+- `task_log/rl_dataset_adjustment/parquet_add_message/messages_format.txt`
+- `task_log/rl_dataset_adjustment/parquet_add_message/hf_datasets_load_val.py`
+- `task_log/rl_dataset_adjustment/parquet_add_message/parquet_add_message.md`
+
+# 任务
+处理 TARGET_FILE 的每条数据，转成符合与其格式的数据，并以 `train.messages.parquet` 保存在 TARGET_FILE 所在目录。
+
+要求：
+- 目标格式：将 TARGET_FILE 的每条数据的 `prompt` 转成 messages 格式（注意保留原字段名 `prompt`）：
+    - messages 格式：参考 `task_log/rl_dataset_adjustment/parquet_add_message/messages_format.txt`。注意没有 'assistant role' 信息。
+- 最后保存的 `.parquet` 数据能够通过 `task_log/rl_dataset_adjustment/parquet_add_message/hf_datasets_load_val.py` 的验证（符合代码的输出格式）
+
+提示：
+- 如果不清楚 TARGET_FILE 的数据格式，可以先写个临时脚本分析一下。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/rl_dataset_adjustment/parquet_add_message` 目录下。
+- 生成的中间文件，你可以在完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/rl_dataset_adjustment/parquet_add_message/parquet_add_message.md`。
+========================
+
+附录：
+- 花费：51.2w tokens, $0.23

@@ -1,0 +1,18 @@
+# Date: 2025.9.11
+# Mode: Agent
+===========================
+相关文件：
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/final_analysis_results.txt`
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/final_analysis.py`
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/post_process.md`
+
+# 任务
+逐个分析 `final_analysis_results.txt` 文件中失败的行数据的失败原因。具体地：
+- 对于没有满足要求 2 的，打印 `<answer>content</answer>` tag 包裹的 content 的信息。把这些信息保存在本地文件中。
+
+# 注意事项：
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./task_log/swfit_sft_dataset_adjustment/add_thinking` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/add_thinking/post_process.md`。
+===========================

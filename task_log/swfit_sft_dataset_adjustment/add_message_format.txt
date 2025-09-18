@@ -1,0 +1,32 @@
+# Date: 2025.9.12
+# Mode: Agent
+=========================
+相关文件：
+- `outputs/llm_response/train_parquet_all.final.jsonl`
+- `outputs/llm_response/train_parquet_all.final.message.jsonl`
+- `task_log/swfit_sft_dataset_adjustment/validation_results.json`
+- `task_log/swfit_sft_dataset_adjustment/validate_spider_preprocessor.py`
+- `task_log/swfit_sft_dataset_adjustment/add_message_format.md`
+
+
+# 任务
+你需要处理 `outputs/llm_response/train_parquet_all.final.jsonl` 数据集，并把处理后的结果保存在 `outputs/llm_response/train_parquet_all.final.message.jsonl` 中。
+
+要求：
+- 为 `outputs/llm_response/train_parquet_all.final.jsonl` 每条数据添加 `messages` 字段，其对应 value 就是传统模型 message 的格式，类似 "[{'role': '', 'content': ''}]" 这样的 message 列表。
+    - message 信息来自对 `meta_info.prompt[0].content` 和 `response` 的解析。首先你要将这两部分拼接起来，之后根据 chat template 中常见的 token（例如 `<|im_start|>user` 等）对拼接的字符串做切分，最后根据 role 得到 messages。
+    - `task_log/swfit_sft_dataset_adjustment/validate_spider_preprocessor.py` 提供了拆分的代码逻辑，虽然你们处理的输入数据格式可能存在差别，但处理逻辑是一样，你可以参考它的写法。
+        - `task_log/swfit_sft_dataset_adjustment/validation_results.json` 这是 `validate_spider_preprocessor.py` 的执行结果，你的代码处理的得到的 message 应当类似这个文件的 `messages` 字段信息（值不一定完全一样）
+
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/add_message_format.md`。
+=========================
+
+附录：
+- 花费：128w tokens, $0.39
+- 问题：
+    - 这么简单的任务为什么要花费这么多 token？

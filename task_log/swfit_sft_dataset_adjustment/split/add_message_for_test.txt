@@ -1,0 +1,27 @@
+# Date: 2025.9.12
+# Mode: Agent
+===========================
+相关文件：
+- `code/data/sql/spider/train.parquet`
+- `outputs/no_training/spider/test.jsonl`
+- `task_log/swfit_sft_dataset_adjustment/validate_spider_preprocessor.py`
+- `task_log/swfit_sft_dataset_adjustment/split/add_message_for_test.md`
+
+# 任务
+为 `code/data/sql/spider/train.parquet` 的每条数据额外添加 `messages` 字段，把处理后的数据保存在 `outputs/no_training/spider/test.jsonl`。
+
+要求：
+- `messages` 字段信息的获取可以参考 `task_log/swfit_sft_dataset_adjustment/validate_spider_preprocessor.py` 代码的处理方式（甚至可以复用）
+
+提示：
+- 你们代码数据的数据不同，但数据格式一样，可以参考 `task_log/swfit_sft_dataset_adjustment/validate_spider_preprocessor.py` 是怎么处理数据，并得到 `messages` 字段信息的。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/split` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/split/add_message_for_test.md`。
+===========================
+
+附录：
+- 花费：75.2w tokens, $0.24

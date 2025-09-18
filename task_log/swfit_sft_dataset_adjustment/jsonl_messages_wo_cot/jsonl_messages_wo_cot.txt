@@ -1,0 +1,29 @@
+# Date: 2025.9.17
+# Mode: Agent
+===========================
+相关文件：
+- TARGET_FILE: `outputs/llm_response/split/test_863.jsonl`
+
+- `task_log/no_training/zero-shot/cot_output_format.txt`
+- `task_log/no_training/zero-shot/output_format.txt`
+
+- `task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot/jsonl_messages_wo_cot.md`
+
+# 任务
+处理 TARGET_FILE 数据，让后以 `{file_name}.wocot.jsonl` 保存在 TARGET_FILE 同目录。{file_name} 为 TARGET_FILE 的文件名。
+
+要求：
+- 处理每条数据的 `messages` 字段，将 user role 的 content 信息中包含 `task_log/no_training/zero-shot/cot_output_format.txt` 的内容替换为 `task_log/no_training/zero-shot/output_format.txt`
+
+提示：
+- 理论上，user role content 中仅有一条匹配 `task_log/no_training/zero-shot/cot_output_format.txt` 的信息。如果没找到，可能是我的提供的数据有问题，请及时告知我。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot/jsonl_messages_wo_cot.md`。
+===========================
+
+附录：
+- 花费：144.4w tokens，$0.51。

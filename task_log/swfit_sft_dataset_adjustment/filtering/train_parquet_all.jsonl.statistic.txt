@@ -1,0 +1,39 @@
+数据分析结果
+==================================================
+总记录数: 100
+
+字段统计:
+  answer: 100
+  response: 100
+  meta_info: 100
+
+meta_info 字段统计:
+  question: 100
+  db_id: 100
+  sql: 100
+  data_source: 100
+  prompt: 100
+  ability: 100
+  reward_model: 100
+  extra_info: 100
+  max_retry_times: 100
+  retry_times: 100
+  model_name: 100
+
+数据库ID统计 (前10个):
+  scholar: 12
+  tracking_grants_for_research: 5
+  geo: 5
+  college_2: 4
+  customer_complaints: 3
+  driving_school: 3
+  insurance_and_eClaims: 3
+  icfp_1: 3
+  customers_and_invoices: 2
+  dorm_1: 2
+
+数据源统计:
+  spider_train: 100
+
+Response平均长度: 995.96
+Response长度范围: 440 - 1714

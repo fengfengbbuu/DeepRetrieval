@@ -1,0 +1,59 @@
+Starting zero-shot structured output evaluation analysis...
+Target file: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot/qwen2_5_05/2025-09-18/wocot/test.messages.wocot.wocot.sample100_success.jsonl
+Output directory: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot/qwen2_5_05/2025-09-18/wocot/analyze
+Response key: api_result
+Ground truth key: ground_truth
+DB path key: db_path
+Is CoT: False
+Loaded 100 inference records
+Plot saved to: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot/qwen2_5_05/2025-09-18/wocot/analyze/zero_shot_evaluation_results_non_cot.png
+Detailed results saved to: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot/qwen2_5_05/2025-09-18/wocot/analyze/zero_shot_detailed_results_non_cot.csv
+Summary results saved to: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot/qwen2_5_05/2025-09-18/wocot/analyze/zero_shot_summary_results_non_cot.csv
+
+=== Summary Statistics ===
+Total samples: 100
+Success rate: 1.000
+
+=== Format Evaluation Summary (Non-CoT) ===
+Answer Tag Rate: 0.000
+Valid JSON Rate: 0.000
+Think Tag Rate (Should be 0): 0.000
+Average Answer Tags per Sample: 0.000
+Average Think Tags per Sample: 0.000
+Format Correct Rate: 0.000
+Execution Accuracy Rate: 0.000
+Execution Error Rate: 1.000
+Malformed Structure Rate: 0.000
+
+=== Error Pattern Analysis ===
+Format Correct Samples: 0/100
+Error Patterns:
+  missing_answer_tag: 100
+  invalid_json: 100
+  execution_error: 100
+
+=== Sample Error Examples ===
+Example 1:
+  Question: What types of contents cannot be found in warehouses in New York?
+  Has Answer: False, Has Valid JSON: False
+  Has Think (Should be False): False
+  Answer Count: 0, Think Count: 0
+  Execution Accuracy: 0
+  Execution Error: Missing SQL or database path
+
+Example 2:
+  Question: What are the names of the different clients who have made an order?
+  Has Answer: False, Has Valid JSON: False
+  Has Think (Should be False): False
+  Answer Count: 0, Think Count: 0
+  Execution Accuracy: 0
+  Execution Error: Missing SQL or database path
+
+Example 3:
+  Question: Return the ids and models of vehicles that have been driven by exactly two drivers or built by Ziyan...
+  Has Answer: False, Has Valid JSON: False
+  Has Think (Should be False): False
+  Answer Count: 0, Think Count: 0
+  Execution Accuracy: 0
+  Execution Error: Missing SQL or database path
+

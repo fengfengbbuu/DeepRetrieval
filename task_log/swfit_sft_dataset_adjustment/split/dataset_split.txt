@@ -1,0 +1,25 @@
+# Date: 2025.9.12
+# Model: Agent
+============================
+相关文件：
+- `outputs/llm_response/train_parquet_all.final.jsonl`
+- `outputs/llm_response/split`
+- `task_log/swfit_sft_dataset_adjustment/split/dataset_split.md`
+
+
+# 任务
+对数据集 `outputs/llm_response/train_parquet_all.final.jsonl` 做 train, dev, test 划分。
+要求：
+- 划分前打乱样本顺序
+- train, dev, test 比例为 5:1:1
+- 结果保存在 `outputs/llm_response/split/{split_name}_{num_example}.jsonl`。`split_name` 为 train, dev, test 三个中的一个， `num_example` 为当前 split 的样本总数量。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./task_log/swfit_sft_dataset_adjustment/split` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/split/dataset_split.md`。
+============================
+
+# 附录
+- 花费：28w tokens，$0.09

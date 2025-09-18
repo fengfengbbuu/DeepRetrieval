@@ -1,0 +1,38 @@
+# Final Data Analysis Results
+
+**Total records analyzed:** 8357
+
+## Summary Statistics
+- **Both requirements satisfied:** 8346
+- **Only requirement 1 satisfied:** 11
+- **Only requirement 2 satisfied:** 0
+- **Neither requirement satisfied:** 0
+- **Errors encountered:** 0
+
+## Detailed Statistics
+- **Requirement 1 (think/answer patterns):** 8357/8357 satisfied
+- **Requirement 2 (SQL dictionary):** 8346/8357 satisfied
+
+## Detailed Index Lists
+
+### Both Requirements Satisfied
+**Count:** 8346
+**Indices:** [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]...
+
+### Only Requirement 1 Satisfied
+**Count:** 11
+**Indices:** [256, 2225, 2650, 2999, 3047, 3899, 5924, 6625, 6640, 7294, 7356]
+
+### Only Requirement 2 Satisfied
+**Count:** 0
+**Indices:** []
+
+### Neither Requirement Satisfied
+**Count:** 0
+**Indices:** []
+
+
+## Interpretation Notes
+- **Requirement 1:** Interpreted as 'at least 1 <think>...</think> and 1 <answer>...</answer> pattern' (excluding template examples)
+- **Requirement 2:** The last <answer>...</answer> must contain a valid SQL dictionary with 'sql' key
+- **Template filtering:** Empty patterns and placeholder content are excluded from the count

@@ -1,0 +1,8 @@
+<think>
+[thinking process]
+</think>
+<answer>
+{
+    "sql": "SELECT ... (in one line)"
+} 
+</answer>. 

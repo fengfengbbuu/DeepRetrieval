@@ -1,0 +1,29 @@
+# Date: 2025.9.12
+# Mode: Agent
+===========================
+相关文件：
+- `outputs/no_training/spider/test.jsonl`
+- `task_log/no_training/api_call_template.py`
+- `task_log/no_training/llm_api_infer.md`
+
+# 任务
+参考代码 `task_log/no_training/api_call_template.py` 设计 api 调用代码，完成对 `outputs/no_training/spider/test.jsonl` 测试集的数据测试，并把测试结果保存在本地文件。
+
+要求：
+- api_base, api_key, model_name 需要跟 `task_log/no_training/api_call_template.py` 中保持一致。
+- 通过 API 调用的模型是通过 LLM 部署的，你可能需要限制单位时间内请求的次数，不要太多也不要太少。如果有请求失败的，请即时降低请求频率，并在后续 retry 失败的测试数据。总之，需要确保所有数据都得到处理。
+- 处理结果保存在本地文件夹。
+
+提示：
+- 对于 `outputs/llm_response/split/test_863.jsonl` 数据处理，你只需要处理每条数据的 `messages` 字段即可。
+- 你可以用 openai 包来完成 api 调用，甚至异步请求处理（如果不好用，还是用 request 挨个处理数据，我也能接受）
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/no_training` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/no_training/llm_api_infer.md`。
+===========================
+
+附录：
+- 花费：37w tokens, $0.13

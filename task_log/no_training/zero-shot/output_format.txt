@@ -1,0 +1,6 @@
+Your final response must be in JSON format within <answer> </answer>. For example,
+<answer>
+{
+    "sql": "SELECT ... (in one line)"
+} 
+</answer>. 

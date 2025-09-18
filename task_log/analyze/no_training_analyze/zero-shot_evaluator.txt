@@ -1,0 +1,49 @@
+# Date: 2025.9.17
+# Mode: Agent
+===================================
+相关文件：
+- JSONL_INPUT_FILE: `outputs/no_training/spider/zero-shot/gpt-3.5-turbo/2025-09-16/test.wcot.sample100_success.jsonl`
+
+- REF_FILE: `task_log/analyze/no_training_analyze/no_training_evaluator.py`
+- `task_log/analyze/no_training_analyze/zero-shot_evaluator.sh`
+- `task_log/no_training/zero-shot/output_format.txt`
+- `task_log/no_training/zero-shot/cot_output_format.txt`
+- `code/verl/utils/reward_score/spider.py` 中的 `calculate_answer_score` 函数
+
+- `task_log/analyze/no_training_analyze/zero-shot_evaluator.md`
+
+# 任务
+实验一个对模型输出结果的评估函数。
+
+要求：
+- 基于 REF_FILE 做功能扩充（保留原有功能）。
+- 评估逻辑：参考 REF_FILE，并做完善。期望代码中处理两种 metrics（一种是 `is_cot` 为 true 的 metric，一种是 `is_cot` 为 false 的 metric），还有第三个判断 SQL 执行准确率的 metric，即 execution accuary。
+- 关于第三个 metric，execution accuray：
+    - 在 db_path 中执行模型生成的 SQL（pred），和 ground truth SQL（gold），如果两者结果相同，则为 1，否则为 0。具体参考 `code/verl/utils/reward_score/spider.py` 中的 `calculate_answer_score()` 函数的实现。
+    - 该 metric 的结果也需要纳入最后的统计。
+- 支持参数处理（有专门的参数处理模块）：
+    - `file_path`: 要处理的数据文件路径。
+    - `response_key`: 模型回复键名，默认值为 'api_result'。对应的 value 值类型是 str 或 dict。
+    - `ground_truth_key`: 标准答案键名，默认值为 'ground_truth'。对应的 value 值类型是 str。
+    - `db_path_key`: 数据库路径键名，默认值为 'db_path'。对应的 value 值类类型是 str。
+    - `is_cot`: true or false，默认为 true。模型的输出是否包含 cot 信息。
+        - 如果为 true，说明 `response_key` 对应 value 的格式预期是 `task_log/no_training/zero-shot/cot_output_format.txt`，metric 的处理方式可以参考 REF_FILE。
+        - 如果为 false，说明 `response_key` 对应 value 的格式预期是 `task_log/no_training/zero-shot/output_format.txt` 中的样式，你可以针对性的写解析器。
+- 关于输出：
+    - 代码输出的 output_dir 是 JSONL_INPUT_FILE 所在文件夹的 'analyze' 目录（如果没有，要在代码中创建文件夹）。
+- 确保代码的模块化，可扩展。例如，数据格式处理应该有单独的函数，评估应该有单独的函数，不要把功能混在一个函数。
+
+提示：
+- 如果你的代码需要测试，输入文件就是 JSONL_INPUT_FILE。如果你不确定参数该怎么设置，可以另写脚本分析 JSONL_INPUT_FILE 数据结构。
+- 你的测试脚本可以写在 `task_log/analyze/no_training_analyze/zero-shot_evaluator.sh`。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze/no_training_analyze` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/no_training_analyze/zero-shot_evaluator.md`。
+===================================
+
+附录：
+- 花费：90.8w tokens, $0.45
+- 完善功能

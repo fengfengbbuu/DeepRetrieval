@@ -1,0 +1,9 @@
+Show your work in <think> </think> tags. Your final response must be in JSON format within <answer> </answer>. For example,
+<think>
+[thinking process]
+</think>
+<answer>
+{
+    "sql": "SELECT ... (in one line)"
+} 
+</answer>. 

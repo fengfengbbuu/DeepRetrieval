@@ -1,0 +1,33 @@
+# Date: 2025.9.17
+# Mode: Agent
+===========================
+相关文件：
+- INPUT_FILE: `code/data/sql/spider/val.messages.wcot.parquet`
+
+- REF_FILE: `task_log/rl_dataset_adjustment/parquet_add_message/convert_to_messages_fixed.py`
+- `task_log/no_training/zero-shot/cot_output_format.txt`
+- `task_log/no_training/zero-shot/output_format.txt`
+
+- `task_log/swfit_sft_dataset_adjustment/parquet_message_wo_cot/parquet_message_wo_cot.md`
+
+任务：
+参考 REF_FILE，再次基础上做完善，完成对数据集信息格式调整。
+
+要求：
+- 调整内容：
+    - 包含 REF_FILE 对数据做的调整。
+    - 对 messages 的 user role 的 content 信息做调整。匹配 `task_log/no_training/zero-shot/cot_output_format.txt` 中的内容，理论上每条数据都能匹配到一个。匹配到之后将其替换成 `task_log/no_training/zero-shot/output_format.txt` 中的内容。
+- 代码模块化，函数分工明确。代码有注释，module 最上面的 docstring 有体现任务出处。
+
+提示：
+- 理论上你的代码实现的是 REF_FILE 输出数据的后处理函数。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/parquet_message_wo_cot` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/parquet_message_wo_cot/parquet_message_wo_cot.md`。
+===========================
+
+附录：
+- 花费：215.2w tokens, $0.68

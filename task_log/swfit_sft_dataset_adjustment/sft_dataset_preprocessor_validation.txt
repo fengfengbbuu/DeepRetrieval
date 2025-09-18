@@ -1,0 +1,38 @@
+# Date: 2025.9.11
+# Mode: Agent
+=================
+相关文件：
+- `code/ms-swift/swift/llm/dataset/dataset/llm.py`
+- `task_log/swfit_sft_dataset_adjustment/spider_train_parquet_prompt_examples_val.input.txt`
+- `task_log/swfit_sft_dataset_adjustment/sft_dataset_preprocessor_validation.md`
+- `code/data/sql/spider/train.parquet`
+
+# 任务:
+现在需要参考给出的文件信息，验证 `code/ms-swift/swift/llm/dataset/dataset/llm.py` 代码中的 `SpiderTrainPreprocessor` 类是否符合下面的需求，如果不符合，需要你修改该类的代码。
+
+要求：
+- `preprocessor()` 功能说明：支持处理 `code/data/sql/spider/train.parquet` 数据信息，对每行的数据中的 `prompt` 字段和 `reward_model` 字段进行综合解析，返回 message 格式解析后的信息。
+    - 解析：按 `prompt.content` 中类似 `<|im_start|>user` 这种 token 进行解析，得到 user, assistant, system 这种 messages 常见的 role。其中 assistant role 的 content 信息一部分来自 `prompt.content`，一部分来自 `reward_model.ground_truth.target`，且其中的 SQL str 以 json str 形式嵌入 `<answer>...</answer>` tag 中间。
+- `preprocessor()` 函数预期的输出是一个字典，仅包含键值 `messages`，其对应的 value 是一个 list，list 的每个元素都符合 "{'role': '', 'content': ''}" 格式。
+    - 最后返回的字典中 "{'role': '', 'content': ''}" 的 `content` 都不应该包含类似 `<|im_start|>user` 这样的 token。
+    - assistant role 的 content 包含 `<answer>...</answer>` tag 以及 `<think>...</think>` tag。
+
+提示：
+- 你可以抽取出 `preprocess()` 的处理逻辑然后另外创建一个文件，专门用于验证代码的准确性（因为直接跑原项目代码可能比较麻烦）。
+- 输入方面：你不需要自己构建验证数据，`code/data/sql/spider/train.parquet` 是你验证代码的输入数据。你可以抽样验证，而不是验证所有数据，比如随机抽取 5 行数据验证 `preprocessor()` 函数的正确性。
+    - 建议用代码处理文件内容，而不是读取字节信息到 prompt 里。如果你不清楚字段信息，可以先写个临时脚本分析数据字段信息。
+    - 如果你做抽样验证，我建议把被抽取的 rows 保存在本地文件（方便我后续检查）
+- 输出方面：你可能需要自己写一个专门用于验证输出的代码逻辑，且符合上述的“要求”。
+
+# 注意事项：
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./scripts` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/sft_dataset_preprocessor_validation.md`。
+=================
+
+附录：
+- 花费：87.2w tokens，$0.29
+- 问题：
+    - 很多优秀的模型不对中国开放。也没办法直到自己到底用的是什么模型？
+    - 验证方面，除了主要的代码需要保存，验证输入和输出最好也保存（这样你能通过检查输出结果直接判断模型的工作结果是否符合你的预期，而不需要看代码，这样会浪费一些时间）

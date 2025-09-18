@@ -1,0 +1,41 @@
+# Date: 2025.9.15
+# Mode: Agent
+============================
+相关文件：
+- TARGET_DIR: `outputs/ms-swift/spider_cold_start/1A6000_2ep_16bs_2accum/v0-20250914-133424/eval`
+- `task_log/analyze/expect_output_format.txt`
+- `task_log/analyze/structured_output_eval.md`
+
+# 任务
+
+## 任务1：
+任务描述：用代码实现我自定义 metric，评估模型结构化的输出结果。
+
+自定义 metric:
+- 简介：评估模型输出的结构化文本，并为其打分。
+- 预期的模型输出格式：预期的输出格式见 `task_log/analyze/expect_output_format.txt` 文件。读取该文件你会发现输出格式中有一个 `<think></think>` tag 和一个 `<answer></answer>` tag，且 think 在前，answer 在后。
+- 评估逻辑：
+    - 如果存在 `<think>{content}</think>` 做一个 flag 标记。如果 think tag 仅有一个，再做一个标记。
+    - 如果存在 `<answer>{content}</answer>` 做一个 flag 标记。如果 answer tag 仅有一个，再做一个标记。
+    - 抽取 `<answer>{content}</answer>` 中的 content 信息，该信息格式应当是 `'{"sql": "..."}'`，一个字典且仅有一个 `'sql'` key。具体参考 `task_log/analyze/expect_output_format.txt`。如何 content 符合格式，做一个 flag 标记。
+    - 如果上面的标准全都满足，即完全符合 `task_log/analyze/expect_output_format.txt` 中的格式信息，再做一个 flag 标记，表示模型输出信息的格式完全正确。
+- 提示：你可以分层次完成该功能。比如写一个专门用于处理数据格式的函数，再写一个专门评估模型输出的函数。
+
+## 任务2：
+任务描述：使用任务1 的代码评估 TARGET_DIR 下模型的 eval 阶段 predictions 的结果。并用图或表展示出来。我想看看不同 checkpoint 在验证集上用格式化的 metric 评估结果怎么样。
+
+- 提示：
+    - predictions 结果是一个 `.json` 文件，位于 `TARGET_DIR/<TIME>/predictions/model-step<STEP>`（其中 <TIME> 和 <STEP> 是占位符，具体值需要具体分析）。
+    - 最好先写一个脚本分析 review 的数据格式，确定哪些字段有关输出，哪些字段有关输出，方便后续处理。
+    - predictions 的 .json 文件可能存在 reasoning 字段，如果存在 reasoning 字段就算作存在一个 `<think></think>` tag。
+    - 注意，如果输出的文本中 <think> tag，同时 .json 文件存在 reasoning 字段，这时候就算存在多个 <think> tag 了。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/structured_output_eval.md`。
+============================
+
+附录：
+- 花费：207.2w tokens, $0.62

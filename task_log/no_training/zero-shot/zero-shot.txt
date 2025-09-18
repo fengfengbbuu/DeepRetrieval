@@ -1,0 +1,62 @@
+# Date: 2025.9.16
+# Mode: Agent
+==============================
+相关文件：
+- REF_FILE: `task_log/no_training/llm_api_inference.py`
+- `task_log/no_training/zero-shot/cot_output_format.txt`
+- `task_log/no_training/zero-shot/output_format.txt`
+- `task_log/no_training/zero-shot/zero-shot.sh`
+
+- WOCOT_VAL_FILE: `code/data/sql/spider/test.messages.wocot.parquet`
+- COT_VAL_FILE: `code/data/sql/spider/test.messages.cot.parquet`
+
+- `task_log/no_training/zero-shot/zero-shot.md`
+
+# 任务
+在 REF_FILE 代码基础上，做完善，完善后的代码以 `zero_shot.py` 文件名另存在本地。
+
+要求：
+- 保留 REF_FILE 的所有功能。
+- 支持参数传递，包括：
+    - 模型方面：
+        - `model_name`: 模型名称
+        - `base_url`: 模型 url 地址
+        - `api_key`: api key
+    - 数据方面：
+        - `test_set_path`: 测试集地址。最好是 `.jsonl` 文件
+        - `prompt_key`: 模型 input 对应的 key，默认值参考 REF_FILE（看它是怎么得到 input 的）。
+        - `sample_num`: 抽取指定个数的样例进行测试，默认值为 -1，表示处理所有样例。
+        - `db_path_key`: 数据库路径对应的字段名，如果是 `key1.key2` 暗示该字段对应的 value 很可能是一个字典，需要访问 key1 然后在访问 key2 才能获取到 database path。默认值为 `extra_info.db_path`
+        - `ground_truth_key`: 标准答案对应字段名，如果是 `key1.key2` 暗示该字段对应的 value 很可能是一个字典，需要访问 key1 然后在访问 key2 才能获取到 ground truth。默认值为 `reward_model.ground_truth.target`
+    - 实验方面：
+        - `with_cot`: true 或 false。表示输入数据是否涉及 cot 内容。（一个 flag）
+- 有专门的参数解析函数。
+- 数据解析：（最好与其它模块解耦，独立出来）
+    - 支持 `.parquet` 的 `test_set_path` 数据解析。
+- 测试结果存储格式：在 REF_FIILE 基础上，添加 db path，ground truth 信息。
+- 测试结果保存在 `outputs/no_training/spider/zero-shot/{model_name}/{date}` 文件夹下。`{date}` 是程序运行时的时间，格式为 `yyyy-mm-dd`。
+    - 文件名格式：`{test_name}.{cot_info}.{sample_info}.jsonl`
+        - `{test_name}`: `test_set_path` 的文件名
+        - `{cot_info}`: `with_cot` 为 True 是，值为 "wcot"，为 False 时，值为 "wocot"
+        - `{sample_info}`: 如果 `sample_num` 为 -1，值为 "all"，否则为 `f"sample{sample_num}"`
+    - 另外在该文件夹下以 `args.yaml` yaml 格式保存程序运行的配置信息（主要是参数信息）。
+
+提示：
+- 你可以在代码中预先缓存 `task_log/no_training/zero-shot/output_format.txt` 和 `task_log/no_training/zero-shot/cot_output_format.txt` 的内容。
+- `prompt_key` 字段对应的 value 值应当是 `messages`，类似 `[{"role": "system", "content": "..."}]` 这样的 list dict。
+- 如果你想对完成的代码做验证，可以把 WOCOT_VAL_FILE，COT_VAL_FILE。这两个文件对应的 `prompt_key` 是 `prompt`，对应的 value 值是一个 dict。
+    - 另外你可以把测试脚本写在 `task_log/no_training/zero-shot/zero-shot.sh` 文件中。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/no_training/zero-shot` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/no_training/zero-shot/zero-shot.md`。
+==============================
+
+附录：
+- 花费：128.1w tokens, $0.43
+- 更新要求后，再次执行任务：
+    - 花费：204.7w tokens, $0.62
+- 再次更新：
+    - 花费：216.9w tokens, $0.67

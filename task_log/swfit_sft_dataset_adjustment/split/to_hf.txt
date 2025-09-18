@@ -1,0 +1,23 @@
+# Date: 2025.9.12
+# Mode: Agent
+=========================
+相关文件：
+- `outputs/llm_response/split`
+- `outputs/llm_response/hf`
+
+
+# 任务
+将 `outputs/llm_response/split` 文件夹下的 train, dev, test 整合成 huggingface datasets 支持的数据格式，并保存在 `outputs/llm_response/hf` 文件夹下。
+
+要求：
+- 整合后的文件能被 `datasets.load_()` 处理
+
+提示：
+- 如果你不知道怎么写代码，可以上网搜一下。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/split` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/split/to_hf.md`。
+=========================

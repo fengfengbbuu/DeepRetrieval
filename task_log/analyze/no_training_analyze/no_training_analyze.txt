@@ -1,0 +1,32 @@
+# Date: 2025.9.15
+# Mode: Agent
+============================
+相关文件：
+- VAL_FILE: `task_log/no_training/inference_results_success.jsonl`
+- `task_log/analyze/predictions_structured_output_evaluator.py`
+- `task_log/analyze/expect_output_format.txt`
+- `task_log/analyze/no_training_analyze/no_training_analyze.md`
+
+# 任务
+写代码评估 TARGET_DIR 模型的输出结果，并用图或表展示出来。
+
+要求：
+- 你的主代码最好分层次，比如数据处理一个函数（读取 TARGET_DIR 数据，转成能处理的格式），具体评估一个函数，提高代码的复用性。
+- 你需要处理的字段是 `api_result` ，分析模型的返回结果是否符合预定的规范。
+- 对模型返回结果的期望：具体见 `task_log/analyze/expect_output_format.txt` 文件。该文件描述了模型输出结果的格式。
+- 自定义评估函数：
+    - 如果存在 `<think>{content}</think>` 做一个 flag 标记。如果 think tag 仅有一个，再做一个标记。
+    - 如果存在 `<answer>{content}</answer>` 做一个 flag 标记。如果 answer tag 仅有一个，再做一个标记。
+    - 抽取 `<answer>{content}</answer>` 中的 content 信息，该信息格式应当是 `'{"sql": "..."}'`，一个字典且仅有一个 `'sql'` key。具体参考 `task_log/analyze/expect_output_format.txt`。如何 content 符合格式，做一个 flag 标记。
+    - 如果上面的标准全都满足，即完全符合 `task_log/analyze/expect_output_format.txt` 中的格式信息，再做一个 flag 标记，表示模型输出信息的格式完全正确。
+
+提示：
+- 评估函数的实现可参考 `task_log/analyze/predictions_structured_output_evaluator.py` 的评估逻辑，需要再次基础上根据自身任务的不同做一下修改。
+- 注意代码的模块化。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze/no_training_analyze` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/no_training_analyze/no_training_analyze.md`。
+============================

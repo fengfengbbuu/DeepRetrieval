@@ -1,0 +1,28 @@
+# Date: 2025.9.15
+# Mode: Agent
+===========================
+相关文件：
+- TARGET_DIR: `outputs/ms-swift/spider_cold_start/1A6000_2ep_16bs_2accum/v0-20250914-133424/eval`
+- `task_log/analyze/sft_eval_analyze.md`
+
+# 任务
+对 TARGET_DIR 下的所有 reports 文件进行统计分析，之后绘制折线图展示结果。
+
+要求：
+- 折线图的横轴是训练过程的 ckpt（checkpoint）（按时间顺序）。纵轴是每个 metric 对应的 score。我希望能直观的观察模型训练过程每个阶段的 eval 结果。
+
+提示
+- TARGET_DIR 底下的文件夹名称是创建的时间，有先后顺序。这个顺序在画图的时候要考虑到。
+- metric score 信息存在 `.json` 文件中。位于 TARGET_DIR/<TIME>/reports/model-step<STEP>。其中 `<TIME>` 和 `<STEP>` 是占位符，具体值需要具体分析。
+    - 如果还不清楚，你可以先写临时脚本分析目录结构。
+- 找到 metric score 所在的 json 文件后，建议先写个脚本分析数据存储格式，以便确定怎么获取最后绘制的图像需要的数据。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/sft_eval_analyze.md`。
+===========================
+
+附录：
+- 花费：25.5w tokens, $0.10

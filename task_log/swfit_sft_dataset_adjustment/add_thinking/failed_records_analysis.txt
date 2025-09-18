@@ -1,0 +1,492 @@
+# Failed Records Analysis - Requirement 2
+
+**Total failed records:** 11
+
+## Record 1 (Index 256)
+
+**Question:** How many different players trained for more than 1000 hours?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The schema does not include a column for training hours, so the query cannot be constructed."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The schema does not include a column for training hours, so the query cannot be constructed."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The schema does not include a column for training hours, so the query cannot be constructed."
+}
+```
+
+**Response Preview:**
+```
+The schema provided does not explicitly mention a column for tracking the number of hours players trained. However, the question asks about players who trained for more than 1000 hours. Since there is...
+```
+
+---
+
+## Record 2 (Index 2225)
+
+**Question:** What is the average training hours of all players?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include a column or table related to training hours. Please provide additional information or clarify the query."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include a column or table related to training hours. Please provide additional information or clarify the query."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include a column or table related to training hours. Please provide additional information or clarify the query."
+}
+```
+
+**Response Preview:**
+```
+The user query asks for the average training hours of all players. However, based on the provided database schema, there is no column or table that explicitly mentions "training hours." The schema inc...
+```
+
+---
+
+## Record 3 (Index 2650)
+
+**Question:** What are the names of players whose training hours is between 500 and 1500?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include a column for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include a column for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include a column for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Response Preview:**
+```
+The user query asks for the names of players whose training hours are between 500 and 1500. However, the provided database schema does not include a column for "training hours" in any of the tables (P...
+```
+
+---
+
+## Record 4 (Index 2999)
+
+**Question:** Find the max, average and min training hours of all players.
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include a column or table for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include a column or table for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include a column or table for training hours. Please provide additional details or clarify the query."
+}
+```
+
+**Response Preview:**
+```
+The provided database schema does not include any column or table that explicitly mentions "training hours" for players. The tables `Player`, `College`, and `Tryout` do not have any attribute related ...
+```
+
+---
+
+## Record 5 (Index 3047)
+
+**Question:** For each grant id, how many documents does it have, and which one has the most?
+
+**Database ID:** tracking_grants_for_research
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "sql": "WITH DocumentCounts AS (SELECT grant_id, COUNT(*) AS document_count FROM Documents GROUP BY grant_id) SELECT grant_id, document_count FROM DocumentCounts WHERE document_count = (SELECT MAX(document_count) FROM DocumentCounts);"
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "sql": "WITH DocumentCounts AS (SELECT grant_id, COUNT(*) AS document_count FROM Documents GROUP BY grant_id) SELECT grant_id, document_count FROM DocumentCounts WHERE document_count = (SELECT MAX(document_count) FROM DocumentCounts);"
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "sql": "WITH DocumentCounts AS (SELECT grant_id, COUNT(*) AS document_count FROM Documents GROUP BY grant_id) SELECT grant_id, document_count FROM DocumentCounts WHERE document_count = (SELECT MAX(document_count) FROM DocumentCounts);"
+}
+```
+
+**Response Preview:**
+```
+To answer the query, we need to count the number of documents associated with each `grant_id` and identify the `grant_id` with the highest count. The `Documents` table contains the `grant_id` column, ...
+```
+
+---
+
+## Record 6 (Index 3899)
+
+**Question:** How many hours do the players train on average?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include information about training hours, so the query cannot be executed."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include information about training hours, so the query cannot be executed."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include information about training hours, so the query cannot be executed."
+}
+```
+
+**Response Preview:**
+```
+The provided database schema does not include any column or table that explicitly tracks the number of hours players train. The tables `Player`, `College`, and `Tryout` contain information about playe...
+```
+
+---
+
+## Record 7 (Index 5924)
+
+**Question:** What are the names and number of hours spent training for each player who trains for less than 1500 hours?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include information about training hours. Please provide additional details or clarify the schema."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include information about training hours. Please provide additional details or clarify the schema."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include information about training hours. Please provide additional details or clarify the schema."
+}
+```
+
+**Response Preview:**
+```
+The provided database schema does not include a column or table that explicitly tracks the number of hours spent training for players. The tables `Player`, `College`, and `Tryout` do not contain any a...
+```
+
+---
+
+## Record 8 (Index 6625)
+
+**Question:** Find the list of documents that are both in the most three popular type and have the most three popular structure.
+
+**Database ID:** document_management
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "sql": "WITH PopularTypes AS (SELECT document_type_code FROM Documents GROUP BY document_type_code ORDER BY SUM(access_count) DESC LIMIT 3), PopularStructures AS (SELECT document_structure_code FROM Documents GROUP BY document_structure_code ORDER BY SUM(access_count) DESC LIMIT 3) SELECT document_code, document_name FROM Documents WHERE document_type_code IN (SELECT document_type_code FROM PopularTypes) AND document_structure_code IN (SELECT document_structure_code FROM PopularStructures);"
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "sql": "WITH PopularTypes AS (SELECT document_type_code FROM Documents GROUP BY document_type_code ORDER BY SUM(access_count) DESC LIMIT 3), PopularStructures AS (SELECT document_structure_code FROM Documents GROUP BY document_structure_code ORDER BY SUM(access_count) DESC LIMIT 3) SELECT document_code, document_name FROM Documents WHERE document_type_code IN (SELECT document_type_code FROM PopularTypes) AND document_structure_code IN (SELECT document_structure_code FROM PopularStructures);"
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "sql": "WITH PopularTypes AS (SELECT document_type_code FROM Documents GROUP BY document_type_code ORDER BY SUM(access_count) DESC LIMIT 3), PopularStructures AS (SELECT document_structure_code FROM Documents GROUP BY document_structure_code ORDER BY SUM(access_count) DESC LIMIT 3) SELECT document_code, document_name FROM Documents WHERE document_type_code IN (SELECT document_type_code FROM PopularTypes) AND document_structure_code IN (SELECT document_structure_code FROM PopularStructures);"
+}
+```
+
+**Response Preview:**
+```
+To solve the problem, we need to identify the documents that belong to the most three popular document types and the most three popular document structures. Here's the step-by-step reasoning:
+
+1. **Un...
+```
+
+---
+
+## Record 9 (Index 6640)
+
+**Question:** What is the average, maximum, and minimum for the number of hours spent training?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The database schema does not include a column or table related to 'hours spent training.' Please provide additional details or clarify the query."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The database schema does not include a column or table related to 'hours spent training.' Please provide additional details or clarify the query."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The database schema does not include a column or table related to 'hours spent training.' Please provide additional details or clarify the query."
+}
+```
+
+**Response Preview:**
+```
+The provided database schema does not include any column or table that explicitly mentions "hours spent training." To answer the query, we need to identify where such data might be stored. However, ba...
+```
+
+---
+
+## Record 10 (Index 7294)
+
+**Question:** What is minimum hours of the students playing in different position?
+
+**Database ID:** soccer_2
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "error": "The provided database schema does not include any column related to 'hours'. The query cannot be answered based on the current schema."
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "error": "The provided database schema does not include any column related to 'hours'. The query cannot be answered based on the current schema."
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "error": "The provided database schema does not include any column related to 'hours'. The query cannot be answered based on the current schema."
+}
+```
+
+**Response Preview:**
+```
+The user query asks for the "minimum hours of the students playing in different positions." However, the provided database schema does not include any column related to "hours" in any of the tables. T...
+```
+
+---
+
+## Record 11 (Index 7356)
+
+**Question:** What is the name of the artist, for each language, that has the most songs with a higher resolution than 500?
+
+**Database ID:** music_1
+
+**JSON Parse Error:** None
+
+**All Answer Contents:**
+### Answer 1:
+```
+{
+    "sql": "SELECT ... (in one line)"
+}
+```
+
+### Answer 2:
+```
+{
+    "sql": "WITH SongCounts AS (SELECT languages, artist_name, COUNT(song_name) AS song_count FROM song WHERE resolution > 500 GROUP BY languages, artist_name), MaxCounts AS (SELECT languages, MAX(song_count) AS max_count FROM SongCounts GROUP BY languages) SELECT sc.languages, sc.artist_name FROM SongCounts sc JOIN MaxCounts mc ON sc.languages = mc.languages AND sc.song_count = mc.max_count;"
+}
+```
+
+**Last Answer Content (Failed):**
+```
+{
+    "sql": "WITH SongCounts AS (SELECT languages, artist_name, COUNT(song_name) AS song_count FROM song WHERE resolution > 500 GROUP BY languages, artist_name), MaxCounts AS (SELECT languages, MAX(song_count) AS max_count FROM SongCounts GROUP BY languages) SELECT sc.languages, sc.artist_name FROM SongCounts sc JOIN MaxCounts mc ON sc.languages = mc.languages AND sc.song_count = mc.max_count;"
+}
+```
+
+**Parsed Answer Dict:**
+```json
+{
+  "sql": "WITH SongCounts AS (SELECT languages, artist_name, COUNT(song_name) AS song_count FROM song WHERE resolution > 500 GROUP BY languages, artist_name), MaxCounts AS (SELECT languages, MAX(song_count) AS max_count FROM SongCounts GROUP BY languages) SELECT sc.languages, sc.artist_name FROM SongCounts sc JOIN MaxCounts mc ON sc.languages = mc.languages AND sc.song_count = mc.max_count;"
+}
+```
+
+**Response Preview:**
+```
+To solve the query, we need to determine the artist name for each language who has the most songs with a resolution higher than 500. Here's the step-by-step reasoning:
+
+1. **Filter songs with resoluti...
+```
+
+---
+

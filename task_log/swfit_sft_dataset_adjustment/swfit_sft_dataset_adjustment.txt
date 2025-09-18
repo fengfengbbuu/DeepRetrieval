@@ -1,0 +1,28 @@
+# Date: 2025.9.10
+# Mode: Agent
+=================
+相关文件：
+- `code/ms-swift/swift/llm/dataset/dataset/llm.py`
+- `tmp/spider_train_parquet_row_example.json` 
+- `task_log/summary/swfit_sft_dataset_adjustment.md`
+
+# 任务:
+现在需要参考给出的文件信息，在 `code/ms-swift/swift/llm/dataset/dataset/llm.py` 代码后面添加自定义的数据集的 preprocessor，要求如下：
+- 自定义数据集的信息位于 `tmp/spider_train_parquet_row_example.json`
+- 你的 preprocessor 需要对 `prompt` 字段对应 value 中的 content 信息进行处理，对里面类似 `<|im_start|>user` 这种提示词进行拆分，转成常见的 message 格式。
+
+# 注意事项：
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./scripts` 目录下。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务完成总结保存在 `task_log/summary/swfit_sft_dataset_adjustment.md`。
+=================
+
+
+# 附录
+- 花费: cursor 处理该任务用了 112.39w tokens，花费 0.41$
+- 问题：
+    - test scripts 用的样例是模型自己根据任务理解生成的，这往往是不准确的，最好用户自己提供测试样例所在文件，并给出期望的输出。
+    - 人工验证，简单有效地方式是看输入输出是否对的上（需要预先准备测试样例），进一步的才是看 cursor 写的代码。
+        - cursor 会删掉中间代码，也没问题，看中间代码确实比较折磨。
+        - 其实可以尝试让 cursor 保留一些文件，比如主要的测试文件，这样也方便我们手动验证。
+- 建议：布置这种代码任务前，自己要先明确输入输出是什么，然后是准备好测试文件。（想偷懒，让模型解决一切，如果出错了自己还是要看代码再验证，理解输入输出，不如把这个工作一开始就做好）。

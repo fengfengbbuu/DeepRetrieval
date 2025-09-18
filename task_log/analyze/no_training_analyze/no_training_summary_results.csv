@@ -1,0 +1,7 @@
+Metric,Rate
+Success Rate,1.0
+Think Tag Rate,0.021058315334773217
+Answer Tag Rate,0.020518358531317494
+Valid JSON Rate,0.0032397408207343412
+Format Correct Rate,0.0026997840172786176
+Malformed Structure Rate,0.0

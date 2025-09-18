@@ -1,0 +1,118 @@
+{
+  "total_records": 8357,
+  "field_structure": {
+    "top_level_fields": [
+      "answer",
+      "response",
+      "meta_info"
+    ],
+    "meta_info_fields": [
+      "question",
+      "db_id",
+      "sql",
+      "data_source",
+      "prompt",
+      "ability",
+      "reward_model",
+      "extra_info",
+      "max_retry_times",
+      "retry_times",
+      "model_name"
+    ],
+    "meta_info_extra_info_fields": [
+      "db_path",
+      "index",
+      "split"
+    ],
+    "meta_info_reward_model_fields": [
+      "ground_truth",
+      "style"
+    ]
+  },
+  "sample_records": [
+    {
+      "index": 0,
+      "question": "Find the \"date became customers\" of the customers whose ID is between 10 and 20.",
+      "db_id": "customers_and_addresses",
+      "db_path": "data/raw_data/spider/spider_data/database/customers_and_addresses/customers_and_addresses.sqlite",
+      "ground_truth_sql": "SELECT date_became_customer FROM customers WHERE customer_id BETWEEN 10 AND 20",
+      "response_preview": "To solve the problem, I need to retrieve the \"date_became_customer\" column from the \"Customers\" table for customers whose \"customer_id\" is between 10 and 20. The \"customer_id\" column is the primary ke..."
+    },
+    {
+      "index": 1,
+      "question": "Find the id and local authority of the station whose maximum precipitation is higher than 50.",
+      "db_id": "station_weather",
+      "db_path": "data/raw_data/spider/spider_data/database/station_weather/station_weather.sqlite",
+      "ground_truth_sql": "SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id HAVING max(t1.precipitation)  >  50",
+      "response_preview": "To solve the query, we need to identify stations where the maximum precipitation recorded in the `weekly_weather` table exceeds 50. The `weekly_weather` table contains weather data for each station, i..."
+    },
+    {
+      "index": 2,
+      "question": "How many transactions do we have?",
+      "db_id": "customers_and_invoices",
+      "db_path": "data/raw_data/spider/spider_data/database/customers_and_invoices/customers_and_invoices.sqlite",
+      "ground_truth_sql": "SELECT count(*) FROM Financial_transactions",
+      "response_preview": "To determine the total number of transactions, we need to query the `Financial_Transactions` table, as it contains all the transaction records. The `transaction_id` column uniquely identifies each tra..."
+    },
+    {
+      "index": 3,
+      "question": "What is the total grant amount of the organisations described as research?",
+      "db_id": "tracking_grants_for_research",
+      "db_path": "data/raw_data/spider/spider_data/database/tracking_grants_for_research/tracking_grants_for_research.sqlite",
+      "ground_truth_sql": "SELECT sum(grant_amount) FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id JOIN organisation_Types AS T3 ON T2.organisation_type  =  T3.organisation_type WHERE T3.organisation_type_description  =  'Research'",
+      "response_preview": "To answer the query, we need to calculate the total grant amount for organisations described as \"research.\" Here's the reasoning process:\n\n1. The `Organisations` table contains the `organisation_type`..."
+    },
+    {
+      "index": 4,
+      "question": "Find the address line 1 and 2 of the customer with email \"vbogisich@example.org\".",
+      "db_id": "customer_complaints",
+      "db_path": "data/raw_data/spider/spider_data/database/customer_complaints/customer_complaints.sqlite",
+      "ground_truth_sql": "SELECT address_line_1 ,  address_line_2 FROM customers WHERE email_address  =  \"vbogisich@example.org\"",
+      "response_preview": "To retrieve the address line 1 and 2 of the customer with the email \"vbogisich@example.org\", we need to query the `Customers` table. The relevant columns in the `Customers` table are `address_line_1`,..."
+    },
+    {
+      "index": 5,
+      "question": "What is the time of elimination for the wrestler with the most days held?",
+      "db_id": "wrestler",
+      "db_path": "data/raw_data/spider/spider_data/database/wrestler/wrestler.sqlite",
+      "ground_truth_sql": "SELECT T1.Time FROM elimination AS T1 JOIN wrestler AS T2 ON T1.Wrestler_ID  =  T2.Wrestler_ID ORDER BY T2.Days_held DESC LIMIT 1",
+      "response_preview": "To solve the query, we need to follow these steps:\n\n1. Identify the wrestler with the most \"Days_held\" from the \"wrestler\" table. Since \"Days_held\" is stored as text, we need to cast it to an integer ..."
+    },
+    {
+      "index": 6,
+      "question": "How many students are enrolled in colleges that have student accepted during tryouts, and in which states are those colleges?",
+      "db_id": "soccer_2",
+      "db_path": "data/raw_data/spider/spider_data/database/soccer_2/soccer_2.sqlite",
+      "ground_truth_sql": "SELECT DISTINCT T1.state ,  T1.enr FROM college AS T1 JOIN tryout AS T2 ON T1.cName  =  T2.cName WHERE T2.decision  =  'yes'",
+      "response_preview": "To answer the query, we need to retrieve the number of students enrolled (`enr`) in colleges that have accepted students during tryouts (`decision = 'yes'`) and the states (`state`) of those colleges...."
+    },
+    {
+      "index": 7,
+      "question": "List the first and last name of students who are not living in the city with code HKG, and sorted the results by their ages.",
+      "db_id": "dorm_1",
+      "db_path": "data/raw_data/spider/spider_data/database/dorm_1/dorm_1.sqlite",
+      "ground_truth_sql": "SELECT fname ,  lname FROM student WHERE city_code != 'HKG' ORDER BY age",
+      "response_preview": "To solve the query, we need to retrieve the first and last names of students who are not living in the city with the code \"HKG\" and sort the results by their ages. \n\n1. The `Student` table contains th..."
+    },
+    {
+      "index": 8,
+      "question": "What is the first name, last name, and phone of the customer with account name 162?",
+      "db_id": "customers_card_transactions",
+      "db_path": "data/raw_data/spider/spider_data/database/customers_card_transactions/customers_card_transactions.sqlite",
+      "ground_truth_sql": "SELECT T2.customer_first_name ,  T2.customer_last_name ,  T2.customer_phone FROM Accounts AS T1 JOIN Customers AS T2 ON T1.customer_id  =  T2.customer_id WHERE T1.account_name  =  \"162\"",
+      "response_preview": "To retrieve the first name, last name, and phone of the customer with the account name \"162\", we need to join the `Accounts` table with the `Customers` table. The `Accounts` table contains the `accoun..."
+    },
+    {
+      "index": 9,
+      "question": "What is the most popular paper this year in CVPR ?",
+      "db_id": "scholar",
+      "db_path": "data/raw_data/spider/spider_data/database/scholar/scholar.sqlite",
+      "ground_truth_sql": "SELECT DISTINCT t3.citedpaperid  ,  COUNT ( t3.citingpaperid ) FROM paper AS t1 JOIN cite AS t3 ON t1.paperid  =  t3.citedpaperid JOIN venue AS t2 ON t2.venueid  =  t1.venueid WHERE t1.year  =  2016 AND t2.venuename  =  \"CVPR\" GROUP BY t3.citedpaperid ORDER BY COUNT ( t3.citingpaperid ) DESC;",
+      "response_preview": "To determine the most popular paper this year in CVPR, we need to identify the paper published in the venue \"CVPR\" with the highest number of citations (`numCiting`) for the current year. Here's the r..."
+    }
+  ],
+  "error_response_count": 0,
+  "invalid_sql_count": 0,
+  "valid_sql_count": 0,
+  "field_distribution": {}
+}

@@ -1,0 +1,35 @@
+# Date: 2025.9.11
+# Mode: Agent
+=========================
+相关文件：
+- `outputs/llm_response/train_parquet_all.jsonl`
+- `outputs/llm_response/train_parquet_all.filtered.jsonl`
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.txt`
+- `task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.py` 中的 `analyze_failed_records_detailed()` 函数
+- `task_log/swfit_sft_dataset_adjustment/filtering/filtering.md`
+
+
+# 任务
+按要求对 `outputs/llm_response/train_parquet_all.jsonl` 数据集文件进行过滤，并将符合要求的数据保存在 `outputs/llm_response/train_parquet_all.filtered.jsonl` 文件中。
+
+要求：
+- 将 `task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.txt` 文件中提到的 8 个 **error_response** 类型的错误数据过滤掉（不要了）
+- 对每条数据的 SQL 在数据库上执行，如果模型生成的 SQL 与 ground truth SQL 的结果一致，则保留当前数据；否则过滤掉当前数据。
+    - 模型生成的 SQL：位于字段 `response` 中，需要你写代码抽取。如何抽取，可以参考 `task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.py` 代码的 `analyze_failed_records_detailed()` 函数的抽取方式。
+    - ground truth SQL：位于字段 `meta_info.reward_model.ground_truth.target`，类型为 str。
+    - 执行的 database 地址：位于字段 `meta_info.extra_info.db_path`，类型为 str。db_path 是相对 ${workspace}/code 的相对路径。
+- 统计被过滤的数据信息，以及过滤原因。
+
+提示：
+- 如果不清楚 `outputs/llm_response/train_parquet_all.jsonl` 每条数据的格式、字段信息等，可以先写一个脚本做数据分析。
+    - 如果你这样做了，那么请你把数据分析结果保存在本地文件，路径需要遵循 "# 注意事项" 的要求，文件名为 `train_parquet_all.jsonl.statistic`（你可以按需要添加文件的 extension）
+
+# 注意事项。
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `./task_log/swfit_sft_dataset_adjustment/filtering` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/swfit_sft_dataset_adjustment/filtering/filtering.md`。
+=========================
+
+# 附录
+- 花费：37.1w tokens，$0.14
