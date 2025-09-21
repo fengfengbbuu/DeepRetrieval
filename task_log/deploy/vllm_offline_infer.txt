@@ -1,0 +1,43 @@
+# Date: 2025.9.19
+# Mode: Agent
+===========================================
+相关文件：
+- VAL_MODEL_PATH: `outputs/ms-swift/spider_cold_start/qwen2_5_05b_1A6000_2ep_16bs_2accum/v0-20250914-133424/checkpoint-300`
+- WOCOT_VAL_FILE: `code/data/sql/spider/test.messages.wocot.parquet`
+- COT_VAL_FILE: `code/data/sql/spider/test.messages.cot.parquet`
+
+- VLLM_REF_FILE: `task_log/deploy/chat_basic_vllm.py`
+- REF_FILE: `task_log/no_training/zero-shot/zero_shot.py`
+
+- `task_log/deploy/vllm_offline_infer.sh`
+- `task_log/deploy/vllm_offline_infer.md`
+
+# 任务
+参考 REF_FILE 对 VLLM_REF_FILE 的功能进行完善，之后另存文件到本地，文件为 `vllm_offline_infer.py`。
+
+要求：
+- REF_FILE 参考部分：
+    - 输入数据的处理方式：特别是格式。比如，怎么获取目标字段的信息等。
+    - 参数的处理：REF_FILE 有很多适配任务的参数，比如 `db_path_key`, `prompt_key`, `sample_num`, `ground_truth_key`, `with_cot` 等。这些参数与数据集的处理有关。
+    - REF_FILE 的输出内容格式：REF_FILE 也是模型推理代码，你需要与它的输出内容（推理结果）保持一致。
+- REF_FILE 不需要参考的部分：
+    - 不需要复用 REF_FILE 的 `base_url` 和 `api_key` 参数，因为你的目标是用 vllm 进行 offline 推理，而不是 online。
+    - 参数 `model_name`：在你的代码里 `model_name` 是模型的昵称。`model_path` 是模型的地址，不能混淆。
+- 你的目标代码需要完善的地方：
+    - 支持 `model_path` 的参数的处理。该参数值通常是 model 所在地址。
+    - 支持 `model_name` 的参数的处理。该参数值通常是 model 的昵称。
+
+提示：
+- 如果你需要测试， VAL_MODEL_PATH 是你的测试模型地址，WOCOT_VAL_FILE 和 COT_VAL_FILE 是你的测试数据集（你可以 sample 少量样例测试）。你的测试命令可以写在 `task_log/deploy/vllm_offline_infer.sh`。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/deploy` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/deploy/vllm_offline_infer.md`。
+===========================================
+
+附录：
+- 花费：105.8w tokens, $0.39
+- 更新任务：
+    - 花费：113w tokens, $0.42
