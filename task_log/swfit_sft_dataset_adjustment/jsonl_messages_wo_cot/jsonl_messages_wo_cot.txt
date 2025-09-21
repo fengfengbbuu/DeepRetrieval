@@ -4,6 +4,7 @@
 相关文件：
 - TARGET_FILE: `outputs/llm_response/split/test_863.jsonl`
 
+- REF_FILE: `task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot/convert_jsonl_wo_cot.py`
 - `task_log/no_training/zero-shot/cot_output_format.txt`
 - `task_log/no_training/zero-shot/output_format.txt`
 
@@ -13,10 +14,14 @@
 处理 TARGET_FILE 数据，让后以 `{file_name}.wocot.jsonl` 保存在 TARGET_FILE 同目录。{file_name} 为 TARGET_FILE 的文件名。
 
 要求：
-- 处理每条数据的 `messages` 字段，将 user role 的 content 信息中包含 `task_log/no_training/zero-shot/cot_output_format.txt` 的内容替换为 `task_log/no_training/zero-shot/output_format.txt`
+- 处理每条数据的 `messages` 字段：
+    - 将 user role 的 content 信息中包含 `task_log/no_training/zero-shot/cot_output_format.txt` 的内容替换为 `task_log/no_training/zero-shot/output_format.txt`
+    - 将 assistant role 的 content 信息中包含 `<think>...</think>` tag 的部分，将被包含内容连同 think tag 一并去除，确保 assistant 的 content 中没有 think tag。
+- 你只需要修改 REF_FILE，按任务要求完善它没有功能即可。
 
 提示：
 - 理论上，user role content 中仅有一条匹配 `task_log/no_training/zero-shot/cot_output_format.txt` 的信息。如果没找到，可能是我的提供的数据有问题，请及时告知我。
+- 理论上，assistant role content 中仅有一个 `<think>...</think>` tag，如果没找到或有多个，请先检查代码的正确性，如果不是代码的问题，那可能就是我提供的数据有问题，请及时告知我。
 
 # 注意事项
 - 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot` 目录下。
@@ -27,3 +32,6 @@
 
 附录：
 - 花费：144.4w tokens，$0.51。
+- 更新任务：
+    - 花费：393.1w tokens, $1.33.
+    - 发现更新任务过程中，总结信息，更改 `.md` 文件挺浪费 token 的。

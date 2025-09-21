@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-JSONL数据转换脚本：将 test_863.jsonl 转换为不含 CoT 的 messages 格式
-处理 messages 字段中 user role 的 content，替换 CoT 格式为直接输出格式
+JSONL数据转换脚本：将 JSONL 文件转换为不含 CoT 的 messages 格式
+处理 messages 字段：
+1. 将 user role 的 content 中的 CoT 格式替换为直接输出格式
+2. 移除 assistant role 的 content 中的 <think>...</think> 标签及其内容
+3. 移除 assistant role 的 content 中的 "Let me write the SQL query with reasoning." 文本
 
 任务出处：task_log/swfit_sft_dataset_adjustment/jsonl_messages_wo_cot/jsonl_messages_wo_cot.txt
 """
@@ -58,7 +61,7 @@ def initialize_formats():
     print(f"输出格式长度: {len(OUTPUT_FORMAT)}")
 
 
-def replace_cot_format_with_output_format(content: str) -> str:
+def replace_cot_format_with_output_format(content: str) -> tuple[str, bool]:
     """
     将CoT格式替换为输出格式
     
@@ -66,7 +69,7 @@ def replace_cot_format_with_output_format(content: str) -> str:
         content: 原始内容
         
     Returns:
-        替换后的内容
+        (替换后的内容, 是否有替换发生)
     """
     # 替换CoT格式为输出格式
     if COT_FORMAT.strip() in content:
@@ -76,9 +79,52 @@ def replace_cot_format_with_output_format(content: str) -> str:
     return content, False
 
 
+def remove_think_tags_from_content(content: str) -> tuple[str, bool]:
+    """
+    移除内容中的<think>...</think>标签及其内容，以及"Let me write the SQL query with reasoning."文本
+    
+    Args:
+        content: 原始内容
+        
+    Returns:
+        (移除think标签和指定文本后的内容, 是否有移除发生)
+    """
+    import re
+    
+    has_changes = False
+    new_content = content
+    
+    # 移除<think>...</think>标签及其内容
+    think_pattern = r'<think>.*?</think>'
+    matches = re.findall(think_pattern, new_content, re.DOTALL)
+    
+    if matches:
+        # 移除所有匹配的think标签及其内容
+        new_content = re.sub(think_pattern, '', new_content, flags=re.DOTALL)
+        has_changes = True
+    
+    # 移除"Let me write the SQL query with reasoning."文本
+    reasoning_text = "Let me write the SQL query with reasoning."
+    if reasoning_text in new_content:
+        new_content = new_content.replace(reasoning_text, '')
+        has_changes = True
+    
+    if has_changes:
+        # 清理多余的空行和空白字符
+        new_content = re.sub(r'\n\s*\n', '\n', new_content)
+        new_content = re.sub(r'^\s+', '', new_content)  # 移除开头的空白
+        new_content = new_content.strip()
+        return new_content, True
+    
+    return content, False
+
+
 def process_messages(messages: List[Dict[str, str]]) -> tuple[List[Dict[str, str]], bool]:
     """
-    处理messages列表，替换user role中的CoT格式
+    处理messages列表：
+    1. 替换user role中的CoT格式为输出格式
+    2. 移除assistant role中的<think>...</think>标签及其内容
+    3. 移除assistant role中的"Let me write the SQL query with reasoning."文本
     
     Args:
         messages: 原始messages列表
@@ -90,14 +136,27 @@ def process_messages(messages: List[Dict[str, str]]) -> tuple[List[Dict[str, str
     has_replacement = False
     
     for message in messages:
-        if message.get('role') == 'user':
+        role = message.get('role')
+        content = message.get('content', '')
+        
+        if role == 'user':
             # 处理user消息内容，替换CoT格式
-            new_content, replaced = replace_cot_format_with_output_format(message['content'])
+            new_content, replaced = replace_cot_format_with_output_format(content)
             processed_messages.append({
-                'role': message['role'],
+                'role': role,
                 'content': new_content
             })
             if replaced:
+                has_replacement = True
+                
+        elif role == 'assistant':
+            # 处理assistant消息内容，移除think标签
+            new_content, removed = remove_think_tags_from_content(content)
+            processed_messages.append({
+                'role': role,
+                'content': new_content
+            })
+            if removed:
                 has_replacement = True
         else:
             # 其他role保持不变
@@ -218,7 +277,7 @@ def convert_jsonl_to_wocot(input_file: str, output_file: str) -> str:
                 print(f"JSON解析错误 (行 {line_num + 1}): {e}")
                 error_count += 1
                 continue
-            except Exception as e:
+            except (ValueError, KeyError, TypeError) as e:
                 print(f"处理错误 (行 {line_num + 1}): {e}")
                 error_count += 1
                 continue
@@ -260,6 +319,10 @@ def validate_conversion(input_file: str, output_file: str, num_samples: int = 5)
     cot_found_in_input = 0
     cot_found_in_output = 0
     output_found_in_output = 0
+    think_found_in_input = 0
+    think_found_in_output = 0
+    reasoning_found_in_input = 0
+    reasoning_found_in_output = 0
     
     with open(input_file, 'r', encoding='utf-8') as input_f, \
          open(output_file, 'r', encoding='utf-8') as output_f:
@@ -276,36 +339,62 @@ def validate_conversion(input_file: str, output_file: str, num_samples: int = 5)
                 
                 # 检查输入文件
                 input_user_content = ""
+                input_assistant_content = ""
                 if 'messages' in input_data:
                     for msg in input_data['messages']:
                         if msg.get('role') == 'user':
                             input_user_content = msg.get('content', '')
-                            break
+                        elif msg.get('role') == 'assistant':
+                            input_assistant_content = msg.get('content', '')
                 
                 if COT_FORMAT.strip() in input_user_content:
                     cot_found_in_input += 1
                 
+                if '<think>' in input_assistant_content and '</think>' in input_assistant_content:
+                    think_found_in_input += 1
+                
+                if "Let me write the SQL query with reasoning." in input_assistant_content:
+                    reasoning_found_in_input += 1
+                
                 # 检查输出文件
                 output_user_content = ""
+                output_assistant_content = ""
                 if 'messages' in output_data:
                     for msg in output_data['messages']:
                         if msg.get('role') == 'user':
                             output_user_content = msg.get('content', '')
-                            break
+                        elif msg.get('role') == 'assistant':
+                            output_assistant_content = msg.get('content', '')
                 
+                # 验证CoT格式替换
                 if COT_FORMAT.strip() in output_user_content:
                     cot_found_in_output += 1
-                    print("  ❌ CoT格式未被替换")
+                    print("  ❌ User CoT格式未被替换")
                 else:
-                    print("  ✅ CoT格式已替换")
+                    print("  ✅ User CoT格式已替换")
                 
                 if OUTPUT_FORMAT.strip() in output_user_content:
                     output_found_in_output += 1
-                    print("  ✅ 输出格式已添加")
+                    print("  ✅ User输出格式已添加")
                 else:
-                    print("  ❌ 输出格式未添加")
+                    print("  ❌ User输出格式未添加")
+                
+                # 验证think标签移除
+                if '<think>' in output_assistant_content or '</think>' in output_assistant_content:
+                    think_found_in_output += 1
+                    print("  ❌ Assistant think标签未被移除")
+                else:
+                    print("  ✅ Assistant think标签已移除")
+                
+                # 验证reasoning文本移除
+                if "Let me write the SQL query with reasoning." in output_assistant_content:
+                    reasoning_found_in_output += 1
+                    print("  ❌ Assistant reasoning文本未被移除")
+                else:
+                    print("  ✅ Assistant reasoning文本已移除")
                 
                 print(f"  User内容长度: 输入={len(input_user_content)}, 输出={len(output_user_content)}")
+                print(f"  Assistant内容长度: 输入={len(input_assistant_content)}, 输出={len(output_assistant_content)}")
                 
             except json.JSONDecodeError as e:
                 print(f"  验证错误 (样本 {i+1}): {e}")
@@ -315,23 +404,36 @@ def validate_conversion(input_file: str, output_file: str, num_samples: int = 5)
     print(f"输入文件中包含CoT格式: {cot_found_in_input}/{num_samples}")
     print(f"输出文件中仍包含CoT格式: {cot_found_in_output}/{num_samples}")
     print(f"输出文件中包含新格式: {output_found_in_output}/{num_samples}")
+    print(f"输入文件中包含think标签: {think_found_in_input}/{num_samples}")
+    print(f"输出文件中仍包含think标签: {think_found_in_output}/{num_samples}")
+    print(f"输入文件中包含reasoning文本: {reasoning_found_in_input}/{num_samples}")
+    print(f"输出文件中仍包含reasoning文本: {reasoning_found_in_output}/{num_samples}")
     
-    if cot_found_in_output == 0 and output_found_in_output > 0:
-        print("✅ CoT格式替换验证通过!")
+    cot_success = cot_found_in_output == 0 and output_found_in_output > 0
+    think_success = think_found_in_output == 0
+    reasoning_success = reasoning_found_in_output == 0
+    
+    if cot_success and think_success and reasoning_success:
+        print("✅ 所有格式替换验证通过!")
     else:
-        print("❌ CoT格式替换可能有问题")
+        if not cot_success:
+            print("❌ CoT格式替换可能有问题")
+        if not think_success:
+            print("❌ Think标签移除可能有问题")
+        if not reasoning_success:
+            print("❌ Reasoning文本移除可能有问题")
 
 
 def main():
     """主函数"""
     # 文件路径配置
-    input_file = "outputs/llm_response/split/test_863.jsonl"
+    # input_file = "outputs/llm_response/split/test_863.jsonl"
     # input_file = "outputs/llm_response/split/train_4312.jsonl"
-    # input_file = "outputs/llm_response/split/dev_862.jsonl"
+    input_file = "outputs/llm_response/split/dev_862.jsonl"
 
-    output_file = "outputs/llm_response/split/test_863.wocot.jsonl"
+    # output_file = "outputs/llm_response/split/test_863.wocot.jsonl"
     # output_file = "outputs/llm_response/split/train_4312.wocot.jsonl"
-    # output_file = "outputs/llm_response/split/dev_862.wocot.jsonl"
+    output_file = "outputs/llm_response/split/dev_862.wocot.jsonl"
 
     # 初始化格式内容
     print("=== 初始化格式内容 ===")
