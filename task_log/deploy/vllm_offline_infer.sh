@@ -91,84 +91,94 @@ SAMPLE_NUM=100
 # sft
 MODEL_ROOT_LST=(
     # qwen2.5-0.5b
+    "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_05b_1A6000_2ep_16bs_2accum/v0-20250914-133424" 
     "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_05b_1A6000_2ep_16bs_2accum_wocot/v1-20250921-090640" 
     # qwen2.5-1.5b
+    "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_1_5b_1A6000_2ep_16bs_2accum_wcot/v0-20250917-141558" 
     "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_1_5b_1A6000_2ep_16bs_2accum_wocot/v1-20250921-082318"
 )
 
 # WITH_COT=True
 
 WITH_COT_LST=(
-    # qwen2.5-0.5b
+    # qwen2.5-0.5b 
+    "True" 
     "False" 
-    # qwen2.5-1.5b
+    # qwen2.5-1.5b 
+    "True" 
     "False" 
 )
 
+SAMPLE_NUM=500
+
 # 遍历 MODEL_ROOT_LST 和 WITH_COT_LST 的组合
-# for idx in "${!MODEL_ROOT_LST[@]}"; do
-#     MODEL_ROOT="${MODEL_ROOT_LST[$idx]}"
-#     WITH_COT="${WITH_COT_LST[$idx]}"
+for idx in "${!MODEL_ROOT_LST[@]}"; do
+    MODEL_ROOT="${MODEL_ROOT_LST[$idx]}"
+    WITH_COT="${WITH_COT_LST[$idx]}"
     
-#     for CHECKPOINT in $MODEL_ROOT/checkpoint-*; do
-#         MODEL_PATH=$CHECKPOINT
-#         OUTPUT_ROOT=$MODEL_ROOT/test_${SAMPLE_NUM}
+    for CHECKPOINT in $MODEL_ROOT/checkpoint-*; do
+        MODEL_PATH=$CHECKPOINT
+        OUTPUT_ROOT=$MODEL_ROOT/test_${SAMPLE_NUM}
         
-#         # 如果 OUTPUT_ROOT 不存在，则创建
-#         if [ ! -d $OUTPUT_ROOT ]; then
-#             mkdir -p $OUTPUT_ROOT
-#         fi
+        # 如果 OUTPUT_ROOT 不存在，则创建
+        if [ ! -d $OUTPUT_ROOT ]; then
+            mkdir -p $OUTPUT_ROOT
+        fi
 
-#         if [ "$WITH_COT" == "True" ]; then
-#             python $SCRIPT_PATH \
-#                 --model_name $MODEL_PATH \
-#                 --test_set_path $COT_VAL_FILE \
-#                 --output_root $OUTPUT_ROOT \
-#                 --sample_num $SAMPLE_NUM \
-#                 --prompt_key prompt \
-#                 --db_path_key "extra_info.db_path" \
-#                 --ground_truth_key "reward_model.ground_truth.target" \
-#                 --temperature 0.0 \
-#                 --max_tokens 512 \
-#                 --with_cot
-#         else
-#             python $SCRIPT_PATH \
-#                 --model_name $MODEL_PATH \
-#                 --test_set_path $WOCOT_VAL_FILE \
-#                 --output_root $OUTPUT_ROOT \
-#                 --sample_num $SAMPLE_NUM \
-#                 --prompt_key prompt \
-#                 --db_path_key "extra_info.db_path" \
-#                 --ground_truth_key "reward_model.ground_truth.target" \
-#                 --temperature 0.0 \
-#                 --max_tokens 512 
-#         fi
+        if [ "$WITH_COT" == "True" ]; then
+            python $SCRIPT_PATH \
+                --model_name $MODEL_PATH \
+                --test_set_path $COT_VAL_FILE \
+                --output_root $OUTPUT_ROOT \
+                --sample_num $SAMPLE_NUM \
+                --prompt_key prompt \
+                --db_path_key "extra_info.db_path" \
+                --ground_truth_key "reward_model.ground_truth.target" \
+                --temperature 0.0 \
+                --max_tokens 512 \
+                --with_cot
+        else
+            python $SCRIPT_PATH \
+                --model_name $MODEL_PATH \
+                --test_set_path $WOCOT_VAL_FILE \
+                --output_root $OUTPUT_ROOT \
+                --sample_num $SAMPLE_NUM \
+                --prompt_key prompt \
+                --db_path_key "extra_info.db_path" \
+                --ground_truth_key "reward_model.ground_truth.target" \
+                --temperature 0.0 \
+                --max_tokens 512 
+        fi
 
-#         # 休息 5s
-#         sleep 5
+        # 休息 5s
+        sleep 5
 
-#     done
-# done
+    done
+done
 
 # RL
+cd /root/data1/projects/RL/DeepRetrieval
 
 MODEL_ROOT_LST=(
-    # qwen2.5-0.5b
-    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_sft10_1A6000_1epoch_32bs_4accum" 
-    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_sft50_1A6000_1epoch_32bs_4accum" 
-    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_sft534_1A6000_1epoch_32bs_4accum" 
-    # qwen2.5-1.5b
-    # "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_1_5b_1A6000_2ep_16bs_2accum_wocot/v1-20250921-082318"
+    # qwen2.5-0.5b 
+    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_1A6000_1epoch_32bs_4accum" 
+    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_1A6000_1epoch_32bs_4accum_wocot" 
+    # qwen2.5-1.5b 
+    # "/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_1_5b_1A6000_2ep_16bs_2accum_wocot/v1-20250921-082318" 
+    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_1_5_1A6000_2epoch_32bs_4accum_wcot" 
+    "/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_1_5_1A6000_2epoch_32bs_4accum_wocot"
 )
 
 WITH_COT_LST=(
-    # qwen2.5-0.5b
+    # qwen2.5-0.5b 
     "True" 
+    "False" 
+    # qwen2.5-1.5b 
     "True" 
-    "True" 
-    # qwen2.5-1.5b
-    # "False" 
+    "False" 
 )
+
+SAMPLE_NUM=500
 
 # 遍历 MODEL_ROOT_LST 和 WITH_COT_LST 的组合
 for idx in "${!MODEL_ROOT_LST[@]}"; do
@@ -185,35 +195,45 @@ for idx in "${!MODEL_ROOT_LST[@]}"; do
             mkdir -p $OUTPUT_ROOT
         fi
 
-         # Extract model name from path for naming
-         MODEL_NAME=$(basename $CHECKPOINT)
-         
-         if [ "$WITH_COT" == "True" ]; then
-             python $SCRIPT_PATH \
-                 --model_name $MODEL_NAME \
-                 --model_path $MODEL_PATH \
-                 --test_set_path $COT_VAL_FILE \
-                 --output_root $OUTPUT_ROOT \
-                 --sample_num $SAMPLE_NUM \
-                 --prompt_key prompt \
-                 --db_path_key "extra_info.db_path" \
-                 --ground_truth_key "reward_model.ground_truth.target" \
-                 --temperature 0.0 \
-                 --max_tokens 512 \
-                 --with_cot
-         else
-             python $SCRIPT_PATH \
-                 --model_name $MODEL_NAME \
-                 --model_path $MODEL_PATH \
-                 --test_set_path $WOCOT_VAL_FILE \
-                 --output_root $OUTPUT_ROOT \
-                 --sample_num $SAMPLE_NUM \
-                 --prompt_key prompt \
-                 --db_path_key "extra_info.db_path" \
-                 --ground_truth_key "reward_model.ground_truth.target" \
-                 --temperature 0.0 \
-                 --max_tokens 512 
-         fi
+        # Extract model name from path for naming
+        MODEL_NAME=$(basename $CHECKPOINT)
+        
+        # 如果 `$CHECKPOINT/actor` 目录下存在 `model_world_size*.pt` 文件，
+        # 将其移动到 `MODEL_PATH` 中。
+        if [ -d "$CHECKPOINT/actor" ]; then
+            for ptfile in $CHECKPOINT/actor/model_world_size*.pt; do
+                if [ -f "$ptfile" ]; then
+                    mv "$ptfile" "$MODEL_PATH"/
+                fi
+            done
+        fi
+
+        if [ "$WITH_COT" == "True" ]; then
+            python $SCRIPT_PATH \
+                --model_name $MODEL_NAME \
+                --model_path $MODEL_PATH \
+                --test_set_path $COT_VAL_FILE \
+                --output_root $OUTPUT_ROOT \
+                --sample_num $SAMPLE_NUM \
+                --prompt_key prompt \
+                --db_path_key "extra_info.db_path" \
+                --ground_truth_key "reward_model.ground_truth.target" \
+                --temperature 0.0 \
+                --max_tokens 512 \
+                --with_cot
+        else
+            python $SCRIPT_PATH \
+                --model_name $MODEL_NAME \
+                --model_path $MODEL_PATH \
+                --test_set_path $WOCOT_VAL_FILE \
+                --output_root $OUTPUT_ROOT \
+                --sample_num $SAMPLE_NUM \
+                --prompt_key prompt \
+                --db_path_key "extra_info.db_path" \
+                --ground_truth_key "reward_model.ground_truth.target" \
+                --temperature 0.0 \
+                --max_tokens 512 
+        fi
 
         # 休息 5s
         sleep 5
