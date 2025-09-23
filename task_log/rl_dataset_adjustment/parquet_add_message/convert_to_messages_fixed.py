@@ -43,10 +43,17 @@ def convert_parquet_to_messages():
     # Load the original parquet file
     # input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/train.parquet"
     # input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.parquet"
-    input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/val.parquet"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/val.parquet"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/train.parquet"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/val.parquet"
+    input_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/test.parquet"
+
     # output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/train.messages.wcot.parquet"
     # output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.messages.wcot.parquet"
-    output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/val.messages.wcot.parquet"
+    # output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/val.messages.wcot.parquet"
+    # output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/train.messages.wcot.parquet"
+    # output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/val.messages.wcot.parquet"
+    output_file = "/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/test.messages.wcot.parquet"
 
     print("Loading parquet file...")
     df = pd.read_parquet(input_file)

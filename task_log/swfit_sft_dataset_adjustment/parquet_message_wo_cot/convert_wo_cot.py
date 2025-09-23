@@ -283,14 +283,20 @@ def validate_conversion(input_file: str, output_file: str, num_samples: int = 3)
 
 def main():
     """主函数"""
-    input_file = "code/data/sql/spider/val.messages.wcot.parquet"
+    # input_file = "code/data/sql/spider/val.messages.wcot.parquet"
     # input_file = "code/data/sql/spider/train.messages.wcot.parquet"
     # input_file = "code/data/sql/spider/test.messages.wcot.parquet"
-    
-    output_file = "code/data/sql/spider/val.messages.wocot.parquet"
+    # input_file = "code/data/sql/bird/val.messages.wcot.parquet"
+    # input_file = "code/data/sql/bird/test.messages.wcot.parquet"
+    input_file = "code/data/sql/bird/train.messages.wcot.parquet"
+
+    # output_file = "code/data/sql/spider/val.messages.wocot.parquet"
     # output_file = "code/data/sql/spider/train.messages.wocot.parquet"
     # output_file = "code/data/sql/spider/test.messages.wocot.parquet"
-    
+    # output_file = "code/data/sql/bird/val.messages.wocot.parquet"
+    # output_file = "code/data/sql/bird/test.messages.wocot.parquet"
+    output_file = "code/data/sql/bird/train.messages.wocot.parquet"
+
     # 初始化格式内容
     print("=== 初始化格式内容 ===")
     initialize_formats()
