@@ -1,0 +1,22 @@
+# Date: 2025.9.21
+# Mode: Agent
+============================================
+相关文件：
+- TARGET_DIR: `code/ms-swift/swift/llm/infer/infer_engine`
+- `task_log/code_read/swift/infer_engine_read.md`
+
+# 任务
+阅读理解 TARGET_DIR 的所有代码，回答以下问题：
+- 什么是 infer engine？用来做什么的？承担了模型推理的那一部分任务？
+- 怎样设计一个 engine？一个合格的 engine 应当有怎样的基本功能？
+- infer_engine 文件夹下定义的 engine 彼此之间有什么区别？
+
+提示：
+- 如果有图片展示，可以用 mermaid 语言（markdown 兼容）
+
+# 注意事项
+- 最后记得将你的任务总结保存在 `task_log/code_read/swift/infer_engine_read.md`。
+============================================
+
+附录：
+- 花费：23.5w tokens，$0.12

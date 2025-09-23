@@ -1,0 +1,19 @@
+# Date: 2025.9.22
+# Mode: Agent
+============================================
+相关文件：
+- TARGET_DIR: `code/evalscope`
+- `task_log/code_read/evalscope/architecture.md`
+
+# 任务
+梳理 evalscope 项目的代码架构。
+
+提示：
+- 如果有图片展示，可以用 mermaid 语言（markdown 兼容）
+
+# 注意事项
+- 最后记得将你的任务总结保存在 `task_log/code_read/evalscope/architecture.md`。
+============================================
+
+附录：
+- 花费：70.4w tokens，$0.25
