@@ -1,0 +1,2739 @@
+# Detailed Failure Analysis - Requirement 2
+
+**Total failed records:** 198
+
+## Failure Categories Summary
+
+- **invalid_sql:** 95 records
+- **error_response:** 99 records
+- **json_parse_error:** 4 records
+
+## Category: invalid_sql
+
+**Count:** 95
+**Description:** Contains sql key but not a valid SELECT statement
+
+**Records:**
+- Index 120: How many businesses have the category named food? List those businesses and find the percentage of b...
+- Index 329: List out 10 business ID that are being reviewed the most by users and list out what are top 3 busine...
+- Index 367: Among all the citation, what is the percentage of paper ID under the Agents classification?...
+- Index 371: Of all the beer styles produced by Stevens Point Brewery, how many percent do they allot for America...
+- Index 530: How many episodes are there in the 9th season of Law and Order? Calculate the average number of cast...
+- Index 701: What were the difference of the CHS team's winning rate between 1946 and 1947 in the post-season ser...
+- Index 755: What is the percentage of the increase of complaints filed by the clients from New York from the yea...
+- Index 797: Among the immunizations in 2017, calculate the percentage of patients who received the Influenza sea...
+- Index 973: How many home victories does the Bundesliga division have in more or less than the Premier League di...
+- Index 1174: What percentage of genes located in the cytoskeleton are of unknown class? And of these, how many ar...
+- Index 1262: Among the actors who acted in UK movies, what percentage of actors received a rating of at least 3?...
+- Index 1292: How many customers have a credit limit of not more than 100,000 and which customer made the highest ...
+- Index 1374: How many cities have businesses with active life category? Find the percentage of the city where the...
+- Index 1380: What's the percentage of coins that is higher than the price 1 hour ago in May 29,2013? List the nam...
+- Index 1423: Please give the name of the course in which most numbers of the students got an A. Also, list the fu...
+- Index 1491: Who is the Lutheran representative that served in the state of Ohio for 14 years before becoming a s...
+- Index 1515: How many apps were last updated in January of 2018? Please write one translated review with positive...
+- Index 1590: What percentage of podcasts are "technology" podcasts? List all of them....
+- Index 1600: What is the weekly average number of fraud incidents that were reported in January 2018? Provide the...
+- Index 1795: Which city and state produces the most and least bitter beer, and what is the difference in bitterne...
+- Index 1834: Did the number of cases with Vehicle as subject weapon increase or decrease from year 2007 to 2008. ...
+- Index 1988: List all the load shapes of all head cars of each train and identify which load shape has the highes...
+- Index 1999: How much did the win rate increase for the team after getting the No.1 NBA draft pick in the 2003 se...
+- Index 2009: What is the percentage difference between the attendence of disabled and non-disable students? Do th...
+- Index 2024: Which customer is a regular customer in this shop and what are the products category that he mostly ...
+- Index 2040: What percentage of customers from the African region is in the household segment?...
+- Index 2050: Calculate the percentage of medium tip length in the list. List out the time when users of medium ti...
+- Index 2064: What are the favorite project types of each of the top 10 donors?...
+- Index 2132: Please list the last names and first names of all-star players whose team were ranked 1 for consecut...
+- Index 2479: What is the difference in the average age of players when they are drafted in the ABA vs when they a...
+- Index 2511: What is the proportion of the papers that have the keyword "cancer"? Please provide a list of author...
+- Index 2750: What is the percentage for the Yelp businesses in "Pets" category of all businesses?...
+- Index 2754: Which different vendor has the most amount of orders? Calculate the total estimated earnings....
+- Index 2763: Have the teacher "42d43fa6f37314365d08692e08680973" acquired P.h.D or doctor degree?...
+- Index 2909: From which city and state does the customer that bought the product with the highest sales?...
+- Index 2962: List down application that have not been updated since 2015. What is the percentage of this applicat...
+- Index 2971: Among the male customers in Sacramento, what percentage bought Dominion root beer in 2013?...
+- Index 2990: What is the percentage of female OPPO users against the male OPPO users?...
+- Index 3015: Which brand of root beer has the lowest unit profit available to wholesalers? Indicate the ID of the...
+- Index 3135: How many percent of universities got a score above 80 under International criteria in 2016? Among th...
+- Index 3147: What is the percentage of the most common conditions for patients age 60 and above?...
+- Index 3162: Which year has the least number of movies that was released and what is the title of the movie in th...
+- Index 3215: Name the paper which is cited most times and the paper which is cited least times? Also, find the nu...
+- Index 3391: What is the percentage of unemployed students who have been absent for 5 months from school?...
+- Index 4100: What is the percentage ratio between Democrats and Republicans in Indiana? List the zip codes belong...
+- Index 4131: Which country produced the highest number of cars? Calculate the annual average number of cars that ...
+- Index 4189: Calculate the percentage of order via in-store channel of customer "Medline"....
+- Index 4327: How much higher is the average rating score of the movie "Innocence Unprotected" than the movie "Whe...
+- Index 4477: Among the LG brand users, calculate the percentage of the Nexus 5 model user. What is the ratio of m...
+- Index 4524: Name the store with the highest quantity in sales? What is the least quantity title from the store's...
+- Index 4563: Among all the customers who have purchased ML Bottom Bracket, identify the percentage of sales by Al...
+- Index 4786: How many titles did Mary Smith rent in 2005? Determine the percentage of titles rented in June 2005....
+- Index 4860: Find the full name of the player born in Atlanta and have the highest number of blocks. Also, in whi...
+- Index 4965: Among the cases dismissed by the grand jury disposition, what percentage of cases is where the subje...
+- Index 4999: What is the average, highest and lowest annual payments collected between 1/1/2003 to 12/31/2005?...
+- Index 5001: Calculate the difference between the number of cars that has a horsepower of 130 with the model year...
+- Index 5026: What is Jeannot Szwarc's most popular movie and what is its average rating score?...
+- Index 5083: What is the full name of the team with the fastest growth in winning rate in the 'ABA' league from 1...
+- Index 5195: Who is the director that directed the highest number of movies in the 70s? If there are multiple dir...
+- Index 5251: What is the ratio of male and female users of vivo X5pro model?...
+- Index 5300: What is the best seller root beer brand and what is the average star rating for this root beer?...
+- Index 5351: Which phone number should I call if I want to reach Nancy Davolio's home?...
+- Index 5369: How many users who created a list in the February of 2016 were eligible for trial when they created ...
+- Index 5370: What is the average coldest temperature for the zip code of 94301 and what stations are within the z...
+- Index 5441: What percentage more for the "Women's Clothing" Yelp businesses to "Men's Clothing"?...
+- Index 5596: Which negatively correlated, genetically interacting genes are non-essential? What percentage do the...
+- Index 5669: Which two products has the highest and lowest expected profits? Determine the total price for each p...
+- Index 6092: Find out which hotel and travel business having the most review? Calculate the standard deviation of...
+- Index 6165: Calculate the percentage of the total number of current female legislators and past female legislato...
+- Index 6213: What is the name of the university that had the highest number of international students for 6 conse...
+- Index 6278: In 1994 which title had less order quanty than the average order quantity? Find the title name, type...
+- Index 6321: Is (206) 555-1189 the home phone number for Laura Callahan?...
+- Index 6428: For how many consecutive years did Aruba get a footnote on the series code BX.KLT.DINV.CD.WD?...
+- Index 6479: From which state do the 5 biggest donor, who gave the highest cost of optional support, come from? L...
+- Index 6614: What is the average number of inspections done by the top 5 employees with the highest salary? List ...
+- Index 6635: What is the percentage ratio between uncredited and credited roles on the episode that won the 2017 ...
+- Index 6640: When compared to the total number of breweries in the US producing American Blonde Ale, how many in ...
+- Index 6673: Find the difference between the number of female senators and representatives born between 1930 to 1...
+- Index 6685: What is the average number of dishes per menu in the Souper de Luxe menus? Identify what is the name...
+- Index 6799: Under the conference name of MICRO, calculate how many more paper is needed to published in 1971 to ...
+- Index 6981: Who is the sales representative of the customer who has made the highest payment? Include the full n...
+- Index 6988: List the ID, city, state and region for the store type which is fewer between borough and CDP....
+- Index 7143: What is the average level employees working as Managing Editor are at? How many levels are there bet...
+- Index 7203: Which member of the faculty are teaching the most courses and what is his/her general course level?...
+- Index 7550: How many percent of orders in 2020 used international shipping?...
+- Index 7578: How many countries are using the same type of currency? Please list the short names of any 3 countri...
+- Index 7701: Give me the years and episode IDs in which Constantine Makris was the winner of the Television Silve...
+- Index 7774: For the quantities, what percent more did the store in Fremont sell than the store in Portland in 19...
+- Index 7791: What is the most consecutive games tied by Ebbsfleet as an away team in the 2008 season?...
+- Index 7919: Which summer Olympic have the highest and lowest number of participants?...
+- Index 7964: Name the state with the most number of graduate cohort in 2012 from private institute for profit? Li...
+- Index 8146: How many times more for the number of users who took the "mental health survey for 2017" than "menta...
+- Index 8272: Identify the total number of orders processed by Northwind employee named Andrew Fuller. What percen...
+- Index 8299: Among the countries who uses the 1968 System of National Accounts methodology, how many are in the M...
+- Index 8348: Which business had the highest number of inspections done? Calculate the percentage of passed and fa...
+
+**Example (Index 120):**
+Question: How many businesses have the category named food? List those businesses and find the percentage of businesses with less than 2 stars.
+Database: public_review_platform
+Last Answer Content:
+```
+{
+    "sql": "WITH FoodBusinesses AS (SELECT b.business_id, b.stars FROM Business b INNER JOIN Business_Categories bc ON b.business_id = bc.business_id INNER JOIN Categories c ON bc.category_id = c.category_id WHERE c.category_name = 'Food') SELECT COUNT(*) AS total_food_businesses, (SELECT COUNT(*) FROM FoodBusinesses WHERE stars < 2) * 100.0 / COUNT(*) AS percentage_below_2_stars FROM FoodBusinesses;"
+}
+```
+
+---
+
+## Category: error_response
+
+**Count:** 99
+**Description:** Contains error message instead of SQL
+
+**Records:**
+- Index 265: Find and list the full name of employees who are from the territory, Wilton....
+- Index 287: List down the company names that have the highest reorder level....
+- Index 322: Who has the highest salary? Please give their first name....
+- Index 349: What are the territory descriptions of territories in the Eastern region?...
+- Index 357: How many employees have obtained a doctorate?...
+- Index 493: What are the names of Robert King's territories?...
+- Index 539: What is the average salary of sales representatives in the United Kingdom?...
+- Index 603: Which employee is in charge of the sales in Hollis? Please give the employee's full name....
+- Index 671: What are the highest salary earn by the the employee and what is his/her position in the company?...
+- Index 685: How many products supplied by Plutzer Lebensmittelgromrkte AG that is currently out of stock and on ...
+- Index 707: Are all stations with zip code 94107 located in San Francisco city?...
+- Index 714: What are the the total number of territory in each region?...
+- Index 737: List the names of non-US suppliers that have discontinued....
+- Index 792: Provide the territory IDs under employee ID of 7....
+- Index 821: What is the position of Robert King?...
+- Index 897: List all the territories where Laura Callahan is in charge....
+- Index 932: How many days was the fastest shipping of Berglunds snabbkp's order?...
+- Index 936: What is the average salary of the employees who takes charge of the sales of over 4 territories?...
+- Index 966: What products are no longer sold by Northwind?...
+- Index 1233: How many employees have Andrew Fuller as their direct supervisor?...
+- Index 1296: How many territory fall into region 1?...
+- Index 1318: How much is the salary of the first employee that was hired?...
+- Index 1362: Find the percentage of discontinued products in Northwind's portfolio of products....
+- Index 1438: What territories is the Inside Sales Coordinator in charge of?...
+- Index 1506: Among the customers, list customers' company names and addresses who paid more than average in freig...
+- Index 1556: Give the home phone number of the employee who is in charge of "Savannah" territory....
+- Index 1605: Give the number of territories in the "Northern" region....
+- Index 1713: Which region is "Columbia" in?...
+- Index 2014: Indicate the courtesy title of the 3 employees who have the lowest salary....
+- Index 2071: Write down the full name of Vie President of Sales and his age when he was hired....
+- Index 2087: How many territories are owned by Anne Dodsworth?...
+- Index 2385: To whom does Nancy Davolio report? Please give that employee's full name....
+- Index 2578: Which employee has the highest salary? Please give his or her full name....
+- Index 2604: Who is in charge of the "Santa Monica" territory? Give the full name....
+- Index 2761: The sales of how many territories is Nancy Davolio in charge of?...
+- Index 2784: List the territory IDs, description and region description under the in-charge of Mrs. Margaret Peac...
+- Index 2811: Which region does territory id 2116 belong to?...
+- Index 2929: Please list all the territories in the Eastern Region....
+- Index 2954: Indicate the fax of the company Blondesddsl pre et fils in Strasbourg city....
+- Index 2984: How many territories are there in the Eastern region?...
+- Index 3115: How many employees have territories in the Eastern region?...
+- Index 3264: Give the name of the territory where Mr. Robert King works....
+- Index 3444: Calculate the total salary for employees from UK....
+- Index 3459: Provide employees' ID who are in-charge of territory ID from 1000 to 2000....
+- Index 3524: What is the full name of the employees who report to the Sales Manager?...
+- Index 3573: Please list the names of all the territories whose sales are taken in charge by Nancy Davolio....
+- Index 3593: Which product have the highest user satisfaction?...
+- Index 3747: What is the full name of the employee with the highest salary?...
+- Index 3834: List down the territory IDs, descriptions and region description which are under the in-charge of Na...
+- Index 3842: State the name of all territories in Northern region....
+- Index 3982: What is the last name of the employees who must report to the Vice President of Sales?...
+- Index 3990: How many employees in total are in charge of the sales in the Eastern Region?...
+- Index 4097: List the employees' full names and ages in 2022 who lived in London....
+- Index 4110: How many territories are there in the Eastern Region?...
+- Index 4156: Which territory does Ms. Laura Callahan's direct supervisor work in? Give the name of the territory....
+- Index 4208: What is the difference in the number of employees from the UK and the USA who work as sales represen...
+- Index 4403: Which territories is the employee with a doctorate in charge of? List all of the territory descripti...
+- Index 4520: How many subordinates does employee ID 2 have and what is the biggest order in terms of value that h...
+- Index 4553: How many employees in the UK takes charge of the sales in over 4 territories?...
+- Index 4798: List the full name of employees and titles who have to report to Sales Manager....
+- Index 4835: How many female employees are in charge of 3 or more territories?...
+- Index 4846: What is the full name of the employee in charge of the Southern region who is to report to Andrew Fu...
+- Index 4857: How many of the orders are shipped to France?...
+- Index 4908: Which product of Exotic Liquids company that have the highest reorder levels?...
+- Index 5163: What is the category of the product that has the highest number of discontinued products?...
+- Index 5230: What is the average salary for employees from ID 1 to 9?...
+- Index 5240: Please list the home phone numbers of the employees who are in charge of the sales in the territorie...
+- Index 5355: Which region has the most territories?...
+- Index 5395: Write down the notes of employee with the highest salary....
+- Index 5399: List the full name of all employees who work in the Northern region....
+- Index 5460: What is the full address of Rattlesnake Canyon Grocery?...
+- Index 5500: Identify the number of employees in Northern sales region....
+- Index 5687: List down the territory IDs and descriptions existed in Southern region....
+- Index 5922: How many employees is a UK citizen and are they all covering the same region?...
+- Index 6055: List all category name of Exotic Liquids 's product with units in stock over 100....
+- Index 6064: How many territories are there?...
+- Index 6224: Please list the territories whose sales are taken in charge by the employees who report to Andrew Fu...
+- Index 6399: Among the products ordered in order no. 10248, which product has the biggest ratio of units on order...
+- Index 6446: What is the salary range for sales representative in Northwind?...
+- Index 6530: What is the title of the employee with the highest number of territories in charge?...
+- Index 6543: What is the difference in salary of the top 2 employees with the highest number of territories in ch...
+- Index 6696: How many times is the number of territories in "Eastern Region" than "Southern Region"?...
+- Index 6709: Describe the ordered products which were the most overdue from required date....
+- Index 6743: What is the full name of the employee who is in charge of the territory of Denver?...
+- Index 7020: What is the average number of territories do each sales representative is in charge of?...
+- Index 7257: Among the employees working as Sales Representatives, how many of them are located in the UK?...
+- Index 7316: Give me the address, home phone and salary of the Sales Manager....
+- Index 7406: What proportion of orders are taken by the Sales Representative?...
+- Index 7498: How many employees from USA with Sales Representative title?...
+- Index 7557: What is the total sales amount of all discontinued products?...
+- Index 7604: How many territories are there in the region with the highest number of territories?...
+- Index 7671: Calculate the percentage salary of employees who handled orders shipped in 1996....
+- Index 7713: What is the phone number for the employee in charge of the Portsmouth territory?...
+- Index 7772: How many sales representatives whose salaries are higher than 2000?...
+- Index 7915: What are the order ids of the orders with freight of over 800?...
+- Index 8001: What are the names of the products that were discountinued?...
+- Index 8328: How many more territories are there in than Eastern Region than in the Southern Region?...
+- Index 8380: Which region does Hoffman Estates belong to?...
+- Index 7128: Among the USA employess, how many of them has PhD title of courtesy?...
+
+**Example (Index 265):**
+Question: Find and list the full name of employees who are from the territory, Wilton.
+Database: retail_world
+Last Answer Content:
+```
+{
+    "error": "The database schema does not include a table or column that references territories or TerritoryDescription. Therefore, it is not possible to construct the query based on the provided schema."
+}
+```
+
+---
+
+## Category: json_parse_error
+
+**Count:** 4
+**Description:** JSON parsing failed: Invalid \escape: line 2 column 36 (char 37)
+
+**Records:**
+- Index 2481: List down the top 3 Latin American & Caribbean countries with the highest average value in "CO2 emis...
+- Index 2963: How many flights depart to Hartsfield-Jackson Atlanta International from Chicago O'Hare Internationa...
+- Index 7985: From the Spanish LaLiga division in the 2017 season, which team won the most times as a local team a...
+- Index 8040: Between Rome and Juliet, which character was mentioned the most in the The Tragedy of Romeo and Juli...
+
+**Example (Index 2481):**
+Question: List down the top 3 Latin American & Caribbean countries with the highest average value in "CO2 emissions (kt)" indicator since 1965. Give their highest value and in what year.
+Database: world_development_indicators
+Last Answer Content:
+```
+{
+    "sql": "WITH FilteredData AS ( \
+                SELECT c.CountryCode, c.ShortName, i.Year, i.Value \
+                FROM Country c \
+                JOIN Indicators i ON c.CountryCode = i.CountryCode \
+                WHERE c.Region IN ('Latin America', 'Caribbean') \
+                  AND i.IndicatorName = 'CO2 emissions from gaseous fuel consumption (kt)' \
+                  AND i.Year > 1965 \
+            ), \
+            AverageValues AS ( \
+                SELECT CountryCode, ShortName, AVG(Value) AS AvgValue \
+                FROM FilteredData \
+                GROUP BY CountryCode, ShortName \
+            ), \
+            TopCountries AS ( \
+                SELECT CountryCode, ShortName, AvgValue \
+                FROM AverageValues \
+                ORDER BY AvgValue DESC \
+                LIMIT 3 \
+            ) \
+            SELECT tc.ShortName AS Country, tc.AvgValue AS AverageValue, fd.Year AS Year, MAX(fd.Value) AS HighestValue \
+            FROM TopCountries tc \
+            JOIN FilteredData fd ON tc.CountryCode = fd.CountryCode \
+            GROUP BY tc.CountryCode, fd.Year \
+            ORDER BY tc.AvgValue DESC, fd.Year DESC;"
+}
+```
+
+---
+
+## Complete List of Failed Records
+
+### Index 120
+**Question:** How many businesses have the category named food? List those businesses and find the percentage of businesses with less than 2 stars.
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FoodBusinesses AS (SELECT b.business_id, b.stars FROM Business b INNER JOIN Business_Categories bc ON b.business_id = bc.business_id INNER JOIN Categories c ON bc.category_id = c.category_id WHERE c.category_name = 'Food') SELECT COUNT(*) AS total_food_businesses, (SELECT COUNT(*) FROM FoodBusinesses WHERE stars < 2) * 100.0 / COUNT(*) AS percentage_below_2_stars FROM FoodBusinesses;"
+}
+```
+
+### Index 265
+**Question:** Find and list the full name of employees who are from the territory, Wilton.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a table or column that references territories or TerritoryDescription. Therefore, it is not possible to construct the query based on the provided schema."
+}
+```
+
+### Index 287
+**Question:** List down the company names that have the highest reorder level.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'ReorderLevel' column in any table. Please provide an updated schema or clarify the query."
+}
+```
+
+### Index 322
+**Question:** Who has the highest salary? Please give their first name.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a salary column, so the query cannot be constructed."
+}
+```
+
+### Index 329
+**Question:** List out 10 business ID that are being reviewed the most by users and list out what are top 3 business categories.
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": {
+        "top_10_businesses": "SELECT business_id, COUNT(user_id) AS review_count FROM Reviews GROUP BY business_id ORDER BY review_count DESC LIMIT 10;",
+        "top_3_categories": "SELECT c.category_name, COUNT(bc.category_id) AS category_count FROM Business_Categories bc JOIN Categories c ON bc.category_id = c.category_id GROUP BY c.category_name ORDER BY category_count DESC LIMIT 3;"
+    }
+}
+```
+
+### Index 349
+**Question:** What are the territory descriptions of territories in the Eastern region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a table for territories or regions. Please provide the schema for the missing table(s) to proceed."
+}
+```
+
+### Index 357
+**Question:** How many employees have obtained a doctorate?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a TitleOfCourtesy column in the Employees table, so it is not possible to determine how many employees have obtained a doctorate."
+}
+```
+
+### Index 367
+**Question:** Among all the citation, what is the percentage of paper ID under the Agents classification?
+**Database:** citeseer
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH unique_papers AS (SELECT DISTINCT cited_paper_id AS paper_id FROM cites UNION SELECT DISTINCT citing_paper_id AS paper_id FROM cites), total_count AS (SELECT COUNT(*) AS total FROM unique_papers), agents_count AS (SELECT COUNT(*) AS agents FROM unique_papers up JOIN paper p ON up.paper_id = p.paper_id WHERE p.class_label = 'Agents') SELECT (CAST(agents_count.agents AS FLOAT) / total_count.total) * 100 AS percentage FROM total_count, agents_count;"
+}
+```
+
+### Index 371
+**Question:** Of all the beer styles produced by Stevens Point Brewery, how many percent do they allot for American Adjunct Lager?
+**Database:** craftbeer
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH brewery_beers AS (SELECT b.* FROM beers b JOIN breweries br ON b.brewery_id = br.id WHERE br.name = 'Stevens Point Brewery'), total_count AS (SELECT COUNT(*) AS total FROM brewery_beers), american_adjunct_count AS (SELECT COUNT(*) AS american_adjunct FROM brewery_beers WHERE style = 'American Adjunct Lager') SELECT (CAST(american_adjunct AS FLOAT) / total) * 100 AS percent_allotted FROM total_count, american_adjunct_count;"
+}
+```
+
+### Index 493
+**Question:** What are the names of Robert King's territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a Territories table or a relationship between Employees and territories, making it impossible to retrieve Robert King's territories."
+}
+```
+
+### Index 530
+**Question:** How many episodes are there in the 9th season of Law and Order? Calculate the average number of casts per season of the said series.
+**Database:** law_episode
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH EpisodeCount AS (SELECT COUNT(*) AS episode_count FROM Episode WHERE series = 'Law and Order' AND season = 9), CastAverage AS (SELECT AVG(cast_count * 1.0 / episode_count) AS avg_casts_per_season FROM (SELECT season, COUNT(Credit.person_id) AS cast_count, COUNT(DISTINCT Episode.episode_id) AS episode_count FROM Credit JOIN Episode ON Credit.episode_id = Episode.episode_id WHERE series = 'Law and Order' AND category = 'Cast' GROUP BY season)), SELECT episode_count FROM EpisodeCount UNION SELECT avg_casts_per_season FROM CastAverage;"
+}
+```
+
+### Index 539
+**Question:** What is the average salary of sales representatives in the United Kingdom?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include salary or title information, making it impossible to calculate the average salary of sales representatives in the United Kingdom."
+}
+```
+
+### Index 603
+**Question:** Which employee is in charge of the sales in Hollis? Please give the employee's full name.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include a table or column linking employees to territories or sales regions such as 'Hollis'. Additional information is required to construct the query."
+}
+```
+
+### Index 671
+**Question:** What are the highest salary earn by the the employee and what is his/her position in the company?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include salary or position information for employees, so the query cannot be constructed."
+}
+```
+
+### Index 685
+**Question:** How many products supplied by Plutzer Lebensmittelgromrkte AG that is currently out of stock and on order?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include UnitsInStock or UnitsOnOrder columns in the Products table, which are required to answer the query."
+}
+```
+
+### Index 701
+**Question:** What were the difference of the CHS team's winning rate between 1946 and 1947 in the post-season series games? Please provide your answer in percentages.
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH series_1946 AS (SELECT COUNT(*) AS total_series_1946, SUM(CASE WHEN tmIDWinner = 'CHS' THEN 1 ELSE 0 END) AS chs_wins_1946 FROM series_post WHERE year = 1946), series_1947 AS (SELECT COUNT(*) AS total_series_1947, SUM(CASE WHEN tmIDWinner = 'CHS' THEN 1 ELSE 0 END) AS chs_wins_1947 FROM series_post WHERE year = 1947) SELECT ((CAST(chs_wins_1947 AS FLOAT) / total_series_1947) - (CAST(chs_wins_1946 AS FLOAT) / total_series_1946)) * 100 AS winning_rate_difference_percentage FROM series_1946, series_1947;"
+}
+```
+
+### Index 707
+**Question:** Are all stations with zip code 94107 located in San Francisco city?
+**Database:** bike_share_1
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not provide a direct relationship between 'station' and 'weather' tables to verify zip code 94107 for stations in San Francisco."
+}
+```
+
+### Index 714
+**Question:** What are the the total number of territory in each region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include tables or columns related to 'territory' or 'region'. Please clarify or provide additional details."
+}
+```
+
+### Index 737
+**Question:** List the names of non-US suppliers that have discontinued.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'Discontinued' column in the Suppliers table or any other table. Therefore, the query cannot be executed as described."
+}
+```
+
+### Index 755
+**Question:** What is the percentage of the increase of complaints filed by the clients from New York from the year 2016 to the year 2017?
+**Database:** retail_complains
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ComplaintCounts AS (SELECT strftime('%Y', \"Date received\") AS Year, COUNT(*) AS ComplaintCount FROM callcenterlogs INNER JOIN client ON callcenterlogs.\"rand client\" = client.client_id WHERE client.city = 'New York' AND strftime('%Y', \"Date received\") IN ('2016', '2017') GROUP BY Year) SELECT (1.0 * (SELECT ComplaintCount FROM ComplaintCounts WHERE Year = '2017') - (SELECT ComplaintCount FROM ComplaintCounts WHERE Year = '2016')) / (SELECT ComplaintCount FROM ComplaintCounts WHERE Year = '2016') * 100 AS PercentageIncrease;"
+}
+```
+
+### Index 792
+**Question:** Provide the territory IDs under employee ID of 7.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include information about 'territory IDs' or their relationship with employees. Please provide additional schema details or clarify the request."
+}
+```
+
+### Index 797
+**Question:** Among the immunizations in 2017, calculate the percentage of patients who received the Influenza seasonal injectable preservative free. Among them, how many patients are English?
+**Database:** synthea
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH InfluenzaPatients AS (SELECT DISTINCT PATIENT FROM immunizations WHERE DESCRIPTION = 'Influenza seasonal injectable preservative free' AND strftime('%Y', DATE) = '2017'), TotalPatients AS (SELECT COUNT(DISTINCT PATIENT) AS Total FROM immunizations WHERE strftime('%Y', DATE) = '2017'), EnglishPatients AS (SELECT COUNT(DISTINCT p.PATIENT) AS EnglishCount FROM InfluenzaPatients ip JOIN patients p ON ip.PATIENT = p.patient WHERE p.ethnicity = 'English') SELECT (SELECT COUNT(*) FROM InfluenzaPatients) * 100.0 / (SELECT Total FROM TotalPatients) AS Percentage, (SELECT EnglishCount FROM EnglishPatients) AS EnglishCount;"
+}
+```
+
+### Index 821
+**Question:** What is the position of Robert King?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a column for 'position' or 'title' in the Employees table, so the query cannot be executed."
+}
+```
+
+### Index 897
+**Question:** List all the territories where Laura Callahan is in charge.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a Territories table or a relationship between employees and territories. Unable to write the SQL query."
+}
+```
+
+### Index 932
+**Question:** How many days was the fastest shipping of Berglunds snabbkp's order?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include the 'ShippedDate' column, which is required to calculate shipping duration."
+}
+```
+
+### Index 936
+**Question:** What is the average salary of the employees who takes charge of the sales of over 4 territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include tables for territories or salaries. Please provide additional details or confirm the existence of such tables."
+}
+```
+
+### Index 966
+**Question:** What products are no longer sold by Northwind?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include a 'Discontinued' column in the Products table, so the query cannot be constructed as requested."
+}
+```
+
+### Index 973
+**Question:** How many home victories does the Bundesliga division have in more or less than the Premier League division in the 2021 season?
+**Database:** european_football_1
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH home_victories AS (SELECT d.name AS division_name, COUNT(*) AS home_wins FROM matchs m JOIN divisions d ON m.Div = d.division WHERE m.season = 2021 AND m.FTR = 'H' AND d.name IN ('Bundesliga', 'Premier League') GROUP BY d.name) SELECT (SELECT home_wins FROM home_victories WHERE division_name = 'Bundesliga') - (SELECT home_wins FROM home_victories WHERE division_name = 'Premier League') AS difference;"
+}
+```
+
+### Index 1174
+**Question:** What percentage of genes located in the cytoskeleton are of unknown class? And of these, how many are not conditional phenotypes?
+**Database:** genes
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CytoskeletonGenes AS (SELECT * FROM Genes WHERE Localization = 'cytoskeleton'), UnknownClassGenes AS (SELECT * FROM CytoskeletonGenes WHERE Class = 'unknown'), TotalCytoskeletonGenes AS (SELECT COUNT(*) AS total_count FROM CytoskeletonGenes), UnknownClassCount AS (SELECT COUNT(*) AS unknown_count FROM UnknownClassGenes), NotConditionalGenes AS (SELECT COUNT(*) AS not_conditional_count FROM UnknownClassGenes WHERE Phenotype != 'conditional') SELECT (UnknownClassCount.unknown_count * 100.0 / TotalCytoskeletonGenes.total_count) AS percentage_unknown, NotConditionalGenes.not_conditional_count FROM TotalCytoskeletonGenes, UnknownClassCount, NotConditionalGenes;"
+}
+```
+
+### Index 1233
+**Question:** How many employees have Andrew Fuller as their direct supervisor?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include a 'ReportsTo' column or equivalent to identify direct supervisors."
+}
+```
+
+### Index 1262
+**Question:** Among the actors who acted in UK movies, what percentage of actors received a rating of at least 3?
+**Database:** movielens
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH UKMovies AS (SELECT movieid FROM movies WHERE country = 'UK'), UKActors AS (SELECT DISTINCT actorid FROM movies2actors WHERE movieid IN (SELECT movieid FROM UKMovies)), RatedActors AS (SELECT DISTINCT m2a.actorid FROM u2base u JOIN movies2actors m2a ON u.movieid = m2a.movieid WHERE u.rating >= '3' AND m2a.movieid IN (SELECT movieid FROM UKMovies)), TotalActors AS (SELECT COUNT(DISTINCT actorid) AS total FROM UKActors), RatedActorsCount AS (SELECT COUNT(DISTINCT actorid) AS rated FROM RatedActors) SELECT (CAST(rated AS FLOAT) / total) * 100 AS percentage FROM TotalActors, RatedActorsCount;"
+}
+```
+
+### Index 1292
+**Question:** How many customers have a credit limit of not more than 100,000 and which customer made the highest total payment amount for the year 2004?
+**Database:** car_retails
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CustomerPayments AS (SELECT c.customerNumber, c.customerName, SUM(p.amount) AS totalPayment FROM customers c JOIN payments p ON c.customerNumber = p.customerNumber WHERE strftime('%Y', p.paymentDate) = '2004' GROUP BY c.customerNumber) SELECT (SELECT COUNT(*) FROM customers WHERE creditLimit <= 100000) AS customerCount, customerName, totalPayment FROM CustomerPayments WHERE totalPayment = (SELECT MAX(totalPayment) FROM CustomerPayments);"
+}
+```
+
+### Index 1296
+**Question:** How many territory fall into region 1?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include information about territories or regions, so the query cannot be constructed."
+}
+```
+
+### Index 1318
+**Question:** How much is the salary of the first employee that was hired?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include HireDate or Salary columns in the Employees table, so the query cannot be constructed."
+}
+```
+
+### Index 1362
+**Question:** Find the percentage of discontinued products in Northwind's portfolio of products.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'Discontinued' column in the Products table, which is required to calculate the percentage of discontinued products."
+}
+```
+
+### Index 1374
+**Question:** How many cities have businesses with active life category? Find the percentage of the city where the review count that is low in total review count.
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ActiveLifeCities AS (SELECT DISTINCT b.city FROM Business b JOIN Business_Categories bc ON b.business_id = bc.business_id JOIN Categories c ON bc.category_id = c.category_id WHERE c.category_name = 'Active Life'), LowReviewCities AS (SELECT DISTINCT city FROM Business WHERE review_count = 'LOW') SELECT (SELECT COUNT(*) FROM LowReviewCities) * 100.0 / (SELECT COUNT(*) FROM ActiveLifeCities) AS percentage_of_low_review_cities;"
+}
+```
+
+### Index 1380
+**Question:** What's the percentage of coins that is higher than the price 1 hour ago in May 29,2013? List the names of these coins.
+**Database:** coinmarketcap
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH filtered_coins AS (SELECT h.coin_id, c.name FROM historical h JOIN coins c ON h.coin_id = c.id WHERE h.date = '2013-05-29' AND h.percent_change_1h > 0), total_coins AS (SELECT COUNT(*) AS total FROM historical WHERE date = '2013-05-29') SELECT (COUNT(fc.coin_id) * 100.0 / tc.total) AS percentage, GROUP_CONCAT(fc.name) AS coin_names FROM filtered_coins fc, total_coins tc;"
+}
+```
+
+### Index 1423
+**Question:** Please give the name of the course in which most numbers of the students got an A. Also, list the full name of the students who got an A in this course.
+**Database:** cs_semester
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH course_a_counts AS (SELECT course_id, COUNT(student_id) AS a_count FROM registration WHERE grade = 'A' GROUP BY course_id), max_course AS (SELECT course_id FROM course_a_counts WHERE a_count = (SELECT MAX(a_count) FROM course_a_counts)) SELECT c.name AS course_name, s.f_name || ' ' || s.l_name AS student_full_name FROM registration r JOIN course c ON r.course_id = c.course_id JOIN student s ON r.student_id = s.student_id WHERE r.grade = 'A' AND r.course_id = (SELECT course_id FROM max_course);"
+}
+```
+
+### Index 1438
+**Question:** What territories is the Inside Sales Coordinator in charge of?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary tables or columns to determine the territories associated with the 'Inside Sales Coordinator'. Additional schema details are required."
+}
+```
+
+### Index 1491
+**Question:** Who is the Lutheran representative that served in the state of Ohio for 14 years before becoming a senator?
+**Database:** legislator
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH RepresentativeService AS (SELECT ct.bioguide, c.first_name, c.last_name, c.religion_bio, ct.state, ct.type, SUM(CAST(strftime('%Y', ct.end) AS INTEGER) - CAST(strftime('%Y', ct.start) AS INTEGER)) AS total_years FROM 'current-terms' ct JOIN current c ON ct.bioguide = c.bioguide_id WHERE ct.type = 'rep' AND ct.state = 'OH' AND c.religion_bio = 'Lutheran' GROUP BY ct.bioguide HAVING total_years = 14), SenatorCheck AS (SELECT ht.bioguide FROM 'historical-terms' ht WHERE ht.type = 'sen' UNION SELECT ct.bioguide FROM 'current-terms' ct WHERE ct.type = 'sen') SELECT rs.first_name, rs.last_name FROM RepresentativeService rs JOIN SenatorCheck sc ON rs.bioguide = sc.bioguide;"
+}
+```
+
+### Index 1506
+**Question:** Among the customers, list customers' company names and addresses who paid more than average in freight.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include a 'Freight' column, which is necessary to calculate and compare freight costs. Please provide an updated schema with the required column."
+}
+```
+
+### Index 1515
+**Question:** How many apps were last updated in January of 2018? Please write one translated review with positive sentiment for each app, if there's any.
+**Database:** app_store
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredApps AS (SELECT App FROM playstore WHERE \"Last Updated\" BETWEEN '2018-01-01' AND '2018-01-31'), PositiveReviews AS (SELECT App, Translated_Review FROM user_reviews WHERE Sentiment = 'Positive' AND App IN (SELECT App FROM FilteredApps)) SELECT COUNT(DISTINCT App) AS AppCount FROM FilteredApps; SELECT App, Translated_Review FROM PositiveReviews GROUP BY App;"
+}
+```
+
+### Index 1556
+**Question:** Give the home phone number of the employee who is in charge of "Savannah" territory.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include territories or home phone numbers for employees. Please provide additional details or clarify the missing information."
+}
+```
+
+### Index 1590
+**Question:** What percentage of podcasts are "technology" podcasts? List all of them.
+**Database:** music_platform_2
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH total_podcasts AS (SELECT COUNT(DISTINCT podcast_id) AS total FROM podcasts), technology_podcasts AS (SELECT COUNT(DISTINCT c.podcast_id) AS tech_count FROM categories c WHERE c.category = 'technology') SELECT (tech_count * 100.0 / total) AS percentage, p.* FROM podcasts p INNER JOIN categories c ON p.podcast_id = c.podcast_id AND c.category = 'technology', total_podcasts, technology_podcasts;"
+}
+```
+
+### Index 1600
+**Question:** What is the weekly average number of fraud incidents that were reported in January 2018? Provide the description of the location where the majority of fraud incidents occurred in the said month.
+**Database:** chicago_crime
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FraudIncidents AS (SELECT location_description, COUNT(report_no) AS incident_count FROM Crime INNER JOIN FBI_Code ON Crime.fbi_code_no = FBI_Code.fbi_code_no WHERE FBI_Code.title = 'Fraud' AND SUBSTR(Crime.date, 1, 1) = '1' AND SUBSTR(Crime.date, 5, 4) = '2018' GROUP BY location_description) SELECT (SELECT SUM(incident_count) / 4 FROM FraudIncidents) AS weekly_average, location_description FROM FraudIncidents WHERE incident_count = (SELECT MAX(incident_count) FROM FraudIncidents);"
+}
+```
+
+### Index 1605
+**Question:** Give the number of territories in the "Northern" region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include Territories or Regions tables required to answer the query."
+}
+```
+
+### Index 1713
+**Question:** Which region is "Columbia" in?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include tables or columns related to 'Region' or 'TerritoryDescription,' so the query cannot be constructed."
+}
+```
+
+### Index 1795
+**Question:** Which city and state produces the most and least bitter beer, and what is the difference in bitterness between the two? List also the names of the beer.
+**Database:** craftbeer
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH most_bitter AS (SELECT b.name AS beer_name, br.city, br.state, b.ibu FROM beers b JOIN breweries br ON b.brewery_id = br.id WHERE b.ibu = (SELECT MAX(ibu) FROM beers)), least_bitter AS (SELECT b.name AS beer_name, br.city, br.state, b.ibu FROM beers b JOIN breweries br ON b.brewery_id = br.id WHERE b.ibu = (SELECT MIN(ibu) FROM beers)) SELECT mb.city AS most_bitter_city, mb.state AS most_bitter_state, mb.beer_name AS most_bitter_beer, lb.city AS least_bitter_city, lb.state AS least_bitter_state, lb.beer_name AS least_bitter_beer, mb.ibu - lb.ibu AS bitterness_difference FROM most_bitter mb, least_bitter lb;"
+}
+```
+
+### Index 1834
+**Question:** Did the number of cases with Vehicle as subject weapon increase or decrease from year 2007 to 2008. State the difference.
+**Database:** shooting
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH yearly_counts AS (SELECT CASE WHEN date BETWEEN '2007-01-01' AND '2007-12-31' THEN '2007' WHEN date BETWEEN '2008-01-01' AND '2008-12-31' THEN '2008' END AS year, COUNT(case_number) AS case_count FROM incidents WHERE subject_weapon = 'Vehicle' GROUP BY year) SELECT (SELECT case_count FROM yearly_counts WHERE year = '2008') - (SELECT case_count FROM yearly_counts WHERE year = '2007') AS difference;"
+}
+```
+
+### Index 1988
+**Question:** List all the load shapes of all head cars of each train and identify which load shape has the highest number. Calculate the percentage of the trains with the said head car that are running eas
+**Database:** trains
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH HeadCars AS (SELECT train_id, load_shape FROM cars WHERE position = 1), LoadShapeCounts AS (SELECT load_shape, COUNT(*) AS shape_count FROM HeadCars GROUP BY load_shape), MaxLoadShape AS (SELECT load_shape FROM LoadShapeCounts WHERE shape_count = (SELECT MAX(shape_count) FROM LoadShapeCounts)), EastTrains AS (SELECT t.id FROM trains t JOIN HeadCars hc ON t.id = hc.train_id WHERE t.direction = 'east' AND hc.load_shape = (SELECT load_shape FROM MaxLoadShape)), TotalTrains AS (SELECT t.id FROM trains t JOIN HeadCars hc ON t.id = hc.train_id WHERE hc.load_shape = (SELECT load_shape FROM MaxLoadShape)) SELECT (CAST((SELECT COUNT(*) FROM EastTrains) AS FLOAT) / (SELECT COUNT(*) FROM TotalTrains)) * 100 AS percentage;"
+}
+```
+
+### Index 1999
+**Question:** How much did the win rate increase for the team after getting the No.1 NBA draft pick in the 2003 season than previous season?
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH No1DraftTeam AS (SELECT tmID FROM draft WHERE draftRound = 1 AND draftYear = 2003), WinRates AS (SELECT year, tmID, SUM(won) * 1.0 / (SUM(won) + SUM(lost)) AS win_rate FROM teams WHERE tmID IN (SELECT tmID FROM No1DraftTeam) AND year IN (2002, 2003) GROUP BY year, tmID) SELECT (SELECT win_rate FROM WinRates WHERE year = 2003) - (SELECT win_rate FROM WinRates WHERE year = 2002) AS win_rate_increase;"
+}
+```
+
+### Index 2009
+**Question:** What is the percentage difference between the attendence of disabled and non-disable students? Do the disable students show better attendance than non-disable students?
+**Database:** student_loan
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH disabled_count AS (SELECT COUNT(l.name) AS count FROM longest_absense_from_school l INNER JOIN disabled d ON l.name = d.name), non_disabled_count AS (SELECT COUNT(l.name) AS count FROM longest_absense_from_school l WHERE l.name NOT IN (SELECT name FROM disabled)), total_count AS (SELECT COUNT(name) AS count FROM longest_absense_from_school) SELECT (CAST(non_disabled_count.count - disabled_count.count AS FLOAT) / total_count.count) * 100 AS percentage_difference, CASE WHEN disabled_count.count < non_disabled_count.count THEN 'Disabled students have better attendance' ELSE 'Disabled students do not have better attendance' END AS attendance_comparison FROM disabled_count, non_disabled_count, total_count;"
+}
+```
+
+### Index 2014
+**Question:** Indicate the courtesy title of the 3 employees who have the lowest salary.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary columns (Salary and TitleOfCourtesy) to fulfill the query."
+}
+```
+
+### Index 2024
+**Question:** Which customer is a regular customer in this shop and what are the products category that he mostly buy?
+**Database:** retail_world
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH RegularCustomer AS (SELECT CustomerID, COUNT(CustomerID) AS OrderCount FROM Orders GROUP BY CustomerID ORDER BY OrderCount DESC LIMIT 1), CustomerOrders AS (SELECT OrderID FROM Orders WHERE CustomerID = (SELECT CustomerID FROM RegularCustomer)), ProductCategories AS (SELECT p.CategoryID FROM OrderDetails od JOIN Products p ON od.ProductID = p.ProductID WHERE od.OrderID IN (SELECT OrderID FROM CustomerOrders)), MostBoughtCategory AS (SELECT CategoryID, COUNT(CategoryID) AS CategoryCount FROM ProductCategories GROUP BY CategoryID ORDER BY CategoryCount DESC LIMIT 1) SELECT c.CustomerName, cat.CategoryName FROM Customers c, Categories cat WHERE c.CustomerID = (SELECT CustomerID FROM RegularCustomer) AND cat.CategoryID = (SELECT CategoryID FROM MostBoughtCategory);"
+}
+```
+
+### Index 2040
+**Question:** What percentage of customers from the African region is in the household segment?
+**Database:** retails
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH AfricanCustomers AS (SELECT c_custkey, c_mktsegment FROM customer INNER JOIN nation ON customer.c_nationkey = nation.n_nationkey INNER JOIN region ON nation.n_regionkey = region.r_regionkey WHERE region.r_name = 'AFRICA'), TotalAfricanCustomers AS (SELECT COUNT(*) AS total_count FROM AfricanCustomers), HouseholdAfricanCustomers AS (SELECT COUNT(*) AS household_count FROM AfricanCustomers WHERE c_mktsegment = 'HOUSEHOLD') SELECT (CAST(HouseholdAfricanCustomers.household_count AS REAL) / TotalAfricanCustomers.total_count) * 100 AS percentage FROM TotalAfricanCustomers, HouseholdAfricanCustomers;"
+}
+```
+
+### Index 2050
+**Question:** Calculate the percentage of medium tip length in the list. List out the time when users of medium tip length join Yelp.
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MediumTips AS (SELECT COUNT(*) AS medium_count FROM Tips WHERE tip_length = 'Medium'), TotalTips AS (SELECT COUNT(*) AS total_count FROM Tips), Percentage AS (SELECT (CAST(medium_count AS REAL) / total_count) * 100 AS medium_percentage FROM MediumTips, TotalTips) SELECT Percentage.medium_percentage, DISTINCT Users.user_yelping_since_year FROM Tips INNER JOIN Users ON Tips.user_id = Users.user_id WHERE Tips.tip_length = 'Medium', Percentage;"
+}
+```
+
+### Index 2064
+**Question:** What are the favorite project types of each of the top 10 donors?
+**Database:** donor
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH TopDonors AS (SELECT donor_acctid, SUM(donation_total) AS total_donations FROM donations GROUP BY donor_acctid ORDER BY total_donations DESC LIMIT 10), DonorProjects AS (SELECT d.donor_acctid, r.project_resource_type FROM donations d JOIN projects p ON d.projectid = p.projectid JOIN resources r ON p.projectid = r.projectid WHERE d.donor_acctid IN (SELECT donor_acctid FROM TopDonors)), FavoriteProjectTypes AS (SELECT donor_acctid, project_resource_type, COUNT(project_resource_type) AS type_count FROM DonorProjects GROUP BY donor_acctid, project_resource_type), RankedProjectTypes AS (SELECT donor_acctid, project_resource_type, type_count, RANK() OVER (PARTITION BY donor_acctid ORDER BY type_count DESC) AS rank FROM FavoriteProjectTypes) SELECT donor_acctid, project_resource_type FROM RankedProjectTypes WHERE rank = 1;"
+}
+```
+
+### Index 2071
+**Question:** Write down the full name of Vie President of Sales and his age when he was hired.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include job titles or hiring dates, so the query cannot be written with the provided information."
+}
+```
+
+### Index 2087
+**Question:** How many territories are owned by Anne Dodsworth?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories or Anne Dodsworth."
+}
+```
+
+### Index 2132
+**Question:** Please list the last names and first names of all-star players whose team were ranked 1 for consecutive 3 years from 1937 to 1940.
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH RankedTeams AS (SELECT tmID, year FROM teams WHERE rank = 1 AND year BETWEEN 1937 AND 1940), ConsecutiveRankedTeams AS (SELECT t1.tmID FROM RankedTeams t1 JOIN RankedTeams t2 ON t1.tmID = t2.tmID AND t1.year = t2.year - 1 JOIN RankedTeams t3 ON t1.tmID = t3.tmID AND t1.year = t3.year - 2), AllStarPlayers AS (SELECT DISTINCT pt.playerID FROM players_teams pt JOIN ConsecutiveRankedTeams crt ON pt.tmID = crt.tmID AND pt.year BETWEEN 1937 AND 1940 JOIN player_allstar pa ON pt.playerID = pa.playerID), PlayerNames AS (SELECT p.lastName, p.firstName FROM players p JOIN AllStarPlayers ap ON p.playerID = ap.playerID) SELECT DISTINCT lastName, firstName FROM PlayerNames;"
+}
+```
+
+### Index 2385
+**Question:** To whom does Nancy Davolio report? Please give that employee's full name.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'ReportsTo' column or any hierarchy information in the Employees table, so it is not possible to determine to whom Nancy Davolio reports."
+}
+```
+
+### Index 2479
+**Question:** What is the difference in the average age of players when they are drafted in the ABA vs when they are drafted in the NBA between the years 1970 and 1970?
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH avg_ages AS (SELECT lgID, AVG(1970 - CAST(strftime('%Y', birthDate) AS INTEGER)) AS avg_age FROM draft INNER JOIN players ON draft.playerID = players.playerID WHERE draftYear = 1970 AND lgID IN ('ABA', 'NBA') GROUP BY lgID) SELECT (SELECT avg_age FROM avg_ages WHERE lgID = 'ABA') - (SELECT avg_age FROM avg_ages WHERE lgID = 'NBA') AS age_difference;"
+}
+```
+
+### Index 2481
+**Question:** List down the top 3 Latin American & Caribbean countries with the highest average value in "CO2 emissions (kt)" indicator since 1965. Give their highest value and in what year.
+**Database:** world_development_indicators
+**Failure Type:** json_parse_error
+**Description:** JSON parsing failed: Invalid \escape: line 2 column 36 (char 37)
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredData AS ( \
+                SELECT c.CountryCode, c.ShortName, i.Year, i.Value \
+                FROM Country c \
+                JOIN Indicators i ON c.CountryCode = i.CountryCode \
+                WHERE c.Region IN ('Latin America', 'Caribbean') \
+                  AND i.IndicatorName = 'CO2 emissions from gaseous fuel consumption (kt)' \
+                  AND i.Year > 1965 \
+            ), \
+            AverageValues AS ( \
+                SELECT CountryCode, ShortName, AVG(Value) AS AvgValue \
+                FROM FilteredData \
+                GROUP BY CountryCode, ShortName \
+            ), \
+            TopCountries AS ( \
+                SELECT CountryCode, ShortName, AvgValue \
+                FROM AverageValues \
+                ORDER BY AvgValue DESC \
+                LIMIT 3 \
+            ) \
+            SELECT tc.ShortName AS Country, tc.AvgValue AS AverageValue, fd.Year AS Year, MAX(fd.Value) AS HighestValue \
+            FROM TopCountries tc \
+            JOIN FilteredData fd ON tc.CountryCode = fd.CountryCode \
+            GROUP BY tc.CountryCode, fd.Year \
+            ORDER BY tc.AvgValue DESC, fd.Year DESC;"
+}
+```
+
+### Index 2511
+**Question:** What is the proportion of the papers that have the keyword "cancer"? Please provide a list of authors and their affiliations.
+**Database:** authors
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH Proportion AS (SELECT CAST(COUNT(CASE WHEN Keyword = 'cancer' THEN 1 END) AS FLOAT) / COUNT(*) AS CancerProportion FROM Paper) SELECT p.CancerProportion, pa.Name AS AuthorName, pa.Affiliation FROM Proportion p CROSS JOIN PaperAuthor pa;"
+}
+```
+
+### Index 2578
+**Question:** Which employee has the highest salary? Please give his or her full name.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'Salary' column in the Employees table, so the query cannot be executed."
+}
+```
+
+### Index 2604
+**Question:** Who is in charge of the "Santa Monica" territory? Give the full name.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a Territories table or a relationship between employees and territories, so the query cannot be constructed."
+}
+```
+
+### Index 2750
+**Question:** What is the percentage for the Yelp businesses in "Pets" category of all businesses?
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH PetsBusinesses AS (SELECT DISTINCT bc.business_id FROM Business_Categories bc JOIN Categories c ON bc.category_id = c.category_id WHERE c.category_name = 'Pets'), TotalBusinesses AS (SELECT COUNT(DISTINCT business_id) AS total_count FROM Business) SELECT (CAST((SELECT COUNT(*) FROM PetsBusinesses) AS FLOAT) / (SELECT total_count FROM TotalBusinesses)) * 100 AS pets_percentage;"
+}
+```
+
+### Index 2754
+**Question:** Which different vendor has the most amount of orders? Calculate the total estimated earnings.
+**Database:** car_retails
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH VendorOrders AS (SELECT p.productVendor, SUM(od.quantityOrdered) AS totalOrders, SUM((p.MSRP - p.buyPrice) * od.quantityOrdered) AS totalEarnings FROM orderdetails od JOIN products p ON od.productCode = p.productCode GROUP BY p.productVendor), TopVendor AS (SELECT productVendor, totalOrders FROM VendorOrders ORDER BY totalOrders DESC LIMIT 1) SELECT v.productVendor, v.totalOrders, v.totalEarnings FROM VendorOrders v JOIN TopVendor tv ON v.productVendor = tv.productVendor;"
+}
+```
+
+### Index 2761
+**Question:** The sales of how many territories is Nancy Davolio in charge of?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include information about territories or their association with employees."
+}
+```
+
+### Index 2763
+**Question:** Have the teacher "42d43fa6f37314365d08692e08680973" acquired P.h.D or doctor degree?
+**Database:** donor
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": null,
+    "message": "The database schema does not contain information about teacher educational qualifications, so this query cannot be answered."
+}
+```
+
+### Index 2784
+**Question:** List the territory IDs, description and region description under the in-charge of Mrs. Margaret Peacock.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary tables or relationships to retrieve territory IDs, descriptions, or region descriptions under the in-charge of Mrs. Margaret Peacock."
+}
+```
+
+### Index 2811
+**Question:** Which region does territory id 2116 belong to?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include tables or columns related to 'region' or 'territory,' so the query cannot be answered."
+}
+```
+
+### Index 2909
+**Question:** From which city and state does the customer that bought the product with the highest sales?
+**Database:** superstore
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH all_sales AS (SELECT cs.\"Sales\", p.City, p.State FROM central_superstore cs JOIN people p ON cs.\"Customer ID\" = p.\"Customer ID\" AND cs.Region = p.Region UNION ALL SELECT es.\"Sales\", p.City, p.State FROM east_superstore es JOIN people p ON es.\"Customer ID\" = p.\"Customer ID\" AND es.Region = p.Region UNION ALL SELECT ss.\"Sales\", p.City, p.State FROM south_superstore ss JOIN people p ON ss.\"Customer ID\" = p.\"Customer ID\" AND ss.Region = p.Region UNION ALL SELECT ws.\"Sales\", p.City, p.State FROM west_superstore ws JOIN people p ON ws.\"Customer ID\" = p.\"Customer ID\" AND ws.Region = p.Region) SELECT City, State FROM all_sales WHERE Sales = (SELECT MAX(Sales) FROM all_sales);"
+}
+```
+
+### Index 2929
+**Question:** Please list all the territories in the Eastern Region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include tables or columns related to territories or regions, so the query cannot be constructed."
+}
+```
+
+### Index 2954
+**Question:** Indicate the fax of the company Blondesddsl pre et fils in Strasbourg city.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'Fax' column, so the requested information cannot be retrieved."
+}
+```
+
+### Index 2962
+**Question:** List down application that have not been updated since 2015. What is the percentage of this application having more negative sentiment than positive sentiment?
+**Database:** app_store
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH AppSentimentCounts AS (SELECT p.App, SUM(CASE WHEN u.Sentiment = 'Positive' THEN 1 ELSE 0 END) AS PositiveCount, SUM(CASE WHEN u.Sentiment = 'Negative' THEN 1 ELSE 0 END) AS NegativeCount FROM playstore p JOIN user_reviews u ON p.App = u.App WHERE p.\"Last Updated\" <= '2015' GROUP BY p.App) SELECT COUNT(*) * 100.0 / (SELECT COUNT(*) FROM playstore WHERE \"Last Updated\" <= '2015') AS Percentage FROM AppSentimentCounts WHERE NegativeCount > PositiveCount;"
+}
+```
+
+### Index 2963
+**Question:** How many flights depart to Hartsfield-Jackson Atlanta International from Chicago O'Hare International?
+**Database:** airline
+**Failure Type:** json_parse_error
+**Description:** JSON parsing failed: Invalid \escape: line 2 column 264 (char 265)
+**Last Answer Content:**
+```
+{
+    "sql": "SELECT COUNT(*) AS flight_count FROM Airlines INNER JOIN Airports AS OriginAirport ON Airlines.ORIGIN = OriginAirport.Code INNER JOIN Airports AS DestAirport ON Airlines.DEST = DestAirport.Code WHERE OriginAirport.Description = 'Chicago, IL: Chicago O\'Hare International' AND DestAirport.Description = 'Atlanta, GA: Hartsfield-Jackson Atlanta International';"
+}
+```
+
+### Index 2971
+**Question:** Among the male customers in Sacramento, what percentage bought Dominion root beer in 2013?
+**Database:** beer_factory
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MaleCustomersSacramento AS (SELECT CustomerID FROM customers WHERE Gender = 'M' AND City = 'Sacramento'), DominionTransactions2013 AS (SELECT DISTINCT t.CustomerID FROM \"transaction\" t JOIN rootbeer r ON t.RootBeerID = r.RootBeerID JOIN rootbeerbrand rb ON r.BrandID = rb.BrandID WHERE rb.BrandName = 'Dominion' AND t.TransactionDate >= '2013-01-01' AND t.TransactionDate < '2014-01-01') SELECT (CAST(COUNT(DISTINCT dt.CustomerID) AS FLOAT) / COUNT(DISTINCT mcs.CustomerID)) * 100 AS Percentage FROM MaleCustomersSacramento mcs LEFT JOIN DominionTransactions2013 dt ON mcs.CustomerID = dt.CustomerID;"
+}
+```
+
+### Index 2984
+**Question:** How many territories are there in the Eastern region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include tables or columns related to regions or territories. Please provide additional information or clarify the query."
+}
+```
+
+### Index 2990
+**Question:** What is the percentage of female OPPO users against the male OPPO users?
+**Database:** talkingdata
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH gender_counts AS (SELECT gender, COUNT(*) AS count FROM phone_brand_device_model2 pb INNER JOIN gender_age ga ON pb.device_id = ga.device_id WHERE phone_brand = 'OPPO' GROUP BY gender) SELECT (SELECT count FROM gender_counts WHERE gender = 'F') * 100.0 / (SELECT count FROM gender_counts WHERE gender = 'M') AS percentage_female_to_male FROM gender_counts;"
+}
+```
+
+### Index 3015
+**Question:** Which brand of root beer has the lowest unit profit available to wholesalers? Indicate the ID of the customer that has the highest number of purchases of the said brand.
+**Database:** beer_factory
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH LowestProfitBrand AS (SELECT BrandID, MIN(CurrentRetailPrice - WholesaleCost) AS MinProfit FROM rootbeerbrand), CustomerPurchases AS (SELECT t.CustomerID, COUNT(t.CustomerID) AS PurchaseCount FROM transaction t JOIN rootbeer r ON t.RootBeerID = r.RootBeerID JOIN rootbeerbrand rb ON r.BrandID = rb.BrandID WHERE rb.BrandID = (SELECT BrandID FROM LowestProfitBrand) GROUP BY t.CustomerID) SELECT rb.BrandName, cp.CustomerID FROM rootbeerbrand rb, CustomerPurchases cp WHERE rb.BrandID = (SELECT BrandID FROM LowestProfitBrand) AND cp.PurchaseCount = (SELECT MAX(PurchaseCount) FROM CustomerPurchases);"
+}
+```
+
+### Index 3115
+**Question:** How many employees have territories in the Eastern region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include tables or columns related to territories or regions, making it impossible to write the requested query."
+}
+```
+
+### Index 3135
+**Question:** How many percent of universities got a score above 80 under International criteria in 2016? Among them, name the university which got the highest score.
+**Database:** university
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredUniversities AS (SELECT ury.university_id, ury.score FROM university_ranking_year ury JOIN ranking_criteria rc ON ury.ranking_criteria_id = rc.id WHERE rc.criteria_name = 'International' AND ury.year = 2016 AND ury.score > 80), TotalUniversities AS (SELECT COUNT(*) AS total FROM university), CountFiltered AS (SELECT COUNT(*) AS filtered_count FROM FilteredUniversities), Percentage AS (SELECT (CAST(filtered_count AS REAL) / total) * 100 AS percentage FROM CountFiltered, TotalUniversities), HighestScore AS (SELECT university_id, MAX(score) AS max_score FROM FilteredUniversities) SELECT p.percentage, u.university_name FROM Percentage p CROSS JOIN HighestScore hs JOIN university u ON hs.university_id = u.id;"
+}
+```
+
+### Index 3147
+**Question:** What is the percentage of the most common conditions for patients age 60 and above?
+**Database:** synthea
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MostCommonCondition AS (SELECT DESCRIPTION, COUNT(*) AS Occurrence FROM conditions GROUP BY DESCRIPTION ORDER BY Occurrence DESC LIMIT 1), PatientsAge60AndAbove AS (SELECT p.patient FROM patients p JOIN conditions c ON p.patient = c.PATIENT WHERE (strftime('%Y', c.START) - strftime('%Y', p.birthdate)) >= 60), TotalPatientsAge60AndAbove AS (SELECT COUNT(*) AS Total FROM PatientsAge60AndAbove), PatientsWithMostCommonCondition AS (SELECT COUNT(*) AS CountWithCondition FROM PatientsAge60AndAbove pa JOIN conditions c ON pa.patient = c.PATIENT WHERE c.DESCRIPTION = (SELECT DESCRIPTION FROM MostCommonCondition)) SELECT (CAST((SELECT CountWithCondition FROM PatientsWithMostCommonCondition) AS REAL) / (SELECT Total FROM TotalPatientsAge60AndAbove)) * 100 AS Percentage;"
+}
+```
+
+### Index 3162
+**Question:** Which year has the least number of movies that was released and what is the title of the movie in that year that has the highest number of rating score of 1?
+**Database:** movie_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH YearlyMovieCounts AS (SELECT movie_release_year, COUNT(*) AS movie_count FROM movies GROUP BY movie_release_year), LeastMoviesYear AS (SELECT movie_release_year FROM YearlyMovieCounts WHERE movie_count = (SELECT MIN(movie_count) FROM YearlyMovieCounts)), MovieRatings AS (SELECT m.movie_title, m.movie_release_year, SUM(CASE WHEN r.rating_score = 1 THEN 1 ELSE 0 END) AS rating_score_1_count FROM movies m LEFT JOIN ratings r ON m.movie_id = r.movie_id GROUP BY m.movie_id HAVING m.movie_release_year = (SELECT movie_release_year FROM LeastMoviesYear)) SELECT movie_release_year, movie_title FROM MovieRatings WHERE rating_score_1_count = (SELECT MAX(rating_score_1_count) FROM MovieRatings);"
+}
+```
+
+### Index 3215
+**Question:** Name the paper which is cited most times and the paper which is cited least times? Also, find the number of times each one is cited.
+**Database:** citeseer
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CitationCounts AS (SELECT cited_paper_id, COUNT(*) AS citation_count FROM cites GROUP BY cited_paper_id) SELECT cited_paper_id, citation_count FROM CitationCounts WHERE citation_count = (SELECT MAX(citation_count) FROM CitationCounts) UNION ALL SELECT cited_paper_id, citation_count FROM CitationCounts WHERE citation_count = (SELECT MIN(citation_count) FROM CitationCounts);"
+}
+```
+
+### Index 3264
+**Question:** Give the name of the territory where Mr. Robert King works.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories or a connection between employees and territories. The query cannot be constructed."
+}
+```
+
+### Index 3391
+**Question:** What is the percentage of unemployed students who have been absent for 5 months from school?
+**Database:** student_loan
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH filtered AS (SELECT u.name FROM unemployed u INNER JOIN longest_absense_from_school l ON u.name = l.name WHERE l.month > 5) SELECT (COUNT(filtered.name) * 1.0 / (SELECT COUNT(*) FROM unemployed)) * 100 AS percentage FROM filtered;"
+}
+```
+
+### Index 3444
+**Question:** Calculate the total salary for employees from UK.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'Salary' column in the Employees table or a 'Country' column to identify employees' countries. Therefore, the query cannot be constructed."
+}
+```
+
+### Index 3459
+**Question:** Provide employees' ID who are in-charge of territory ID from 1000 to 2000.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a table linking employees to territories. Unable to construct the query."
+}
+```
+
+### Index 3524
+**Question:** What is the full name of the employees who report to the Sales Manager?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary columns (e.g., Title, ReportsTo) to identify employees who report to the Sales Manager."
+}
+```
+
+### Index 3573
+**Question:** Please list the names of all the territories whose sales are taken in charge by Nancy Davolio.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include the necessary tables or relationships to retrieve the requested data. Please provide an updated schema with a Territories table and a relationship between Employees and Territories."
+}
+```
+
+### Index 3593
+**Question:** Which product have the highest user satisfaction?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include a 'ReorderLevel' column, which is required to determine the product with the highest user satisfaction."
+}
+```
+
+### Index 3747
+**Question:** What is the full name of the employee with the highest salary?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a Salary column in the Employees table, so the query cannot be constructed."
+}
+```
+
+### Index 3834
+**Question:** List down the territory IDs, descriptions and region description which are under the in-charge of Nancy Davolio,
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include tables or columns for territories or regions. Please provide additional schema details or clarify the question."
+}
+```
+
+### Index 3842
+**Question:** State the name of all territories in Northern region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include tables or columns related to territories or regions, so the query cannot be constructed."
+}
+```
+
+### Index 3982
+**Question:** What is the last name of the employees who must report to the Vice President of Sales?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The current schema does not include information about reporting relationships or employee titles. Please provide additional details or modify the schema to include such information."
+}
+```
+
+### Index 3990
+**Question:** How many employees in total are in charge of the sales in the Eastern Region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include information linking employees to regions or sales activities. Additional data or tables are required to answer the query."
+}
+```
+
+### Index 4097
+**Question:** List the employees' full names and ages in 2022 who lived in London.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The Employees table does not contain location-related information (e.g., City). Therefore, it is not possible to filter employees based on their location in London."
+}
+```
+
+### Index 4100
+**Question:** What is the percentage ratio between Democrats and Republicans in Indiana? List the zip codes belonging to Democrats.
+**Database:** address
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH filtered_congress AS (SELECT * FROM congress WHERE state = 'IN'), democrat_count AS (SELECT COUNT(*) AS count_democrats FROM filtered_congress WHERE party = 'Democrat'), republican_count AS (SELECT COUNT(*) AS count_republicans FROM filtered_congress WHERE party = 'Republican'), percentage_ratio AS (SELECT (CAST(democrat_count.count_democrats AS REAL) / republican_count.count_republicans) * 100 AS ratio FROM democrat_count, republican_count) SELECT percentage_ratio.ratio, zc.zip_code FROM zip_congress zc JOIN congress c ON zc.district = c.cognress_rep_id WHERE c.state = 'IN' AND c.party = 'Democrat';"
+}
+```
+
+### Index 4110
+**Question:** How many territories are there in the Eastern Region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include tables or columns related to territories or regions. Unable to write a valid SQL query for the given user query."
+}
+```
+
+### Index 4131
+**Question:** Which country produced the highest number of cars? Calculate the annual average number of cars that the said country produced from the very start to the present.
+**Database:** cars
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CountryCarCount AS (SELECT p.country, COUNT(p.ID) AS car_count FROM production p GROUP BY p.country), MaxCountry AS (SELECT c.country FROM CountryCarCount c WHERE c.car_count = (SELECT MAX(car_count) FROM CountryCarCount)), AnnualAverage AS (SELECT COUNT(p.ID) * 1.0 / COUNT(DISTINCT p.model_year) AS annual_avg FROM production p WHERE p.country = (SELECT country FROM MaxCountry)) SELECT co.country, aa.annual_avg FROM country co JOIN MaxCountry mc ON co.origin = mc.country, AnnualAverage aa;"
+}
+```
+
+### Index 4156
+**Question:** Which territory does Ms. Laura Callahan's direct supervisor work in? Give the name of the territory.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary tables or columns (e.g., TitleOfCourtesy, ReportsTo, TerritoryDescription) to answer the query."
+}
+```
+
+### Index 4189
+**Question:** Calculate the percentage of order via in-store channel of customer "Medline".
+**Database:** regional_sales
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MedlineOrders AS (SELECT SO.OrderNumber, SO.\"Sales Channel\" FROM \"Sales Orders\" SO INNER JOIN Customers C ON SO._CustomerID = C.CustomerID WHERE C.\"Customer Names\" = 'Medline') SELECT 100.0 * SUM(CASE WHEN \"Sales Channel\" = 'In-Store' THEN 1 ELSE 0 END) / COUNT(*) AS InStorePercentage FROM MedlineOrders;"
+}
+```
+
+### Index 4208
+**Question:** What is the difference in the number of employees from the UK and the USA who work as sales representatives?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The Employees table does not include the necessary columns (Country and Title) to execute the query as described."
+}
+```
+
+### Index 4327
+**Question:** How much higher is the average rating score of the movie "Innocence Unprotected" than the movie "When Will I Be Loved"?
+**Database:** movie_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH movie_avg_ratings AS (SELECT m.movie_title, AVG(r.rating_score) AS avg_rating FROM movies m JOIN ratings r ON m.movie_id = r.movie_id WHERE m.movie_title IN ('Innocence Unprotected', 'When Will I Be Loved') GROUP BY m.movie_title) SELECT (SELECT avg_rating FROM movie_avg_ratings WHERE movie_title = 'Innocence Unprotected') - (SELECT avg_rating FROM movie_avg_ratings WHERE movie_title = 'When Will I Be Loved') AS rating_difference;"
+}
+```
+
+### Index 4403
+**Question:** Which territories is the employee with a doctorate in charge of? List all of the territory descriptions.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include the necessary tables or columns to retrieve territories or territory descriptions associated with employees holding a doctorate."
+}
+```
+
+### Index 4477
+**Question:** Among the LG brand users, calculate the percentage of the Nexus 5 model user. What is the ratio of male and female users of it?
+**Database:** talkingdata
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH LG_users AS (SELECT device_id FROM phone_brand_device_model2 WHERE phone_brand = 'LG'), Nexus5_users AS (SELECT device_id FROM phone_brand_device_model2 WHERE phone_brand = 'LG' AND device_model = 'Nexus 5'), Male_Nexus5 AS (SELECT COUNT(ga.device_id) AS male_count FROM gender_age ga JOIN Nexus5_users n5 ON ga.device_id = n5.device_id WHERE ga.gender = 'M'), Female_Nexus5 AS (SELECT COUNT(ga.device_id) AS female_count FROM gender_age ga JOIN Nexus5_users n5 ON ga.device_id = n5.device_id WHERE ga.gender = 'F') SELECT (SELECT COUNT(device_id) FROM Nexus5_users) * 100.0 / (SELECT COUNT(device_id) FROM LG_users) AS percentage_Nexus5, (SELECT male_count FROM Male_Nexus5) * 1.0 / (SELECT female_count FROM Female_Nexus5) AS male_female_ratio;"
+}
+```
+
+### Index 4520
+**Question:** How many subordinates does employee ID 2 have and what is the biggest order in terms of value that his/her subordinates have created?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'ReportsTo' column in the Employees table, so subordinates of Employee ID 2 cannot be determined."
+}
+```
+
+### Index 4524
+**Question:** Name the store with the highest quantity in sales? What is the least quantity title from the store's sale?
+**Database:** book_publishing_company
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH StoreWithMaxQty AS (SELECT stor_id, MAX(qty) AS max_qty FROM sales GROUP BY stor_id ORDER BY max_qty DESC LIMIT 1), LeastQtyTitle AS (SELECT title FROM sales JOIN titles ON sales.title_id = titles.title_id WHERE sales.stor_id = (SELECT stor_id FROM StoreWithMaxQty) ORDER BY qty ASC LIMIT 1) SELECT stores.stor_name, (SELECT title FROM LeastQtyTitle) AS least_qty_title FROM stores WHERE stores.stor_id = (SELECT stor_id FROM StoreWithMaxQty);"
+}
+```
+
+### Index 4553
+**Question:** How many employees in the UK takes charge of the sales in over 4 territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include data about territories or sales regions, making it impossible to construct the requested query."
+}
+```
+
+### Index 4563
+**Question:** Among all the customers who have purchased ML Bottom Bracket, identify the percentage of sales by Albert I. Ringer?
+**Database:** sales
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ProductID_CTE AS (SELECT ProductID FROM Products WHERE Name = 'ML Bottom Bracket'), FilteredSales AS (SELECT * FROM Sales WHERE ProductID = (SELECT ProductID FROM ProductID_CTE)), AlbertID_CTE AS (SELECT CustomerID FROM Customers WHERE FirstName = 'Albert' AND MiddleInitial = 'I' AND LastName = 'Ringer'), TotalSales AS (SELECT COUNT(*) AS Total FROM FilteredSales), AlbertSales AS (SELECT COUNT(*) AS AlbertTotal FROM FilteredSales WHERE CustomerID = (SELECT CustomerID FROM AlbertID_CTE)) SELECT (1.0 * AlbertTotal / Total) * 100 AS Percentage FROM TotalSales, AlbertSales;"
+}
+```
+
+### Index 4786
+**Question:** How many titles did Mary Smith rent in 2005? Determine the percentage of titles rented in June 2005.
+**Database:** movie_3
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MarySmithRentals AS (SELECT r.inventory_id FROM customer c JOIN rental r ON c.customer_id = r.customer_id WHERE c.first_name = 'Mary' AND c.last_name = 'Smith' AND strftime('%Y', r.rental_date) = '2005'), TotalRentals AS (SELECT COUNT(*) AS total_rentals FROM rental), JuneRentals AS (SELECT COUNT(*) AS june_rentals FROM rental WHERE strftime('%Y', rental_date) = '2005' AND strftime('%m', rental_date) = '06') SELECT (SELECT COUNT(*) FROM MarySmithRentals) AS mary_smith_rentals_2005, (SELECT june_rentals * 100.0 / total_rentals FROM TotalRentals, JuneRentals) AS june_rentals_percentage;"
+}
+```
+
+### Index 4798
+**Question:** List the full name of employees and titles who have to report to Sales Manager.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include information about employee titles or reporting relationships. Please provide additional details or clarify the hierarchy."
+}
+```
+
+### Index 4835
+**Question:** How many female employees are in charge of 3 or more territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary data to determine female employees or their association with territories."
+}
+```
+
+### Index 4846
+**Question:** What is the full name of the employee in charge of the Southern region who is to report to Andrew Fuller?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include the necessary information (e.g., a 'ReportsTo' column in the Employees table or a 'Region' table) to answer this query."
+}
+```
+
+### Index 4857
+**Question:** How many of the orders are shipped to France?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a column for shipping country in the Orders table, so the query cannot be constructed to determine orders shipped to France."
+}
+```
+
+### Index 4860
+**Question:** Find the full name of the player born in Atlanta and have the highest number of blocks. Also, in which team did this player perform the most number of blocks?
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH PlayerMaxBlocks AS (SELECT p.playerID, p.firstName || ' ' || IFNULL(p.middleName || ' ', '') || p.lastName AS fullName, MAX(pt.blocks) AS maxBlocks FROM players p JOIN players_teams pt ON p.playerID = pt.playerID WHERE p.birthCity = 'Atlanta'), TeamMaxBlocks AS (SELECT tmID, blocks FROM players_teams WHERE playerID = (SELECT playerID FROM PlayerMaxBlocks) ORDER BY blocks DESC LIMIT 1) SELECT PlayerMaxBlocks.fullName, TeamMaxBlocks.tmID FROM PlayerMaxBlocks, TeamMaxBlocks;"
+}
+```
+
+### Index 4908
+**Question:** Which product of Exotic Liquids company that have the highest reorder levels?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'ReorderLevel' column in any table, so the query cannot be constructed as requested."
+}
+```
+
+### Index 4965
+**Question:** Among the cases dismissed by the grand jury disposition, what percentage of cases is where the subject is injured?
+**Database:** shooting
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH dismissed_cases AS (SELECT * FROM incidents WHERE grand_jury_disposition = 'No Bill') SELECT (100.0 * SUM(CASE WHEN subject_statuses = 'injured' THEN 1 ELSE 0 END) / COUNT(*)) AS injured_percentage FROM dismissed_cases;"
+}
+```
+
+### Index 4999
+**Question:** What is the average, highest and lowest annual payments collected between 1/1/2003 to 12/31/2005?
+**Database:** car_retails
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH AnnualPayments AS (SELECT strftime('%Y', paymentDate) AS year, SUM(amount) AS totalPayments FROM payments WHERE paymentDate BETWEEN '2003-01-01' AND '2005-12-31' GROUP BY year) SELECT AVG(totalPayments) AS averageAnnualPayments, MAX(totalPayments) AS highestAnnualPayments, MIN(totalPayments) AS lowestAnnualPayments FROM AnnualPayments;"
+}
+```
+
+### Index 5001
+**Question:** Calculate the difference between the number of cars that has a horsepower of 130 with the model year 1970 and model year 1976
+**Database:** cars
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH car_counts AS (SELECT p.model_year, COUNT(d.ID) AS car_count FROM data d JOIN production p ON d.ID = p.ID WHERE d.horsepower = 130 AND (p.model_year = 1970 OR p.model_year = 1976) GROUP BY p.model_year) SELECT (SELECT car_count FROM car_counts WHERE model_year = 1970) - (SELECT car_count FROM car_counts WHERE model_year = 1976) AS difference;"
+}
+```
+
+### Index 5026
+**Question:** What is Jeannot Szwarc's most popular movie and what is its average rating score?
+**Database:** movie_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MostPopularMovie AS (SELECT movie_id, movie_title, movie_popularity FROM movies WHERE director_name = 'Jeannot Szwarc' ORDER BY movie_popularity DESC LIMIT 1) SELECT m.movie_title, m.movie_popularity, AVG(r.rating_score) AS average_rating_score FROM MostPopularMovie m JOIN ratings r ON m.movie_id = r.movie_id;"
+}
+```
+
+### Index 5083
+**Question:** What is the full name of the team with the fastest growth in winning rate in the 'ABA' league from 1972 to 1973?
+**Database:** professional_basketball
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH WinningRates AS (SELECT tmID, year, name, won * 1.0 / (won + lost) AS winning_rate FROM teams WHERE lgID = 'ABA' AND year IN (1972, 1973)), Growth AS (SELECT t1973.tmID, t1973.name, t1973.winning_rate - t1972.winning_rate AS growth FROM WinningRates t1973 JOIN WinningRates t1972 ON t1973.tmID = t1972.tmID WHERE t1973.year = 1973 AND t1972.year = 1972) SELECT name FROM Growth ORDER BY growth DESC LIMIT 1;"
+}
+```
+
+### Index 5163
+**Question:** What is the category of the product that has the highest number of discontinued products?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'Discontinued' column in the Products table, which is required to determine discontinued products. Please update the schema to include this column."
+}
+```
+
+### Index 5195
+**Question:** Who is the director that directed the highest number of movies in the 70s? If there are multiple directors with the same amount of movies, list all of their names and indicate the highest rating score that those movies got from the users.
+**Database:** movie_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH MoviesIn70s AS (SELECT director_id, director_name, movie_id FROM movies WHERE movie_release_year BETWEEN 1970 AND 1979), DirectorMovieCounts AS (SELECT director_id, director_name, COUNT(movie_id) AS movie_count FROM MoviesIn70s GROUP BY director_id, director_name), MaxMovieCount AS (SELECT MAX(movie_count) AS max_count FROM DirectorMovieCounts), TopDirectors AS (SELECT d.director_id, d.director_name FROM DirectorMovieCounts d, MaxMovieCount m WHERE d.movie_count = m.max_count), DirectorMovies AS (SELECT m.movie_id FROM MoviesIn70s m JOIN TopDirectors t ON m.director_id = t.director_id), MovieRatings AS (SELECT r.rating_score FROM ratings r JOIN DirectorMovies dm ON r.movie_id = dm.movie_id) SELECT t.director_name, MAX(mr.rating_score) AS highest_rating FROM TopDirectors t CROSS JOIN MovieRatings mr;"
+}
+```
+
+### Index 5230
+**Question:** What is the average salary for employees from ID 1 to 9?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a 'Salary' column in the Employees table, so the query cannot be written."
+}
+```
+
+### Index 5240
+**Question:** Please list the home phone numbers of the employees who are in charge of the sales in the territories in the Eastern Region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary tables or columns to retrieve the requested information."
+}
+```
+
+### Index 5251
+**Question:** What is the ratio of male and female users of vivo X5pro model?
+**Database:** talkingdata
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH gender_counts AS (SELECT SUM(CASE WHEN g.gender = 'M' THEN 1 ELSE 0 END) AS male_count, SUM(CASE WHEN g.gender = 'F' THEN 1 ELSE 0 END) AS female_count FROM phone_brand_device_model2 p INNER JOIN gender_age g ON p.device_id = g.device_id WHERE p.phone_brand = 'vivo' AND p.device_model = 'X5Pro') SELECT male_count * 1.0 / female_count AS male_to_female_ratio FROM gender_counts;"
+}
+```
+
+### Index 5300
+**Question:** What is the best seller root beer brand and what is the average star rating for this root beer?
+**Database:** beer_factory
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH BestSeller AS (SELECT BrandID, COUNT(BrandID) AS PurchaseCount FROM transaction INNER JOIN rootbeer ON transaction.RootBeerID = rootbeer.RootBeerID GROUP BY BrandID ORDER BY PurchaseCount DESC LIMIT 1) SELECT rb.BrandName, AVG(rr.StarRating) AS AverageStarRating FROM BestSeller bs INNER JOIN rootbeerbrand rb ON bs.BrandID = rb.BrandID INNER JOIN rootbeerreview rr ON bs.BrandID = rr.BrandID;"
+}
+```
+
+### Index 5351
+**Question:** Which phone number should I call if I want to reach Nancy Davolio's home?
+**Database:** retail_world
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "The database schema does not include a HomePhone column, so the query cannot be written."
+}
+```
+
+### Index 5355
+**Question:** Which region has the most territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include tables or columns related to regions or territories. Please provide the missing schema details."
+}
+```
+
+### Index 5369
+**Question:** How many users who created a list in the February of 2016 were eligible for trial when they created the list? Indicate the user id of the user who has the most number of followers in his list in February of 2016.
+**Database:** movie_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH february_lists AS (SELECT lu.user_id, l.list_followers FROM lists_users lu JOIN lists l ON lu.list_id = l.list_id WHERE lu.list_creation_date_utc BETWEEN '2016-02-01' AND '2016-02-29' AND lu.user_eligible_for_trial = 1), max_followers_user AS (SELECT user_id FROM february_lists ORDER BY list_followers DESC LIMIT 1) SELECT COUNT(DISTINCT user_id) AS eligible_users_count, (SELECT user_id FROM max_followers_user) AS user_with_most_followers FROM february_lists;"
+}
+```
+
+### Index 5370
+**Question:** What is the average coldest temperature for the zip code of 94301 and what stations are within the zip code? Include the latitude and longitude as well.
+**Database:** bike_share_1
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": [
+        "SELECT AVG(min_temperature_f) AS avg_coldest_temperature FROM weather WHERE zip_code = '94301';",
+        "SELECT name, lat, long FROM station WHERE city IN (SELECT DISTINCT city FROM weather WHERE zip_code = '94301');"
+    ]
+}
+```
+
+### Index 5395
+**Question:** Write down the notes of employee with the highest salary.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include a Salary column in the Employees table, so the query cannot be constructed."
+}
+```
+
+### Index 5399
+**Question:** List the full name of all employees who work in the Northern region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information linking employees to regions, making it impossible to determine which employees work in the Northern region."
+}
+```
+
+### Index 5441
+**Question:** What percentage more for the "Women's Clothing" Yelp businesses to "Men's Clothing"?
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CategoryCounts AS (SELECT c.category_name, COUNT(bc.business_id) AS business_count FROM Categories c JOIN Business_Categories bc ON c.category_id = bc.category_id WHERE c.category_name IN ('Women''s Clothing', 'Men''s Clothing') GROUP BY c.category_name) SELECT (100.0 * (wc.business_count - mc.business_count) / mc.business_count) AS percentage_more FROM (SELECT business_count FROM CategoryCounts WHERE category_name = 'Women''s Clothing') wc, (SELECT business_count FROM CategoryCounts WHERE category_name = 'Men''s Clothing') mc;"
+}
+```
+
+### Index 5460
+**Question:** What is the full address of Rattlesnake Canyon Grocery?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not contain columns for full address details or a table with shipping information."
+}
+```
+
+### Index 5500
+**Question:** Identify the number of employees in Northern sales region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information linking employees to the Northern sales region. Please provide additional data or clarify the query."
+}
+```
+
+### Index 5596
+**Question:** Which negatively correlated, genetically interacting genes are non-essential? What percentage do they represent with respect to those that are essential?
+**Database:** genes
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredGenes AS (SELECT g.GeneID, g.Essential FROM Interactions i JOIN Genes g ON i.GeneID1 = g.GeneID WHERE i.Expression_Corr < 0 AND i.Type = 'genetic') SELECT COUNT(CASE WHEN Essential = 'Non-Essential' THEN 1 END) AS NonEssentialCount, COUNT(CASE WHEN Essential = 'Essential' THEN 1 END) AS EssentialCount, (CAST(COUNT(CASE WHEN Essential = 'Non-Essential' THEN 1 END) AS FLOAT) / COUNT(*)) * 100 AS NonEssentialPercentage FROM FilteredGenes;"
+}
+```
+
+### Index 5669
+**Question:** Which two products has the highest and lowest expected profits? Determine the total price for each product in terms of the largest quantity that was ordered.
+**Database:** car_retails
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ProductProfits AS (SELECT productCode, productName, (MSRP - buyPrice) AS expectedProfit FROM products), MaxMinProfits AS (SELECT MAX(expectedProfit) AS maxProfit, MIN(expectedProfit) AS minProfit FROM ProductProfits), LargestQuantity AS (SELECT productCode, MAX(quantityOrdered) AS maxQuantity FROM orderdetails GROUP BY productCode), TotalPrice AS (SELECT od.productCode, (lq.maxQuantity * od.priceEach) AS totalPrice FROM orderdetails od JOIN LargestQuantity lq ON od.productCode = lq.productCode AND od.quantityOrdered = lq.maxQuantity), FinalResult AS (SELECT pp.productCode, pp.productName, pp.expectedProfit, tp.totalPrice FROM ProductProfits pp JOIN TotalPrice tp ON pp.productCode = tp.productCode WHERE pp.expectedProfit = (SELECT maxProfit FROM MaxMinProfits) OR pp.expectedProfit = (SELECT minProfit FROM MaxMinProfits)) SELECT * FROM FinalResult;"
+}
+```
+
+### Index 5687
+**Question:** List down the territory IDs and descriptions existed in Southern region.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema provided does not include a table or columns related to territories or regions. Please provide the relevant schema to proceed."
+}
+```
+
+### Index 5922
+**Question:** How many employees is a UK citizen and are they all covering the same region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include information about employees' countries or regions, so the query cannot be answered."
+}
+```
+
+### Index 6055
+**Question:** List all category name of Exotic Liquids 's product with units in stock over 100.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'UnitsInStock' column in the 'Products' table, so the query cannot be executed as described."
+}
+```
+
+### Index 6064
+**Question:** How many territories are there?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories. Please clarify or provide additional details."
+}
+```
+
+### Index 6092
+**Question:** Find out which hotel and travel business having the most review? Calculate the standard deviation of the review star for this business.
+**Database:** public_review_platform
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH HotelTravelBusinesses AS (SELECT b.business_id, b.review_count FROM Business b INNER JOIN Business_Categories bc ON b.business_id = bc.business_id INNER JOIN Categories c ON bc.category_id = c.category_id WHERE c.category_name = 'Hotel & Travel'), MostReviewedBusiness AS (SELECT business_id FROM HotelTravelBusinesses ORDER BY review_count DESC LIMIT 1) SELECT STDDEV(r.review_stars) AS review_star_stddev FROM Reviews r WHERE r.business_id = (SELECT business_id FROM MostReviewedBusiness);"
+}
+```
+
+### Index 6165
+**Question:** Calculate the percentage of the total number of current female legislators and past female legislators. State which one has the highest value.
+**Database:** legislator
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH current_female_count AS (SELECT COUNT(*) AS count FROM current WHERE gender_bio = 'F'), past_female_count AS (SELECT COUNT(*) AS count FROM historical WHERE gender_bio = 'F'), total_count AS (SELECT (cf.count + pf.count) AS total FROM current_female_count cf, past_female_count pf) SELECT cf.count AS current_female, pf.count AS past_female, (CAST(cf.count AS FLOAT) / total.total) * 100 AS current_percentage, (CAST(pf.count AS FLOAT) / total.total) * 100 AS past_percentage, CASE WHEN (CAST(cf.count AS FLOAT) / total.total) > (CAST(pf.count AS FLOAT) / total.total) THEN 'Current' ELSE 'Past' END AS highest FROM current_female_count cf, past_female_count pf, total_count total;"
+}
+```
+
+### Index 6213
+**Question:** What is the name of the university that had the highest number of international students for 6 consecutive years?
+**Database:** university
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH yearly_max AS (SELECT year, university_id, MAX(pct_international_students) AS max_pct FROM university_year GROUP BY year), consecutive_years AS (SELECT university_id, COUNT(*) AS consecutive_years FROM yearly_max GROUP BY university_id HAVING COUNT(*) >= 6) SELECT u.university_name FROM university u JOIN consecutive_years c ON u.id = c.university_id;"
+}
+```
+
+### Index 6224
+**Question:** Please list the territories whose sales are taken in charge by the employees who report to Andrew Fuller.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include information about territories, reporting relationships, or Andrew Fuller. Please provide additional details or clarify the missing elements."
+}
+```
+
+### Index 6278
+**Question:** In 1994 which title had less order quanty than the average order quantity? Find the title name, type and price.
+**Database:** book_publishing_company
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH AvgOrderQuantity AS (SELECT SUM(qty) * 1.0 / COUNT(DISTINCT title_id) AS avg_qty FROM sales WHERE strftime('%Y', ord_date) = '1994'), TitleOrderQuantity AS (SELECT s.title_id, SUM(s.qty) AS total_qty FROM sales s WHERE strftime('%Y', s.ord_date) = '1994' GROUP BY s.title_id) SELECT t.title, t.type, t.price FROM titles t JOIN TitleOrderQuantity tq ON t.title_id = tq.title_id, AvgOrderQuantity aoq WHERE tq.total_qty < aoq.avg_qty;"
+}
+```
+
+### Index 6321
+**Question:** Is (206) 555-1189 the home phone number for Laura Callahan?
+**Database:** retail_world
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "No valid query can be constructed to verify if (206) 555-1189 is the home phone number for Laura Callahan based on the provided schema."
+}
+```
+
+### Index 6399
+**Question:** Among the products ordered in order no. 10248, which product has the biggest ratio of units on order to units in stock?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include columns for 'UnitsOnOrder' or 'UnitsInStock', which are required to calculate the ratio. Please provide clarification or additional schema details."
+}
+```
+
+### Index 6428
+**Question:** For how many consecutive years did Aruba get a footnote on the series code BX.KLT.DINV.CD.WD?
+**Database:** world_development_indicators
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ConsecutiveYears AS (SELECT Year, LAG(Year) OVER (ORDER BY Year) AS PreviousYear FROM Footnotes WHERE CountryCode = (SELECT CountryCode FROM Country WHERE ShortName = 'Aruba') AND SeriesCode = 'BX.KLT.DINV.CD.WD') SELECT COUNT(*) AS ConsecutiveYearCount FROM ConsecutiveYears WHERE Year - PreviousYear = 1;"
+}
+```
+
+### Index 6446
+**Question:** What is the salary range for sales representative in Northwind?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include salary or job title information, so the query cannot be written."
+}
+```
+
+### Index 6479
+**Question:** From which state do the 5 biggest donor, who gave the highest cost of optional support, come from? List their donor_acctid and calculate for their average cost of optional support for every donations they make and identtify the project's type of resource to which they gave the hightest optional support.
+**Database:** donor
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH DonorTotals AS (SELECT donor_acctid, donor_state, SUM(donation_optional_support) AS total_optional_support FROM donations GROUP BY donor_acctid ORDER BY total_optional_support DESC LIMIT 5), DonorAverage AS (SELECT donor_acctid, AVG(donation_optional_support) AS avg_optional_support FROM donations GROUP BY donor_acctid), DonorHighestSupport AS (SELECT d.donor_acctid, d.projectid, MAX(d.donation_optional_support) AS highest_optional_support FROM donations d GROUP BY d.donor_acctid), ResourceType AS (SELECT dhs.donor_acctid, r.project_resource_type FROM DonorHighestSupport dhs JOIN resources r ON dhs.projectid = r.projectid AND dhs.highest_optional_support = r.item_unit_price * r.item_quantity) SELECT dt.donor_acctid, dt.donor_state, da.avg_optional_support, rt.project_resource_type FROM DonorTotals dt JOIN DonorAverage da ON dt.donor_acctid = da.donor_acctid JOIN ResourceType rt ON dt.donor_acctid = rt.donor_acctid;"
+}
+```
+
+### Index 6530
+**Question:** What is the title of the employee with the highest number of territories in charge?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories or their association with employees."
+}
+```
+
+### Index 6543
+**Question:** What is the difference in salary of the top 2 employees with the highest number of territories in charge?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories or salary. Please provide additional details or update the schema."
+}
+```
+
+### Index 6614
+**Question:** What is the average number of inspections done by the top 5 employees with the highest salary? List the names of the said employees.
+**Database:** food_inspection_2
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH TopEmployees AS (SELECT employee_id, first_name, last_name FROM employee ORDER BY salary DESC LIMIT 5), InspectionCounts AS (SELECT e.employee_id, COUNT(i.inspection_id) AS inspection_count FROM TopEmployees e LEFT JOIN inspection i ON e.employee_id = i.employee_id GROUP BY e.employee_id) SELECT (SUM(inspection_count) * 1.0 / 5) AS average_inspections, GROUP_CONCAT(first_name || ' ' || last_name) AS employee_names FROM InspectionCounts JOIN TopEmployees ON InspectionCounts.employee_id = TopEmployees.employee_id;"
+}
+```
+
+### Index 6635
+**Question:** What is the percentage ratio between uncredited and credited roles on the episode that won the 2017 Jupiter Award for Best International TV Series? Please include the title of the episode and the names of the persons who were uncredited alongside their role in that episode.
+**Database:** simpson_episodes
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH WinningEpisode AS (SELECT e.episode_id, e.title FROM Award a JOIN Episode e ON a.episode_id = e.episode_id WHERE a.year = 2017 AND a.award_category = 'Jupiter Award' AND a.award = 'Best International TV Series' AND a.result = 'Winner'), RoleCounts AS (SELECT c.episode_id, SUM(CASE WHEN c.credited = '' THEN 1 ELSE 0 END) AS uncredited_count, SUM(CASE WHEN c.credited = 'true' THEN 1 ELSE 0 END) AS credited_count FROM Credit c JOIN WinningEpisode we ON c.episode_id = we.episode_id GROUP BY c.episode_id), UncreditedDetails AS (SELECT c.person, c.role FROM Credit c JOIN WinningEpisode we ON c.episode_id = we.episode_id WHERE c.credited = '') SELECT we.title, (CAST(rc.uncredited_count AS REAL) / rc.credited_count) * 100 AS percentage_ratio, ud.person AS uncredited_person, ud.role AS uncredited_role FROM WinningEpisode we JOIN RoleCounts rc ON we.episode_id = rc.episode_id LEFT JOIN UncreditedDetails ud ON we.episode_id = ud.episode_id;"
+}
+```
+
+### Index 6640
+**Question:** When compared to the total number of breweries in the US producing American Blonde Ale, how many in the state of Wisconsin produces American Blonde Ale? Indicate your answer in percentage (%).
+**Database:** craftbeer
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH wisconsin_breweries AS (SELECT COUNT(DISTINCT b.id) AS count FROM breweries b JOIN beers br ON b.id = br.brewery_id WHERE b.state = 'Wisconsin' AND br.style = 'American Blonde Ale'), total_breweries AS (SELECT COUNT(DISTINCT b.id) AS count FROM breweries b JOIN beers br ON b.id = br.brewery_id WHERE br.style = 'American Blonde Ale') SELECT (CAST(wisconsin_breweries.count AS REAL) / total_breweries.count) * 100 AS percentage FROM wisconsin_breweries, total_breweries;"
+}
+```
+
+### Index 6673
+**Question:** Find the difference between the number of female senators and representatives born between 1930 to 1970.
+**Database:** legislator
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH female_counts AS (SELECT type, COUNT(*) AS count FROM current c JOIN \"current-terms\" ct ON c.bioguide_id = ct.bioguide WHERE gender_bio = 'F' AND strftime('%Y', birthday_bio) BETWEEN '1930' AND '1970' GROUP BY type) SELECT COALESCE((SELECT count FROM female_counts WHERE type = 'sen'), 0) - COALESCE((SELECT count FROM female_counts WHERE type = 'rep'), 0) AS difference;"
+}
+```
+
+### Index 6685
+**Question:** What is the average number of dishes per menu in the Souper de Luxe menus? Identify what is the name of the dish that appeared the most in all of its menus.
+**Database:** menu
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH SouperMenus AS (SELECT id FROM Menu WHERE name = 'Souper de Luxe'), SouperMenuPages AS (SELECT id FROM MenuPage WHERE menu_id IN (SELECT id FROM SouperMenus)), DishCounts AS (SELECT dish_id, COUNT(dish_id) AS dish_count FROM MenuItem WHERE menu_page_id IN (SELECT id FROM SouperMenuPages) GROUP BY dish_id), MostAppearedDish AS (SELECT dish_id FROM DishCounts WHERE dish_count = (SELECT MAX(dish_count) FROM DishCounts)) SELECT (SELECT COUNT(dish_id) * 1.0 / COUNT(DISTINCT menu_id) FROM MenuItem WHERE menu_page_id IN (SELECT id FROM SouperMenuPages)) AS average_dishes_per_menu, (SELECT name FROM Dish WHERE id = (SELECT dish_id FROM MostAppearedDish)) AS most_appeared_dish_name;"
+}
+```
+
+### Index 6696
+**Question:** How many times is the number of territories in "Eastern Region" than "Southern Region"?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The required tables (Regions and Territories) are not present in the provided schema, so the query cannot be constructed."
+}
+```
+
+### Index 6709
+**Question:** Describe the ordered products which were the most overdue from required date.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include ShippedDate or RequiredDate columns required to calculate overdue products."
+}
+```
+
+### Index 6743
+**Question:** What is the full name of the employee who is in charge of the territory of Denver?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include information about territories or their relationship to employees, making it impossible to construct the requested query."
+}
+```
+
+### Index 6799
+**Question:** Under the conference name of MICRO, calculate how many more paper is needed to published in 1971 to 1980 in average by yearly to get equivalent to the number of paper from 1991 to 2000. Write down the title and author name of the paper that were actually published during 1971 to 1980 with the conference name with MICRO.
+**Database:** authors
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH PaperCounts AS (SELECT COUNT(CASE WHEN Year BETWEEN 1971 AND 1980 THEN 1 END) AS Papers_1971_1980, COUNT(CASE WHEN Year BETWEEN 1991 AND 2000 THEN 1 END) AS Papers_1991_2000 FROM Paper INNER JOIN Conference ON Paper.ConferenceId = Conference.Id WHERE Conference.ShortName = 'MICRO'), AvgNeeded AS (SELECT (Papers_1991_2000 - Papers_1971_1980) / 10.0 AS Avg_Yearly_Needed FROM PaperCounts) SELECT Paper.Title, PaperAuthor.Name AS AuthorName FROM Paper INNER JOIN PaperAuthor ON Paper.Id = PaperAuthor.PaperId INNER JOIN Conference ON Paper.ConferenceId = Conference.Id WHERE Paper.Year BETWEEN 1971 AND 1980 AND Conference.ShortName = 'MICRO';"
+}
+```
+
+### Index 6981
+**Question:** Who is the sales representative of the customer who has made the highest payment? Include the full name of employee and his/her supervisor.
+**Database:** retail_world
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CustomerPayments AS (SELECT o.CustomerID, SUM(od.Quantity * p.Price) AS TotalPayment FROM OrderDetails od JOIN Orders o ON od.OrderID = o.OrderID JOIN Products p ON od.ProductID = p.ProductID GROUP BY o.CustomerID), MaxPaymentCustomer AS (SELECT CustomerID FROM CustomerPayments WHERE TotalPayment = (SELECT MAX(TotalPayment) FROM CustomerPayments)) SELECT e.FirstName || ' ' || e.LastName AS EmployeeFullName FROM Orders o JOIN Employees e ON o.EmployeeID = e.EmployeeID WHERE o.CustomerID = (SELECT CustomerID FROM MaxPaymentCustomer) LIMIT 1;"
+}
+```
+
+### Index 6988
+**Question:** List the ID, city, state and region for the store type which is fewer between borough and CDP.
+**Database:** regional_sales
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH TypeCounts AS (SELECT Type, COUNT(StoreID) AS StoreCount FROM \"Store Locations\" WHERE Type IN ('Borough', 'CDP') GROUP BY Type), FewerType AS (SELECT Type FROM TypeCounts ORDER BY StoreCount ASC LIMIT 1) SELECT sl.StoreID, sl.\"City Name\", sl.State, r.Region FROM \"Store Locations\" sl JOIN Regions r ON sl.StateCode = r.StateCode WHERE sl.Type = (SELECT Type FROM FewerType);"
+}
+```
+
+### Index 7020
+**Question:** What is the average number of territories do each sales representative is in charge of?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary tables or columns (e.g., Territories, Title) to calculate the average number of territories per sales representative."
+}
+```
+
+### Index 7143
+**Question:** What is the average level employees working as Managing Editor are at? How many levels are there between the average level and the highest level?
+**Database:** book_publishing_company
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ManagingEditorJob AS (SELECT job_id, max_lvl FROM jobs WHERE job_desc = 'Managing Editor'), AvgJobLevel AS (SELECT AVG(job_lvl) AS avg_lvl FROM employee WHERE job_id = (SELECT job_id FROM ManagingEditorJob)) SELECT (SELECT max_lvl FROM ManagingEditorJob) - (SELECT avg_lvl FROM AvgJobLevel) AS level_difference, (SELECT avg_lvl FROM AvgJobLevel) AS average_level;"
+}
+```
+
+### Index 7203
+**Question:** Which member of the faculty are teaching the most courses and what is his/her general course level?
+**Database:** computer_student
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FacultyCourses AS (SELECT p.p_id, COUNT(t.course_id) AS course_count FROM person p JOIN taughtBy t ON p.p_id = t.p_id WHERE p.hasPosition <> 0 GROUP BY p.p_id), MaxFaculty AS (SELECT p_id, MAX(course_count) AS max_courses FROM FacultyCourses), FacultyCourseLevel AS (SELECT fc.p_id, c.courseLevel FROM taughtBy t JOIN course c ON t.course_id = c.course_id JOIN MaxFaculty mf ON t.p_id = mf.p_id) SELECT fc.p_id, fc.courseLevel FROM FacultyCourseLevel fc;"
+}
+```
+
+### Index 7257
+**Question:** Among the employees working as Sales Representatives, how many of them are located in the UK?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary columns (Title and Country) in the Employees table to execute the query."
+}
+```
+
+### Index 7316
+**Question:** Give me the address, home phone and salary of the Sales Manager.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not contain the necessary tables or columns to retrieve the address, home phone, and salary of the Sales Manager."
+}
+```
+
+### Index 7406
+**Question:** What proportion of orders are taken by the Sales Representative?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a column for employee titles, so the query cannot be completed as requested. Please provide additional information or clarify."
+}
+```
+
+### Index 7498
+**Question:** How many employees from USA with Sales Representative title?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The current schema does not support filtering employees by country or job title. Please update the schema to include 'Country' and 'JobTitle' columns in the Employees table."
+}
+```
+
+### Index 7550
+**Question:** How many percent of orders in 2020 used international shipping?
+**Database:** books
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH orders_2020 AS (SELECT * FROM cust_order WHERE order_date LIKE '2020%'), total_orders AS (SELECT COUNT(order_id) AS total FROM orders_2020), international_orders AS (SELECT COUNT(co.order_id) AS international FROM orders_2020 co JOIN shipping_method sm ON co.shipping_method_id = sm.method_id WHERE sm.method_name = 'International') SELECT (CAST(international_orders.international AS FLOAT) / total_orders.total) * 100 AS percentage FROM total_orders, international_orders;"
+}
+```
+
+### Index 7557
+**Question:** What is the total sales amount of all discontinued products?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'Discontinued' column in the Products table, which is required to filter for discontinued products. Please provide an updated schema or clarify."
+}
+```
+
+### Index 7578
+**Question:** How many countries are using the same type of currency? Please list the short names of any 3 countries.
+**Database:** world_development_indicators
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH CurrencyGroups AS (SELECT CurrencyUnit, COUNT(*) AS CountryCount FROM Country GROUP BY CurrencyUnit HAVING COUNT(*) > 1), CountrySubset AS (SELECT CurrencyUnit, ShortName FROM Country WHERE CurrencyUnit IN (SELECT CurrencyUnit FROM CurrencyGroups) LIMIT 3) SELECT cg.CurrencyUnit, cg.CountryCount, cs.ShortName FROM CurrencyGroups cg JOIN CountrySubset cs ON cg.CurrencyUnit = cs.CurrencyUnit;"
+}
+```
+
+### Index 7604
+**Question:** How many territories are there in the region with the highest number of territories?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include tables or columns related to territories or regions. Please provide the relevant schema details."
+}
+```
+
+### Index 7671
+**Question:** Calculate the percentage salary of employees who handled orders shipped in 1996.
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary columns (ShippedDate and Salary) to calculate the percentage salary of employees who handled orders shipped in 1996."
+}
+```
+
+### Index 7701
+**Question:** Give me the years and episode IDs in which Constantine Makris was the winner of the Television Silver Gavel Award at the American Bar Association Silver Gavel Awards for Media and the Arts for two consecutive years.
+**Database:** law_episode
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredAwards AS (SELECT year, episode_id, person_id FROM Award WHERE organization = 'American Bar Association Silver Gavel Awards for Media and the Arts' AND award_category = 'Silver Gavel Award' AND award = 'Television' AND result = 'Winner'), ConstantineAwards AS (SELECT FA.year, FA.episode_id FROM FilteredAwards FA JOIN Person P ON FA.person_id = P.person_id WHERE P.name = 'Constantine Makris'), ConsecutiveYears AS (SELECT CA1.year AS year1, CA2.year AS year2, CA1.episode_id FROM ConstantineAwards CA1 JOIN ConstantineAwards CA2 ON CA1.year = CA2.year - 1) SELECT year1 AS year, episode_id FROM ConsecutiveYears;"
+}
+```
+
+### Index 7713
+**Question:** What is the phone number for the employee in charge of the Portsmouth territory?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary data or relationships to determine the phone number of the employee in charge of the Portsmouth territory."
+}
+```
+
+### Index 7772
+**Question:** How many sales representatives whose salaries are higher than 2000?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include the necessary columns (e.g., Title, Salary) to answer the query."
+}
+```
+
+### Index 7774
+**Question:** For the quantities, what percent more did the store in Fremont sell than the store in Portland in 1993?
+**Database:** book_publishing_company
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH city_sales AS (SELECT s.city, SUM(sa.qty) AS total_qty FROM sales sa JOIN stores s ON sa.stor_id = s.stor_id WHERE strftime('%Y', sa.ord_date) = '1993' AND s.city IN ('Fremont', 'Portland') GROUP BY s.city) SELECT ((SELECT total_qty FROM city_sales WHERE city = 'Fremont') - (SELECT total_qty FROM city_sales WHERE city = 'Portland')) * 100.0 / (SELECT total_qty FROM city_sales WHERE city = 'Fremont') AS percentage_difference;"
+}
+```
+
+### Index 7791
+**Question:** What is the most consecutive games tied by Ebbsfleet as an away team in the 2008 season?
+**Database:** european_football_1
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH RankedMatches AS (SELECT Date, ROW_NUMBER() OVER (ORDER BY Date) AS RowNum FROM matchs WHERE AwayTeam = 'Ebbsfleet' AND season = 2008 AND FTR = 'D'), ConsecutiveGroups AS (SELECT Date, RowNum - ROW_NUMBER() OVER (ORDER BY Date) AS GroupID FROM RankedMatches) SELECT COUNT(*) AS MaxConsecutiveTiedGames FROM ConsecutiveGroups GROUP BY GroupID ORDER BY MaxConsecutiveTiedGames DESC LIMIT 1;"
+}
+```
+
+### Index 7915
+**Question:** What are the order ids of the orders with freight of over 800?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided database schema does not include a 'Freight' column in any table, so the query cannot be executed."
+}
+```
+
+### Index 7919
+**Question:** Which summer Olympic have the highest and lowest number of participants?
+**Database:** olympics
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH ParticipantCounts AS (SELECT g.games_name, COUNT(gc.person_id) AS participant_count FROM games g JOIN games_competitor gc ON g.id = gc.games_id WHERE g.season = 'Summer' GROUP BY g.id) SELECT games_name, participant_count FROM ParticipantCounts WHERE participant_count = (SELECT MAX(participant_count) FROM ParticipantCounts) UNION SELECT games_name, participant_count FROM ParticipantCounts WHERE participant_count = (SELECT MIN(participant_count) FROM ParticipantCounts);"
+}
+```
+
+### Index 7964
+**Question:** Name the state with the most number of graduate cohort in 2012 from private institute for profit? List all such institutes in the mentioned state.
+**Database:** college_completion
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH state_totals AS (SELECT state, SUM(grad_cohort) AS total_grad_cohort FROM state_sector_grads WHERE year = 2012 AND control = 'Private for-profit' GROUP BY state), max_state AS (SELECT state FROM state_totals WHERE total_grad_cohort = (SELECT MAX(total_grad_cohort) FROM state_totals)) SELECT chronname FROM institution_details WHERE state = (SELECT state FROM max_state);"
+}
+```
+
+### Index 7985
+**Question:** From the Spanish LaLiga division in the 2017 season, which team won the most times as a local team and by what percentage?
+**Database:** european_football_1
+**Failure Type:** json_parse_error
+**Description:** JSON parsing failed: Invalid \escape: line 2 column 39 (char 40)
+**Last Answer Content:**
+```
+{
+    "sql": "WITH FilteredMatches AS ( \
+                SELECT HomeTeam, COUNT(*) AS Wins \
+                FROM matchs \
+                WHERE Div = (SELECT division FROM divisions WHERE name = 'LaLiga' AND country = 'Spain') \
+                  AND season = 2017 AND FTR = 'H' \
+                GROUP BY HomeTeam \
+            ), \
+            TotalMatches AS ( \
+                SELECT COUNT(*) AS Total \
+                FROM matchs \
+                WHERE Div = (SELECT division FROM divisions WHERE name = 'LaLiga' AND country = 'Spain') \
+                  AND season = 2017 \
+            ) \
+            SELECT HomeTeam, Wins, (Wins * 100.0 / (SELECT Total FROM TotalMatches)) AS Percentage \
+            FROM FilteredMatches \
+            ORDER BY Wins DESC \
+            LIMIT 1;"
+}
+```
+
+### Index 8001
+**Question:** What are the names of the products that were discountinued?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The schema does not include a 'Discontinued' column in the Products table, so it is not possible to query for discontinued products."
+}
+```
+
+### Index 8040
+**Question:** Between Rome and Juliet, which character was mentioned the most in the The Tragedy of Romeo and Juliet? Calculate for Romeo and Juliet's individual amount of appearance in percentage against the overall number of characters that appeared in the said work.
+**Database:** shakespeare
+**Failure Type:** json_parse_error
+**Description:** JSON parsing failed: Invalid \escape: line 2 column 36 (char 37)
+**Last Answer Content:**
+```
+{
+    "sql": "WITH WorkChapters AS ( \
+                SELECT c.id AS chapter_id \
+                FROM works w \
+                JOIN chapters c ON w.id = c.work_id \
+                WHERE w.LongTitle = 'The Tragedy of Romeo and Juliet' \
+            ), \
+            CharacterMentions AS ( \
+                SELECT ch.CharName, COUNT(p.id) AS mention_count \
+                FROM paragraphs p \
+                JOIN characters ch ON p.character_id = ch.id \
+                WHERE p.chapter_id IN (SELECT chapter_id FROM WorkChapters) \
+                AND ch.CharName IN ('Romeo', 'Juliet') \
+                GROUP BY ch.CharName \
+            ), \
+            TotalMentions AS ( \
+                SELECT COUNT(p.id) AS total_count \
+                FROM paragraphs p \
+                WHERE p.chapter_id IN (SELECT chapter_id FROM WorkChapters) \
+            ) \
+            SELECT cm.CharName, \
+                   cm.mention_count, \
+                   ROUND((CAST(cm.mention_count AS FLOAT) / tm.total_count) * 100, 2) AS percentage \
+            FROM CharacterMentions cm, TotalMentions tm \
+            ORDER BY cm.mention_count DESC \
+            LIMIT 1;"
+}
+```
+
+### Index 8146
+**Question:** How many times more for the number of users who took the "mental health survey for 2017" than "mental health survey for 2018"?
+**Database:** mental_health_survey
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH UserCount2017 AS (SELECT COUNT(DISTINCT UserID) AS Count2017 FROM Answer WHERE SurveyID = 2017), UserCount2018 AS (SELECT COUNT(DISTINCT UserID) AS Count2018 FROM Answer WHERE SurveyID = 2018) SELECT (UserCount2017.Count2017 - UserCount2018.Count2018) AS Difference FROM UserCount2017, UserCount2018;"
+}
+```
+
+### Index 8272
+**Question:** Identify the total number of orders processed by Northwind employee named Andrew Fuller. What percent of those orders was shipped to Austria?
+**Database:** retail_world
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH EmployeeOrders AS (SELECT OrderID FROM Orders WHERE EmployeeID = (SELECT EmployeeID FROM Employees WHERE FirstName = 'Andrew' AND LastName = 'Fuller')), TotalOrders AS (SELECT COUNT(*) AS Total FROM EmployeeOrders), AustriaOrders AS (SELECT COUNT(*) AS AustriaCount FROM EmployeeOrders WHERE OrderID IN (SELECT OrderID FROM Orders WHERE ShipperID IN (SELECT ShipperID FROM Shippers WHERE Phone LIKE '%Austria%'))) SELECT TotalOrders.Total AS TotalOrders, AustriaOrders.AustriaCount AS AustriaOrders, (AustriaOrders.AustriaCount * 100.0 / TotalOrders.Total) AS AustriaPercentage FROM TotalOrders, AustriaOrders;"
+}
+```
+
+### Index 8299
+**Question:** Among the countries who uses the 1968 System of National Accounts methodology, how many are in the Middle East & North Africa? Name the country with the highest CO2 emissions from solid fuel consumption in kiloton.
+**Database:** world_development_indicators
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": {
+        "part1": "SELECT COUNT(*) AS CountryCount FROM Country WHERE SystemOfNationalAccounts = '1968 System of National Accounts methodology' AND Region = 'Middle East & North Africa';",
+        "part2": "SELECT c.LongName AS CountryName, i.Value AS MaxCO2Emissions FROM Indicators i JOIN Country c ON i.CountryCode = c.CountryCode WHERE i.IndicatorName = 'CO2 emissions from solid fuel consumption (kt)' ORDER BY i.Value DESC LIMIT 1;"
+    }
+}
+```
+
+### Index 8328
+**Question:** How many more territories are there in than Eastern Region than in the Southern Region?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include a table or column related to RegionDescription or Territories. Unable to construct the query."
+}
+```
+
+### Index 8348
+**Question:** Which business had the highest number of inspections done? Calculate the percentage of passed and failed inspections of the said business.
+**Database:** food_inspection_2
+**Failure Type:** invalid_sql
+**Description:** Contains sql key but not a valid SELECT statement
+**Last Answer Content:**
+```
+{
+    "sql": "WITH InspectionCounts AS (SELECT e.dba_name, i.license_no, COUNT(i.inspection_id) AS inspection_count FROM inspection i JOIN establishment e ON i.license_no = e.license_no GROUP BY i.license_no ORDER BY inspection_count DESC LIMIT 1), Percentages AS (SELECT COUNT(CASE WHEN i.results = 'Pass' THEN 1 END) * 100.0 / COUNT(i.inspection_id) AS pass_percentage, COUNT(CASE WHEN i.results = 'Fail' THEN 1 END) * 100.0 / COUNT(i.inspection_id) AS fail_percentage FROM inspection i WHERE i.license_no = (SELECT license_no FROM InspectionCounts)) SELECT ic.dba_name, ic.inspection_count, p.pass_percentage, p.fail_percentage FROM InspectionCounts ic CROSS JOIN Percentages p;"
+}
+```
+
+### Index 8380
+**Question:** Which region does Hoffman Estates belong to?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The database schema does not include the necessary tables or columns to determine the region for 'Hoffman Estates'."
+}
+```
+
+### Index 7128
+**Question:** Among the USA employess, how many of them has PhD title of courtesy?
+**Database:** retail_world
+**Failure Type:** error_response
+**Description:** Contains error message instead of SQL
+**Last Answer Content:**
+```
+{
+    "error": "The provided schema does not include the necessary columns (Country and TitleOfCourtesy) in the Employees table to answer the query."
+}
+```
+

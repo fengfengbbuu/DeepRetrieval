@@ -174,11 +174,15 @@ def save_detailed_analysis(analysis_results: Dict[str, Any], output_file: str):
 
 def main():
     """Main function."""
-    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.jsonl"
-    output_file = "/root/data1/projects/RL/DeepRetrieval/task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.txt"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.jsonl"
+    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/bird/train_parquet_all.jsonl"
+
+    # output_file = "/root/data1/projects/RL/DeepRetrieval/task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis.txt"
+    output_file = "/root/data1/projects/RL/DeepRetrieval/task_log/swfit_sft_dataset_adjustment/add_thinking/detailed_failure_analysis_bird.txt"
     
     # Failed indices from the analysis results
-    failed_indices = [256, 2225, 2650, 2999, 3047, 3899, 5924, 6625, 6640, 7294, 7356]
+    # failed_indices = [256, 2225, 2650, 2999, 3047, 3899, 5924, 6625, 6640, 7294, 7356]
+    failed_indices = [120, 265, 287, 322, 329, 349, 357, 367, 371, 493, 530, 539, 603, 671, 685, 701, 707, 714, 737, 755, 792, 797, 821, 897, 932, 936, 966, 973, 1174, 1233, 1262, 1292, 1296, 1318, 1362, 1374, 1380, 1423, 1438, 1491, 1506, 1515, 1556, 1590, 1600, 1605, 1713, 1795, 1834, 1988, 1999, 2009, 2014, 2024, 2040, 2050, 2064, 2071, 2087, 2132, 2385, 2479, 2481, 2511, 2578, 2604, 2750, 2754, 2761, 2763, 2784, 2811, 2909, 2929, 2954, 2962, 2963, 2971, 2984, 2990, 3015, 3115, 3135, 3147, 3162, 3215, 3264, 3391, 3444, 3459, 3524, 3573, 3593, 3747, 3834, 3842, 3982, 3990, 4097, 4100, 4110, 4131, 4156, 4189, 4208, 4327, 4403, 4477, 4520, 4524, 4553, 4563, 4786, 4798, 4835, 4846, 4857, 4860, 4908, 4965, 4999, 5001, 5026, 5083, 5163, 5195, 5230, 5240, 5251, 5300, 5351, 5355, 5369, 5370, 5395, 5399, 5441, 5460, 5500, 5596, 5669, 5687, 5922, 6055, 6064, 6092, 6165, 6213, 6224, 6278, 6321, 6399, 6428, 6446, 6479, 6530, 6543, 6614, 6635, 6640, 6673, 6685, 6696, 6709, 6743, 6799, 6981, 6988, 7020, 7143, 7203, 7257, 7316, 7406, 7498, 7550, 7557, 7578, 7604, 7671, 7701, 7713, 7772, 7774, 7791, 7915, 7919, 7964, 7985, 8001, 8040, 8146, 8272, 8299, 8328, 8348, 8380, 7128]
     
     print("Loading data...")
     data = load_jsonl_data(input_file)

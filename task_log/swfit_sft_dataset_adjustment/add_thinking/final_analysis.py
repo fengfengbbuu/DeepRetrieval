@@ -180,8 +180,11 @@ def save_final_results(results: Dict[str, Any], output_file: str):
 
 def main():
     """Main function."""
-    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.jsonl"
-    output_file = "/root/data1/projects/RL/DeepRetrieval/scripts/final_analysis_results.txt"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.jsonl"
+    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/bird/train_parquet_all.jsonl"
+
+    # output_file = "/root/data1/projects/RL/DeepRetrieval/scripts/final_analysis_results.txt"
+    output_file = "/root/data1/projects/RL/DeepRetrieval/scripts/final_analysis_results_bird.txt"
     
     print("Loading data...")
     data = load_jsonl_data(input_file)
