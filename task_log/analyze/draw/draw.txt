@@ -1,0 +1,37 @@
+# Date: 2025.9.25
+# Mode: Agent
+======================================================
+相关文件：
+- `task_log/analyze/draw/draw.md`
+
+
+# 任务
+你需要写份代码，改代码能找到所有符合要求的文件，分析里面的数据，并作出统计分析图（比如折线图）
+
+要求：
+- 文件路径：{ROOT_DIR}/{global_or_checkpoint}{step_num}/{date}/{cot_ncot}/analyze/*summary*.csv
+    - {ROOT_DIR}: 是代码接受的参数，表示根目录
+    - {global_or_checkpoint}: 仅存在两种可能，'global_step_' 和 'checkpoint-'
+    - {step_num}: 一个整数
+    - {date}: 日期，格式 'yyyy-mm-dd'
+    - {cot_ncot}: 仅存在两种可能值，'wcot' 或者 'wocot'
+    - '*summary*.csv': 匹配符合这种条件的 csv 文件。理论上，每个 analyze 下仅有一个 .csv 文件符合条件。
+- 代码接受的参数：
+    - `root_dir`: 根目录（必须指定）
+    - `output_dir`: 输出目录（必须指定）。如果指定的目录不存在，代码需要创建。
+
+提示：
+- 如果你要测试代码，参数如下：
+    - test_1:
+        - `root_dir`: '/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_1_5_1A6000_2epoch_32bs_4accum_wocot/test_500'
+        - `output_dir`: '/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_1_5_1A6000_2epoch_32bs_4accum_wocot/test_500/draw'
+    - test_2:
+        - `root_dir`: '/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_05b_1A6000_2ep_16bs_2accum/v0-20250914-133424/test_500'
+        - `output_dir`: '/root/data1/projects/RL/DeepRetrieval/outputs/ms-swift/spider_cold_start/qwen2_5_05b_1A6000_2ep_16bs_2accum/v0-20250914-133424/test_500/draw'
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze/draw` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/draw/draw.md`。
+======================================================
