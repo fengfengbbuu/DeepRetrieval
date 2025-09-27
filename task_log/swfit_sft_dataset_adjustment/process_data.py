@@ -187,8 +187,11 @@ def validate_sample(input_file: str, num_samples: int = 3):
 
 
 if __name__ == "__main__":
-    input_file = "outputs/llm_response/train_parquet_all.final.jsonl"
-    output_file = "outputs/llm_response/train_parquet_all.final.message.jsonl"
+    # input_file = "outputs/llm_response/train_parquet_all.final.jsonl"
+    input_file = "outputs/llm_response/bird/train_parquet_all.final_simple.jsonl"
+
+    # output_file = "outputs/llm_response/train_parquet_all.final.message.jsonl"
+    output_file = "outputs/llm_response/bird/train_parquet_all.final.message.jsonl"
     
     # 先验证几个样本
     print("=== 验证样本 ===")

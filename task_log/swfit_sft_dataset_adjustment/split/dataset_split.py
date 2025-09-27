@@ -94,14 +94,18 @@ def split_dataset(input_file, output_dir, train_ratio=5, dev_ratio=1, test_ratio
 if __name__ == "__main__":
     # 设置路径
     # input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.final.jsonl"
-    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.final.message.jsonl"
-    output_dir = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/split"
+    # input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.final.message.jsonl"
+    input_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/bird/train_parquet_all.final.message.jsonl"
+
+    # output_dir = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/split"
+    output_dir = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/bird/split"
     
     print("开始数据集划分任务")
     print("=" * 50)
     
     # 执行划分
-    result = split_dataset(input_file, output_dir)
+    # result = split_dataset(input_file, output_dir)
+    result = split_dataset(input_file, output_dir, train_ratio=3767, dev_ratio=128, test_ratio=0)
     
     print("=" * 50)
     print("数据集划分完成!")

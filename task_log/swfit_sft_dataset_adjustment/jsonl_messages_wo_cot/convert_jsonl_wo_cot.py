@@ -429,11 +429,15 @@ def main():
     # 文件路径配置
     # input_file = "outputs/llm_response/split/test_863.jsonl"
     # input_file = "outputs/llm_response/split/train_4312.jsonl"
-    input_file = "outputs/llm_response/split/dev_862.jsonl"
+    # input_file = "outputs/llm_response/split/dev_862.jsonl"
+    # input_file = "outputs/llm_response/bird/split/train_3767.jsonl"
+    input_file = "outputs/llm_response/bird/split/dev_128.jsonl"
 
     # output_file = "outputs/llm_response/split/test_863.wocot.jsonl"
     # output_file = "outputs/llm_response/split/train_4312.wocot.jsonl"
-    output_file = "outputs/llm_response/split/dev_862.wocot.jsonl"
+    # output_file = "outputs/llm_response/split/dev_862.wocot.jsonl"
+    # output_file = "outputs/llm_response/bird/split/train_3767.wocot.jsonl"
+    output_file = "outputs/llm_response/bird/split/dev_128.wocot.jsonl"
 
     # 初始化格式内容
     print("=== 初始化格式内容 ===")
