@@ -1,0 +1,40 @@
+# SQL 验证报告
+
+**验证时间**: 2025-09-26 09:57:16
+
+## 验证统计
+
+- **总记录数**: 8,349
+- **验证通过**: 697 (8.35%)
+- **验证失败**: 7,652 (91.65%)
+
+## 失败原因统计
+
+- **no_answer**: 0 (0.00%)
+- **no_sql**: 0 (0.00%)
+- **no_ground_truth**: 0 (0.00%)
+- **mismatch**: 7,652 (91.65%)
+- **error**: 0 (0.00%)
+
+## 失败记录示例
+
+### mismatch 示例
+
+#### 示例 1
+**问题**: Find the id and local authority of the station whose maximum precipitation is higher than 50.
+**数据库**: station_weather
+**模型SQL**: SELECT s.id, s.local_authority FROM station s JOIN (SELECT station_id, MAX(precipitation) AS max_precipitation FROM weekly_weather GROUP BY station_id HAVING max_precipitation > 50) w ON s.id = w.station_id;
+**标准SQL**: SELECT t2.id ,  t2.local_authority FROM weekly_weather AS t1 JOIN station AS t2 ON t1.station_id  =  t2.id GROUP BY t1.station_id HAVING max(t1.precipitation)  >  50
+
+#### 示例 2
+**问题**: How many transactions do we have?
+**数据库**: customers_and_invoices
+**模型SQL**: SELECT COUNT(*) AS total_transactions FROM Financial_Transactions;
+**标准SQL**: SELECT count(*) FROM Financial_transactions
+
+#### 示例 3
+**问题**: What is the total grant amount of the organisations described as research?
+**数据库**: tracking_grants_for_research
+**模型SQL**: SELECT SUM(g.grant_amount) AS total_grant_amount FROM Grants g INNER JOIN Organisations o ON g.organisation_id = o.organisation_id INNER JOIN Organisation_Types ot ON o.organisation_type = ot.organisation_type WHERE ot.organisation_type_description = 'research';
+**标准SQL**: SELECT sum(grant_amount) FROM Grants AS T1 JOIN Organisations AS T2 ON T1.organisation_id  =  T2.organisation_id JOIN organisation_Types AS T3 ON T2.organisation_type  =  T3.organisation_type WHERE T3.organisation_type_description  =  'Research'
+

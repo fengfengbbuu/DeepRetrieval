@@ -1,0 +1,95 @@
+# Error Response 过滤报告
+
+**过滤时间**: 2025-09-26 09:57:12
+
+## 过滤统计
+
+- **原始记录数**: 8,357
+- **过滤记录数**: 8
+- **保留记录数**: 8,349
+- **过滤率**: 0.10%
+
+## 过滤的 error_response 记录
+
+**过滤索引**: [256, 2225, 2650, 2999, 3899, 5924, 6640, 7294]
+
+### 记录 1 (索引 256)
+**问题**: How many different players trained for more than 1000 hours?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The schema does not include a column for training hours, so the query cannot be constructed."
+}
+```
+
+### 记录 2 (索引 2225)
+**问题**: What is the average training hours of all players?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include a column or table related to training hours. Please provide additional information or clarify the query."
+}
+```
+
+### 记录 3 (索引 2650)
+**问题**: What are the names of players whose training hours is between 500 and 1500?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include a column for training hours. Please provide additional details or clarify the query."
+}
+```
+
+### 记录 4 (索引 2999)
+**问题**: Find the max, average and min training hours of all players.
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include a column or table for training hours. Please provide additional details or clarify the query."
+}
+```
+
+### 记录 5 (索引 3899)
+**问题**: How many hours do the players train on average?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include information about training hours, so the query cannot be executed."
+}
+```
+
+### 记录 6 (索引 5924)
+**问题**: What are the names and number of hours spent training for each player who trains for less than 1500 hours?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include information about training hours. Please provide additional details or clarify the schema."
+}
+```
+
+### 记录 7 (索引 6640)
+**问题**: What is the average, maximum, and minimum for the number of hours spent training?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The database schema does not include a column or table related to 'hours spent training.' Please provide additional details or clarify the query."
+}
+```
+
+### 记录 8 (索引 7294)
+**问题**: What is minimum hours of the students playing in different position?
+**数据库**: soccer_2
+**错误内容**:
+```
+{
+    "error": "The provided database schema does not include any column related to 'hours'. The query cannot be answered based on the current schema."
+}
+```
+

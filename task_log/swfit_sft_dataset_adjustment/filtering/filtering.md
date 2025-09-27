@@ -1,10 +1,10 @@
 # 数据过滤任务总结报告
 
-**任务完成时间:** 2025-09-11 15:15:00
+**任务完成时间:** 2025-09-26 09:57:20
 
 ## 任务概述
 
-按照 `filtering.txt` 中的要求，对 `outputs/llm_response/train_parquet_all.jsonl` 数据集文件进行过滤，并将符合要求的数据保存在 `outputs/llm_response/train_parquet_all.filtered.jsonl` 文件中。
+按照 `filtering.txt` 中的要求，对 `outputs/llm_response/spider/train_parquet_all.jsonl` 数据集文件进行过滤，并将符合要求的数据保存在 `outputs/llm_response/spider/train_parquet_all.final.jsonl` 文件中。
 
 ## 任务要求
 
@@ -75,11 +75,11 @@
 ## 生成的文件
 
 ### 数据文件
-- `outputs/llm_response/train_parquet_all.filtered.jsonl`: 过滤 error_response 后的数据
-- `outputs/llm_response/train_parquet_all.final.jsonl`: 最终过滤后的数据
+- `outputs/llm_response/spider/train_parquet_all.filtered.jsonl`: 过滤 error_response 后的数据
+- `outputs/llm_response/spider/train_parquet_all.final.jsonl`: 最终过滤后的数据
 
 ### 报告文件
-- `train_parquet_all.jsonl.statistic.txt`: 数据分析报告
+- `train_parquet_all.jsonl.statistic.json`: 数据分析报告
 - `quick_filtering_report.txt`: error_response 过滤报告
 - `simple_validation_report.txt`: SQL 验证报告
 - `comprehensive_report.txt`: 综合统计报告

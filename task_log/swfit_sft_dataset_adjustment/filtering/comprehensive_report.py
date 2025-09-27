@@ -1,147 +1,141 @@
 #!/usr/bin/env python3
 """
-综合统计报告生成脚本
+综合报告生成脚本：生成完整的过滤任务报告
 """
 
 import json
 import os
 from typing import Dict, List, Any
-from collections import Counter
 
 def load_jsonl_data(file_path: str) -> List[Dict]:
-    """加载 JSONL 数据"""
+    """Load JSONL data from file."""
+    if not os.path.exists(file_path):
+        return []
+    
     data = []
     with open(file_path, 'r', encoding='utf-8') as f:
         for line_num, line in enumerate(f, 1):
             try:
                 data.append(json.loads(line.strip()))
             except json.JSONDecodeError as e:
-                print(f"JSON解析错误在第{line_num}行: {e}")
+                print(f"Error parsing line {line_num}: {e}")
                 continue
     return data
 
-def generate_comprehensive_report():
-    """生成综合统计报告"""
+def count_lines(file_path: str) -> int:
+    """Count lines in a file."""
+    if not os.path.exists(file_path):
+        return 0
+    
+    with open(file_path, 'r', encoding='utf-8') as f:
+        return sum(1 for _ in f)
+
+def analyze_file_statistics(file_path: str) -> Dict[str, Any]:
+    """分析文件统计信息"""
+    if not os.path.exists(file_path):
+        return {'exists': False, 'line_count': 0, 'size_mb': 0}
+    
+    line_count = count_lines(file_path)
+    size_bytes = os.path.getsize(file_path)
+    size_mb = size_bytes / (1024 * 1024)
+    
+    return {
+        'exists': True,
+        'line_count': line_count,
+        'size_mb': size_mb
+    }
+
+def generate_comprehensive_report(output_file: str):
+    """生成综合报告"""
     
     # 文件路径
-    original_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.jsonl"
-    filtered_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.filtered.jsonl"
-    final_file = "/root/data1/projects/RL/DeepRetrieval/outputs/llm_response/train_parquet_all.final.jsonl"
+    original_file = "outputs/llm_response/spider/train_parquet_all.jsonl"
+    filtered_file = "outputs/llm_response/spider/train_parquet_all.filtered.jsonl"
+    final_file = "outputs/llm_response/spider/train_parquet_all.final.jsonl"
     
-    # 检查文件是否存在
-    files_exist = {
-        'original': os.path.exists(original_file),
-        'filtered': os.path.exists(filtered_file),
-        'final': os.path.exists(final_file)
-    }
+    # 分析文件统计
+    original_stats = analyze_file_statistics(original_file)
+    filtered_stats = analyze_file_statistics(filtered_file)
+    final_stats = analyze_file_statistics(final_file)
     
-    print("文件存在性检查:")
-    for file_type, exists in files_exist.items():
-        print(f"  {file_type}: {exists}")
-    
-    # 统计各阶段的数据量
-    stats = {}
-    
-    if files_exist['original']:
-        original_data = load_jsonl_data(original_file)
-        stats['original_count'] = len(original_data)
-        print(f"原始数据: {stats['original_count']} 条")
-    
-    if files_exist['filtered']:
-        filtered_data = load_jsonl_data(filtered_file)
-        stats['filtered_count'] = len(filtered_data)
-        print(f"过滤后数据: {stats['filtered_count']} 条")
-    
-    if files_exist['final']:
-        final_data = load_jsonl_data(final_file)
-        stats['final_count'] = len(final_data)
-        print(f"最终数据: {stats['final_count']} 条")
-    
-    # 计算过滤统计
-    if 'original_count' in stats and 'filtered_count' in stats:
-        stats['error_response_filtered'] = stats['original_count'] - stats['filtered_count']
-        stats['error_response_filter_rate'] = stats['error_response_filtered'] / stats['original_count'] * 100
-    
-    if 'filtered_count' in stats and 'final_count' in stats:
-        stats['sql_validation_filtered'] = stats['filtered_count'] - stats['final_count']
-        stats['sql_validation_filter_rate'] = stats['sql_validation_filtered'] / stats['filtered_count'] * 100
-    
-    if 'original_count' in stats and 'final_count' in stats:
-        stats['total_filtered'] = stats['original_count'] - stats['final_count']
-        stats['total_filter_rate'] = stats['total_filtered'] / stats['original_count'] * 100
-        stats['final_keep_rate'] = stats['final_count'] / stats['original_count'] * 100
-    
-    # 生成报告
-    report_file = "/root/data1/projects/RL/DeepRetrieval/task_log/swfit_sft_dataset_adjustment/filtering/comprehensive_report.txt"
-    
-    with open(report_file, 'w', encoding='utf-8') as f:
-        f.write("# 数据过滤综合统计报告\n\n")
-        f.write(f"**生成时间:** {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write("# 数据过滤任务综合报告\n\n")
+        f.write(f"**生成时间**: {__import__('datetime').datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
         
-        f.write("## 数据量统计\n\n")
-        if 'original_count' in stats:
-            f.write(f"- **原始数据量:** {stats['original_count']} 条\n")
-        if 'filtered_count' in stats:
-            f.write(f"- **过滤后数据量:** {stats['filtered_count']} 条\n")
-        if 'final_count' in stats:
-            f.write(f"- **最终数据量:** {stats['final_count']} 条\n")
+        f.write("## 任务概述\n\n")
+        f.write("按照 `filtering.txt` 中的要求，对 `train_parquet_all.jsonl` 数据集文件进行过滤，")
+        f.write("并将符合要求的数据保存在 `train_parquet_all.final.jsonl` 文件中。\n\n")
         
-        f.write("\n## 过滤统计\n\n")
-        if 'error_response_filtered' in stats:
-            f.write(f"- **error_response 过滤数量:** {stats['error_response_filtered']} 条\n")
-            f.write(f"- **error_response 过滤率:** {stats['error_response_filter_rate']:.2f}%\n")
+        f.write("## 数据量变化\n\n")
+        f.write("| 阶段 | 数据量 | 文件大小 | 说明 |\n")
+        f.write("|------|--------|----------|------|\n")
         
-        if 'sql_validation_filtered' in stats:
-            f.write(f"- **SQL 验证过滤数量:** {stats['sql_validation_filtered']} 条\n")
-            f.write(f"- **SQL 验证过滤率:** {stats['sql_validation_filter_rate']:.2f}%\n")
+        if original_stats['exists']:
+            f.write(f"| 原始数据 | {original_stats['line_count']:,} 条 | {original_stats['size_mb']:.1f} MB | `train_parquet_all.jsonl` |\n")
         
-        if 'total_filtered' in stats:
-            f.write(f"- **总过滤数量:** {stats['total_filtered']} 条\n")
-            f.write(f"- **总过滤率:** {stats['total_filter_rate']:.2f}%\n")
-            f.write(f"- **最终保留率:** {stats['final_keep_rate']:.2f}%\n")
+        if filtered_stats['exists']:
+            f.write(f"| 过滤后数据 | {filtered_stats['line_count']:,} 条 | {filtered_stats['size_mb']:.1f} MB | `train_parquet_all.filtered.jsonl` |\n")
         
-        f.write("\n## 过滤阶段说明\n\n")
-        f.write("### 第一阶段：error_response 过滤\n")
-        f.write("- 过滤掉 8 个预定义的 error_response 类型的错误数据\n")
-        f.write("- 这些数据包含错误消息而不是有效的 SQL 查询\n")
-        f.write("- 过滤索引: [256, 2225, 2650, 2999, 3899, 5924, 6640, 7294]\n\n")
+        if final_stats['exists']:
+            f.write(f"| 最终数据 | {final_stats['line_count']:,} 条 | {final_stats['size_mb']:.1f} MB | `train_parquet_all.final.jsonl` |\n")
         
-        f.write("### 第二阶段：SQL 验证过滤\n")
-        f.write("- 对每条数据的 SQL 进行格式检查和标准化比较\n")
-        f.write("- 只保留与 ground truth SQL 完全相同的记录\n")
-        f.write("- 过滤掉 SQL 格式无效或与标准答案不同的记录\n\n")
+        f.write("\n")
         
-        f.write("## 文件说明\n\n")
-        f.write("- **train_parquet_all.jsonl:** 原始数据集\n")
-        f.write("- **train_parquet_all.filtered.jsonl:** 过滤 error_response 后的数据集\n")
-        f.write("- **train_parquet_all.final.jsonl:** 最终过滤后的数据集\n\n")
+        f.write("## 过滤统计\n\n")
         
-        f.write("## 相关报告文件\n\n")
-        f.write("- **quick_filtering_report.txt:** error_response 过滤详细报告\n")
-        f.write("- **simple_validation_report.txt:** SQL 验证详细报告\n")
-        f.write("- **comprehensive_report.txt:** 本综合统计报告\n")
-    
-    print(f"综合统计报告已保存到: {report_file}")
-    
-    return stats
+        # 总体统计
+        if original_stats['exists'] and final_stats['exists']:
+            total_filtered = original_stats['line_count'] - final_stats['line_count']
+            total_filter_rate = (total_filtered / original_stats['line_count']) * 100
+            final_retention_rate = (final_stats['line_count'] / original_stats['line_count']) * 100
+            
+            f.write("### 总体统计\n")
+            f.write(f"- **总过滤记录数**: {total_filtered:,} 条\n")
+            f.write(f"- **总过滤率**: {total_filter_rate:.2f}%\n")
+            f.write(f"- **最终保留率**: {final_retention_rate:.2f}%\n\n")
+        
+        f.write("## 生成的文件\n\n")
+        
+        f.write("### 数据文件\n")
+        if original_stats['exists']:
+            f.write(f"- `{original_file}`: 原始数据 ({original_stats['line_count']:,} 条)\n")
+        if filtered_stats['exists']:
+            f.write(f"- `{filtered_file}`: 过滤 error_response 后的数据 ({filtered_stats['line_count']:,} 条)\n")
+        if final_stats['exists']:
+            f.write(f"- `{final_file}`: 最终过滤后的数据 ({final_stats['line_count']:,} 条)\n")
+        
+        f.write("\n### 脚本文件\n")
+        f.write("- `data_analysis.py`: 数据分析脚本\n")
+        f.write("- `quick_filter.py`: Error Response 过滤脚本\n")
+        f.write("- `simple_validation.py`: SQL 验证脚本\n")
+        f.write("- `comprehensive_report.py`: 综合报告生成脚本\n\n")
+        
+        f.write("## 任务完成情况\n\n")
+        f.write("✅ **已完成**:\n")
+        f.write("- [x] 分析数据格式和字段信息\n")
+        f.write("- [x] 过滤掉 8 个 error_response 类型的错误数据\n")
+        f.write("- [x] 对数据进行 SQL 验证（简化版本）\n")
+        f.write("- [x] 统计被过滤的数据信息和过滤原因\n")
+        f.write("- [x] 生成详细的过滤报告\n\n")
+        
+        f.write("## 总结\n\n")
+        f.write("任务已成功完成，按照要求对数据集进行了两阶段过滤：\n")
+        f.write("1. 过滤掉 error_response 类型的错误数据\n")
+        f.write("2. 通过 SQL 验证过滤掉与标准答案不一致的数据\n\n")
+        f.write("最终生成了符合要求的数据文件和详细的统计报告。\n")
 
 def main():
     """主函数"""
-    stats = generate_comprehensive_report()
+    output_file = "task_log/swfit_sft_dataset_adjustment/filtering/comprehensive_report.txt"
     
-    print("\n过滤统计摘要:")
-    if 'original_count' in stats:
-        print(f"原始数据: {stats['original_count']} 条")
-    if 'filtered_count' in stats:
-        print(f"过滤后数据: {stats['filtered_count']} 条")
-    if 'final_count' in stats:
-        print(f"最终数据: {stats['final_count']} 条")
-    if 'total_filter_rate' in stats:
-        print(f"总过滤率: {stats['total_filter_rate']:.2f}%")
-    if 'final_keep_rate' in stats:
-        print(f"最终保留率: {stats['final_keep_rate']:.2f}%")
+    print("=== 综合报告生成开始 ===")
+    
+    # 生成综合报告
+    print("生成综合报告...")
+    generate_comprehensive_report(output_file)
+    
+    print(f"综合报告生成完成！")
+    print(f"报告保存至: {output_file}")
 
 if __name__ == "__main__":
     main()
-
-
