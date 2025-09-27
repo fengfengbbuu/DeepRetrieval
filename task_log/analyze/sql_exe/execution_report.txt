@@ -1,0 +1,35 @@
+
+SQL 执行时间分析报告
+生成时间: 2025-09-26 22:13:44
+数据文件: /root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/train.parquet
+超时设置: 50 秒
+
+=== 总体统计 ===
+总记录数: 8654
+成功执行: 8286 (95.7%)
+执行超时: 16 (0.2%)
+文件不存在: 0 (0.0%)
+执行错误: 352 (4.1%)
+其他错误: 0 (0.0%)
+
+=== 执行时间统计 (仅成功执行的查询) ===
+平均执行时间: 0.873 秒
+最短执行时间: 0.002 秒
+最长执行时间: 49.113 秒
+中位数执行时间: 0.025 秒
+
+=== 执行时间分布 ===
+0-0.1秒: 5655 条 (68.2%)
+0.1-0.5秒: 1204 条 (14.5%)
+0.5-1秒: 396 条 (4.8%)
+1-2秒: 313 条 (3.8%)
+2-5秒: 333 条 (4.0%)
+5-10秒: 146 条 (1.8%)
+10秒以上: 239 条 (2.9%)
+
+=== 超时查询示例 ===
+1. 索引 218: SELECT T1.item_nbr FROM sales_in_weather AS T1 INNER JOIN relation AS T2 ON T1.store_nbr = T2.store_...
+2. 索引 226: SELECT T2.school_zip, T1.item_name FROM resources AS T1 INNER JOIN projects AS T2 ON T1.projectid = ...
+3. 索引 241: SELECT w2nd FROM biwords WHERE occurrences = ( SELECT MAX(occurrences) FROM biwords )...
+4. 索引 261: SELECT T4.owner_name FROM violations AS T3 INNER JOIN businesses AS T4 ON T3.business_id = T4.busine...
+5. 索引 263: SELECT T2.movie_title FROM ratings AS T1 INNER JOIN movies AS T2 ON T1.movie_id = T2.movie_id GROUP ...

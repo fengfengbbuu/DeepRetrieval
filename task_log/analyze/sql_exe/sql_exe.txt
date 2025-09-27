@@ -1,0 +1,33 @@
+# Date: 2025.9.26
+# Mode: Agent
+===========================================
+相关文件：
+- TARGET_FILE: `code/data/sql/bird/train.parquet`
+- `task_log/analyze/sql_exe/sql_exe.md`
+
+# 任务
+写一个 python 脚本，该脚本能统计 TARGET_FILE 中每条 ground_truth SQL 的执行时间，并把信息保存再本地文件。
+
+要求：
+- timeout 设置为 50s（超过这个时间，记录为 50s+）
+- 保存信息的格式：
+    - idx: 对应 TARGET_FILE 的下标索引
+    - gold_sql: 执行的 sql
+    - time_cost: gold_sql 执行时间
+- 输出信息：
+    - 你需要再处理到一定数据之后即时保存处理的结果，以避免内存占用过高。
+    - 你需要额外生成一个 report 的文本文件，该文件的生成函数的输入是所有的处理结果，或者是部分的处理结果（如果程序意外中断，你也要保证会有 report 生成）
+        - 建议在处理完所有数据后，用这个函数读取所有数据的结果，然后再分析，生成 report。
+- 你需要对你写的代码添加注释说明。
+
+提示：
+- ground truth SQL 所在字段：`reward_model.ground_truth.target`。如果你实在不知道，可以预先写一个临时脚本分析 TARGET_FILE 的数据结构。
+- 如果你要测试，可以 sample TARGET_FILE 中的前 200 条数据做测试。
+- TARGET_FILE 中的 db_path 是相对于 `/root/data1/projects/RL/DeepRetrieval/code` 的相对路径（可能要做路径拼接）。
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/analyze/sql_exe` 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 `task_log/analyze/sql_exe/sql_exe.md`。
+===========================================
