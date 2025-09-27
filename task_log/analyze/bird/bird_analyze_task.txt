@@ -1,0 +1,40 @@
+# Date: 2025.9.27
+# Mode: Agent
+====================================
+相关文件：
+- VAL_FILE: `code/data/sql/bird/train.parquet`
+- `task_log/analyze/bird/bird_analyze_task.sh`
+- REF_FILE: `task_log/analyze/sql_exe/sql_execution_analyzer.py`
+- REF_FILE_MD: `task_log/analyze/sql_exe/sql_exe.md`
+
+- TEMP_DIR: `task_log/analyze/bird`
+- TASK_SUMMARY_FILE: `task_log/analyze/bird/bird_analyze_task.md`
+
+# 任务
+参考 REF_FILE，在保留 REF_FILE 主要功能的基础上，满足以下要求，并把主要代码文件以 `bird_analyze_task.py` 命名保存在 TEMP_DIR。
+
+要求：
+- 参数：
+    - `input_file`: 输入文件路径。必须填写
+    - `start_idx`: int 类型，从第 `idx` 索引下开始处理。默认为 0（从头开始）
+    - `end_idx`: int 类型，在 `id` 索引下结束（不处理 `idx` 对应的数据）。默认为 -1，表示从 `start_idx` 开始处理剩余的所有数据。
+    - `output_root`: 输出目录。必须填写
+- 输出：除了 REF_FILE 的输出内容外，添加以下字段：
+    - `gold_sql_res`: 表示 gold sql 的执行结果。
+    - `error_info`: 如果出错，填写程序具体的报错信息。如果没有出错，这块为空。
+    - `db_path`: gold 的 sql 的执行的数据库路径。
+
+提示：
+- 如果你想要从多个角度了解 REF_FILE，可以参考给出的 REF_FILE_MD 文件，它记录了有关 REF_FILE 的相关信息。
+- 如果你要验证，脚本可写在 `task_log/analyze/bird/bird_analyze_task.sh`。参数如下：
+    - `input_file`: VAL_FILE
+    - `start_idx`: 0
+    - `end_idx`: 50
+    - `output_root`: TEMP_DIR
+
+# 注意事项
+- 执行任务期间，你额外创建文件或文件夹都应当放在 TEMP_DIR 目录下。
+- 生成的中间文件，你可以再完成任务后删除，但请保留你觉得比较重要的一个文件，并保留该文件对应的执行的结果文件。
+- 如果需要运行代码，请先用 `conda activate swift` 激活当前项目的环境。但请不要在环境中进行包安装，如要安装，请先经过我的同意。
+- 最后记得将你的任务总结保存在 TASK_SUMMARY_FILE。
+====================================
