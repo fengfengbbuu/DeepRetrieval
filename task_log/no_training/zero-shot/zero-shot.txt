@@ -28,6 +28,7 @@
         - `sample_num`: 抽取指定个数的样例进行测试，默认值为 -1，表示处理所有样例。
         - `db_path_key`: 数据库路径对应的字段名，如果是 `key1.key2` 暗示该字段对应的 value 很可能是一个字典，需要访问 key1 然后在访问 key2 才能获取到 database path。默认值为 `extra_info.db_path`
         - `ground_truth_key`: 标准答案对应字段名，如果是 `key1.key2` 暗示该字段对应的 value 很可能是一个字典，需要访问 key1 然后在访问 key2 才能获取到 ground truth。默认值为 `reward_model.ground_truth.target`
+        - `failed_file_path` 失败的文件路径（通常是 jsonl 文件），默认为 None。如果存在，程序需要加载该文件内容，并清空该文件的原有内容，抽取所有失败样例的 idx，得到 `failed_idx_lst`，之后对 sample 得到的数据用 `failed_idx_lst` 做过滤，之后的程序仅对这部分过滤后的数据做处理。
     - 实验方面：
         - `with_cot`: true 或 false。表示输入数据是否涉及 cot 内容。（一个 flag）
 - 有专门的参数解析函数。
@@ -46,6 +47,18 @@
 - `prompt_key` 字段对应的 value 值应当是 `messages`，类似 `[{"role": "system", "content": "..."}]` 这样的 list dict。
 - 如果你想对完成的代码做验证，可以把 WOCOT_VAL_FILE，COT_VAL_FILE。这两个文件对应的 `prompt_key` 是 `prompt`，对应的 value 值是一个 dict。
     - 另外你可以把测试脚本写在 `task_log/no_training/zero-shot/zero-shot.sh` 文件中。
+- 如果要测试，参数如下：
+    - `model_name`: claude-3-5-sonnet-latest
+    - `base_url`: https://api.openai-proxy.org
+    - `api_key`: sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX
+    - `test_set_path`: code/data/sql/bird/test.messages.wcot.parquet
+    - `prompt_key`: prompt
+    - `sample_num`: 100
+    - `db_path_key`: extra_info.db_path
+    - `ground_truth_key`: reward_model.ground_truth.target
+    - `output_root`: /root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot
+    - `failed_file_path`: outputs/no_training/bird/zero-shot/claude-3-5-sonnet-latest/2025-09-29/wcot/test.messages.wcot.wcot.sample100_failed.jsonl
+    - `with_cot`
 
 # 注意事项
 - 执行任务期间，你额外创建文件或文件夹都应当放在 `task_log/no_training/zero-shot` 目录下。

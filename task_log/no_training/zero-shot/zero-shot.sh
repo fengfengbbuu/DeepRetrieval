@@ -63,21 +63,35 @@
 # with_cot 为 True
 
 SAMPLE_NUM=100
-MODEL_LIST=("gpt-3.5-turbo" "gpt-4o-2024-11-20" "claude-3-haiku-20240307")
+# MODEL_LIST=("gpt-3.5-turbo" "gpt-4o-2024-11-20" "claude-3-haiku-20240307" "claude-3-5-sonnet-latest")
+# MODEL_LIST=("claude-3-haiku-20240307" "claude-3-5-sonnet-latest")
 # MODEL_LIST=("claude-3-5-sonnet-latest")
+MODEL_LIST=("claude-3-haiku-20240307")
 BASE_URL="https://api.openai-proxy.org"
-API_KEY="sk-dpZKNLnGudMgvZQKHS0XdlR90q16fjpzfH1e7pW2vtsE0ca4"
-OUTPUT_ROOT=""
+# API_KEY="sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX"
+API_KEY_LIST=(
+    # "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX" 
+    # "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX" 
+    # "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX" 
+    "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX"
+)
+OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot"
 
-# MODEL_LIST=("qwen2_5_1_5")
-# MODEL_LIST=("qwen2_5_05")
-MODEL_LIST=("qwen2_5_0_5")
-BASE_URL="http://10.1.1.15:11111"
-# API_KEY="qwen2_5_1_5"
-# API_KEY="qwen2_5_05"
-API_KEY="qwen2_5_0_5"
-# OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot"
-OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/rl/spider"
+# SAMPLE_NUM=500
+# # MODEL_LIST=("qwen2_5_1_5")
+# # MODEL_LIST=("qwen2_5_05")
+# MODEL_LIST=("qwen2_5_0_5")
+# # BASE_URL="http://10.1.1.15:11111"
+# BASE_URL="http://10.1.1.14:11111"
+# # API_KEY_LIST=("qwen2_5_1_5")
+# API_KEY_LIST=("qwen2_5_0_5")
+# # API_KEY="qwen2_5_1_5"
+# # API_KEY="qwen2_5_05"
+# # API_KEY="qwen2_5_0_5"
+# # OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/no_training/spider/zero-shot"
+# # OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/rl/spider"
+# # OUTPUT_ROOT=/root/data1/projects/RL/DeepRetrieval/code/checkpoints/spider/qwen2_5_0_5_1A6000_1epoch_32bs_4accum/global_step_258/eval
+# OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot"
 
 # WITH_COT="True"
 
@@ -87,8 +101,10 @@ OUTPUT_ROOT="/root/data1/projects/RL/DeepRetrieval/outputs/rl/spider"
 # JSONL_PROMPT_KEY="messages"
 
 # 新的 Parquet 文件
-WOCOT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.messages.wocot.parquet"
-COT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.messages.wcot.parquet"
+# WOCOT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.messages.wocot.parquet"
+WOCOT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/test.messages.wocot.parquet"
+# COT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/spider/test.messages.wcot.parquet"
+COT_TEST_PATH="/root/data1/projects/RL/DeepRetrieval/code/data/sql/bird/test.messages.wcot.parquet"
 PARQUET_PROMPT_KEY="prompt"
 
 # 通用配置
@@ -119,8 +135,12 @@ echo ""
 # done
 
 # 测试2: WOCOT Parquet 文件
-# echo "测试2: WOCOT Parquet 文件 (非CoT模式)"
+echo "测试2: WOCOT Parquet 文件 (非CoT模式)"
 # for MODEL in "${MODEL_LIST[@]}"; do
+# for idx in "${!MODEL_LIST[@]}"; do
+#     MODEL="${MODEL_LIST[$idx]}"
+#     API_KEY="${API_KEY_LIST[$idx]}"
+    
 #     echo "---------------------------------------------"
 #     echo "正在测试模型: $MODEL (WOCOT Parquet)"
 #     python /root/data1/projects/RL/DeepRetrieval/task_log/no_training/zero-shot/zero_shot.py \
@@ -132,14 +152,19 @@ echo ""
 #         --sample_num $SAMPLE_NUM \
 #         --db_path_key "$DB_PATH_KEY" \
 #         --output_root "$OUTPUT_ROOT" \
-#         --ground_truth_key "$GROUND_TRUTH_KEY"
+#         --ground_truth_key "$GROUND_TRUTH_KEY" \
+#         --output_root "$OUTPUT_ROOT"
 #     echo "模型 $MODEL (WOCOT Parquet) 测试完成。"
 #     echo ""
 # done
 
 # 测试3: COT Parquet 文件
 echo "测试3: COT Parquet 文件 (CoT模式)"
-for MODEL in "${MODEL_LIST[@]}"; do
+# 遍历索引
+for idx in "${!MODEL_LIST[@]}"; do
+    MODEL="${MODEL_LIST[$idx]}"
+    API_KEY="${API_KEY_LIST[$idx]}"
+    
     echo "---------------------------------------------"
     echo "正在测试模型: $MODEL (COT Parquet)"
     python /root/data1/projects/RL/DeepRetrieval/task_log/no_training/zero-shot/zero_shot.py \
@@ -152,6 +177,7 @@ for MODEL in "${MODEL_LIST[@]}"; do
         --db_path_key "$DB_PATH_KEY" \
         --ground_truth_key "$GROUND_TRUTH_KEY" \
         --output_root "$OUTPUT_ROOT" \
+        --failed_file_path /root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot/claude-3-haiku-20240307/2025-09-29/wcot/test.messages.wcot.wcot.sample100_failed.jsonl \
         --with_cot 
     echo "模型 $MODEL (COT Parquet) 测试完成。"
     echo ""

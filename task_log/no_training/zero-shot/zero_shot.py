@@ -103,6 +103,48 @@ class DataParser:
         # 其他情况返回空列表
         else:
             return []
+    
+    @staticmethod
+    def load_failed_indices(failed_file_path: str) -> List[int]:
+        """加载失败文件的索引列表"""
+        if not failed_file_path or not Path(failed_file_path).exists():
+            return []
+        
+        failed_indices = []
+        try:
+            # 先读取失败文件内容
+            with open(failed_file_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    if line.strip():
+                        try:
+                            data = json.loads(line.strip())
+                            if 'index' in data:
+                                failed_indices.append(data['index'])
+                        except json.JSONDecodeError:
+                            continue
+            
+            # 然后清空失败文件内容
+            with open(failed_file_path, 'w', encoding='utf-8') as f:
+                pass
+                
+        except Exception as e:
+            print(f"Warning: Failed to load failed file {failed_file_path}: {e}")
+        
+        return failed_indices
+    
+    @staticmethod
+    def filter_data_by_failed_indices(data: List[Dict[str, Any]], failed_indices: List[int]) -> List[Dict[str, Any]]:
+        """根据失败索引过滤数据"""
+        if not failed_indices:
+            return data
+        
+        # 只保留失败索引对应的数据
+        filtered_data = []
+        for i, item in enumerate(data):
+            if i in failed_indices:
+                filtered_data.append(item)
+        
+        return filtered_data
 
 class ZeroShotInference:
     """Zero-Shot推理类"""
@@ -356,10 +398,10 @@ class ZeroShotInference:
             os.remove(self.output_file)
         success_file = self.output_file.replace('.jsonl', '_success.jsonl')
         failed_file = self.output_file.replace('.jsonl', '_failed.jsonl')
-        if os.path.exists(success_file):
-            os.remove(success_file)
-        if os.path.exists(failed_file):
-            os.remove(failed_file)
+        # if os.path.exists(success_file):
+        #     os.remove(success_file)
+        # if os.path.exists(failed_file):
+        #     os.remove(failed_file)
         
         # 读取输入数据
         data = DataParser.load_data(self.args.test_set_path)
@@ -367,6 +409,13 @@ class ZeroShotInference:
         # 如果指定了样本数量，则只处理指定数量的样本
         if self.args.sample_num > 0:
             data = data[:self.args.sample_num]
+        
+        # 处理失败文件（如果存在）
+        failed_indices = DataParser.load_failed_indices(self.args.failed_file_path)
+        if failed_indices:
+            logger.info(f"Found {len(failed_indices)} failed indices, filtering data...")
+            data = DataParser.filter_data_by_failed_indices(data, failed_indices)
+            logger.info(f"Filtered data size: {len(data)}")
         
         total_items = len(data)
         logger.info(f"Total items to process: {total_items}")
@@ -389,7 +438,7 @@ class ZeroShotInference:
             
             # 构建结果记录
             result_record = {
-                "index": i,
+                "index": item['extra_info']['index'],
                 "original_data": {
                     "question": item.get("question", ""),
                     "db_id": item.get("db_id", ""),
@@ -469,6 +518,8 @@ class ZeroShotInference:
             "sample_num": self.args.sample_num,
             "db_path_key": self.args.db_path_key,
             "ground_truth_key": self.args.ground_truth_key,
+            "failed_file_path": self.args.failed_file_path,
+            "output_root": self.args.output_root,
             "with_cot": self.args.with_cot,
             "timestamp": datetime.now().isoformat(),
             "stats": self.stats
@@ -517,7 +568,8 @@ def parse_args():
                        help="数据库路径对应的字段名，支持嵌套访问如 key1.key2")
     parser.add_argument("--ground_truth_key", type=str, default="reward_model.ground_truth.target", 
                        help="标准答案对应字段名，支持嵌套访问如 key1.key2")
-
+    parser.add_argument("--failed_file_path", type=str, default=None,
+                       help="失败的文件路径，如果存在则只处理失败的样例")
     parser.add_argument("--output_root", type=str, default=None,
                        help="输出目录，必须指定")
 

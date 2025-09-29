@@ -283,7 +283,72 @@ python zero_shot.py \
     --with_cot True
 ```
 
-## 最新更新 (2025-09-17)
+## 最新更新 (2025-09-29)
+
+### 1. 失败文件重试功能
+- **新增功能**: 支持加载失败文件并只处理失败的样例
+- **参数**: `--failed_file_path` 用于指定失败文件路径
+- **自动清空**: 加载失败索引后自动清空失败文件内容
+- **数据过滤**: 根据失败索引过滤原始数据，只处理失败的样例
+
+### 2. 输出目录结构优化
+- **新增参数**: `--output_root` 用于指定输出根目录
+- **目录结构**: `{output_root}/{model_name}/{date}/{cot_info}/`
+- **cot_info**: `wcot` (CoT模式) 或 `wocot` (非CoT模式)
+
+### 3. 失败文件处理逻辑
+```python
+class DataParser:
+    @staticmethod
+    def load_failed_indices(failed_file_path: str) -> List[int]:
+        """加载失败文件的索引列表"""
+        # 1. 读取失败文件内容，提取索引
+        # 2. 清空失败文件内容
+        # 3. 返回失败索引列表
+    
+    @staticmethod
+    def filter_data_by_failed_indices(data: List[Dict[str, Any]], failed_indices: List[int]) -> List[Dict[str, Any]]:
+        """根据失败索引过滤数据"""
+        # 只保留失败索引对应的数据项
+```
+
+### 4. 参数更新
+- **with_cot 参数**: 改为 `action="store_true"` 类型
+- **output_root 参数**: 必须指定的输出根目录
+- **failed_file_path 参数**: 可选的失败文件路径
+
+### 5. 验证文件支持 (更新)
+- **BIRD 数据集**: `code/data/sql/bird/test.messages.wocot.parquet`
+- **BIRD 数据集**: `code/data/sql/bird/test.messages.wcot.parquet`
+- **测试参数**: 支持新的 API 密钥和模型配置
+
+### 6. 使用示例 (最新版)
+```bash
+# 基本使用
+python zero_shot.py \
+    --model_name "claude-3-5-sonnet-latest" \
+    --base_url "https://api.openai-proxy.org" \
+    --api_key "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX" \
+    --test_set_path "code/data/sql/bird/test.messages.wcot.parquet" \
+    --prompt_key "prompt" \
+    --sample_num 100 \
+    --output_root "/root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot" \
+    --with_cot
+
+# 失败文件重试
+python zero_shot.py \
+    --model_name "claude-3-5-sonnet-latest" \
+    --base_url "https://api.openai-proxy.org" \
+    --api_key "sk-8YniBcTEPqUFmGAbqsnAS8I2ofII8SA1B8s3I5y1Ewxv2uKX" \
+    --test_set_path "code/data/sql/bird/test.messages.wcot.parquet" \
+    --prompt_key "prompt" \
+    --sample_num 100 \
+    --output_root "/root/data1/projects/RL/DeepRetrieval/outputs/no_training/bird/zero-shot" \
+    --failed_file_path "outputs/no_training/bird/zero-shot/claude-3-5-sonnet-latest/2025-09-29/wcot/test.messages.wcot.wcot.sample100_failed.jsonl" \
+    --with_cot
+```
+
+## 历史更新 (2025-09-17)
 
 ### 1. Parquet 文件支持
 - **新增功能**: 支持 `.parquet` 格式的数据文件解析
@@ -311,24 +376,3 @@ class DataParser:
 - **WOCOT 文件**: `test.messages.wocot.parquet` (非CoT模式)
 - **COT 文件**: `test.messages.wcot.parquet` (CoT模式)
 - **prompt_key**: 在新文件中对应 `prompt` 字段
-
-### 5. 使用示例 (更新版)
-```bash
-# JSONL 文件测试
-python zero_shot.py \
-    --test_set_path "outputs/no_training/spider/test.jsonl" \
-    --prompt_key "messages" \
-    --with_cot True
-
-# Parquet 文件测试 (WOCOT)
-python zero_shot.py \
-    --test_set_path "code/data/sql/spider/test.messages.wocot.parquet" \
-    --prompt_key "prompt" \
-    --with_cot False
-
-# Parquet 文件测试 (COT)
-python zero_shot.py \
-    --test_set_path "code/data/sql/spider/test.messages.wcot.parquet" \
-    --prompt_key "prompt" \
-    --with_cot True
-```
